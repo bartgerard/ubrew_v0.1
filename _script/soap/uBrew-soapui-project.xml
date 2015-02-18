@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="uBrew" resourceRoot="" soapui-version="5.0.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="BeerWebServiceSoapBinding" type="wsdl" bindingName="{http://ubrew.be}BeerWebServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ubrew-core-webservice/beerWebService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ubrew-core-webservice/beerWebService?wsdl"><con:part><con:url>http://localhost:8080/ubrew-core-webservice/beerWebService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="BeerWebService" targetNamespace="http://ubrew.be" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ubrew.be" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://ubrew.be" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="beerType">
+        <xs:sequence>
+          <xs:element name="id" type="xs:long"/>
+          <xs:element name="labelKey" type="xs:string"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element name="alcoholMin" type="xs:int"/>
+          <xs:element name="alcoholMax" type="xs:int"/>
+          <xs:element name="colorMin" type="xs:int"/>
+          <xs:element name="colorMax" type="xs:int"/>
+          <xs:element name="bitterMin" type="xs:int"/>
+          <xs:element name="bitterMax" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType final="#all" name="beerTypeArray">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:beerType"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getVersionResponse">
+    <wsdl:part name="version" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveOrUpdateBeerTypeResponse">
+    <wsdl:part name="beerType" type="tns:beerType"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findAllBeerTypesResponse">
+    <wsdl:part name="beerTypes" type="tns:beerTypeArray"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findAllBeerTypes"></wsdl:message>
+  <wsdl:message name="saveOrUpdateBeerType">
+    <wsdl:part name="arg0" type="tns:beerType"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVersion"></wsdl:message>
+  <wsdl:portType name="BeerWebService">
+    <wsdl:operation name="saveOrUpdateBeerType">
+      <wsdl:input message="tns:saveOrUpdateBeerType" name="saveOrUpdateBeerType"></wsdl:input>
+      <wsdl:output message="tns:saveOrUpdateBeerTypeResponse" name="saveOrUpdateBeerTypeResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVersion">
+      <wsdl:input message="tns:getVersion" name="getVersion"></wsdl:input>
+      <wsdl:output message="tns:getVersionResponse" name="getVersionResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAllBeerTypes">
+      <wsdl:input message="tns:findAllBeerTypes" name="findAllBeerTypes"></wsdl:input>
+      <wsdl:output message="tns:findAllBeerTypesResponse" name="findAllBeerTypesResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BeerWebServiceSoapBinding" type="tns:BeerWebService">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="saveOrUpdateBeerType">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="saveOrUpdateBeerType">
+        <soap:body namespace="http://ubrew.be" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveOrUpdateBeerTypeResponse">
+        <soap:body namespace="http://ubrew.be" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVersion">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="getVersion">
+        <soap:body namespace="http://ubrew.be" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getVersionResponse">
+        <soap:body namespace="http://ubrew.be" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAllBeerTypes">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="findAllBeerTypes">
+        <soap:body namespace="http://ubrew.be" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findAllBeerTypesResponse">
+        <soap:body namespace="http://ubrew.be" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BeerWebService">
+    <wsdl:port binding="tns:BeerWebServiceSoapBinding" name="BeerWebServiceImplPort">
+      <soap:address location="http://localhost:8080/ubrew-core-webservice/beerWebService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ubrew-core-webservice/beerWebService</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="findAllBeerTypes" bindingOperationName="findAllBeerTypes" type="Request-Response" outputName="findAllBeerTypesResponse" inputName="findAllBeerTypes" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ubrew-core-webservice/beerWebService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ubr="http://ubrew.be">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ubr:findAllBeerTypes/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ubrew.be/BeerWebService/findAllBeerTypes"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getVersion" bindingOperationName="getVersion" type="Request-Response" outputName="getVersionResponse" inputName="getVersion" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ubrew-core-webservice/beerWebService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ubr="http://ubrew.be">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ubr:getVersion/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ubrew.be/BeerWebService/getVersion"/></con:call></con:operation><con:operation isOneWay="false" action="" name="saveOrUpdateBeerType" bindingOperationName="saveOrUpdateBeerType" type="Request-Response" outputName="saveOrUpdateBeerTypeResponse" inputName="saveOrUpdateBeerType" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ubrew-core-webservice/beerWebService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ubr="http://ubrew.be">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ubr:saveOrUpdateBeerType>
+         <arg0>
+            <labelKey>Tripple</labelKey>
+            <!--Optional:-->
+            <description>Trippel</description>
+            <alcoholMin>0</alcoholMin>
+            <alcoholMax>5</alcoholMax>
+            <colorMin>1</colorMin>
+            <colorMax>3</colorMax>
+            <bitterMin>1</bitterMin>
+            <bitterMax>3</bitterMax>
+         </arg0>
+      </ubr:saveOrUpdateBeerType>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ubrew.be/BeerWebService/saveOrUpdateBeerType"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>

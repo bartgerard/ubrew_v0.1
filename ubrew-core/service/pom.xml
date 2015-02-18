@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+    <artifactId>ubrew-core</artifactId>
+    <groupId>be.gerard</groupId>
+    <version>0.0.1</version>
+  </parent>
+
+    <groupId>be.gerard</groupId>
+    <artifactId>ubrew-core-service</artifactId>
+    <version>0.0.1</version>
+    <packaging>war</packaging>
+
+    <name>ubrew-core-service</name>
+
+    <properties>
+        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    
+    <dependencies>
+        
+        <!-- General Service -->
+        <dependency>
+            <groupId>be.gerard</groupId>
+            <artifactId>general-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>be.gerard</groupId>
+            <artifactId>common-invoker</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>be.gerard</groupId>
+            <artifactId>common-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>be.gerard</groupId>
+            <artifactId>common-decoder</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>be.gerard</groupId>
+            <artifactId>ubrew-core-interface</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- Database -->
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+        </dependency>
+        
+    </dependencies>
+
+</project>

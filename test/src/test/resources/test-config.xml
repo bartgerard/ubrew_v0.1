@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+          http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+  
+    <bean id="userProxyService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+        <property name="serviceUrl" value="http://localhost:8080/general-service/remoting/userService_v1" />
+        <property name="serviceInterface" value="be.gerard.general.interface_v1.UserService" />
+    </bean>
+  
+    <bean id="translationProxyService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+        <property name="serviceUrl" value="http://localhost:8080/translation-user/remoting/translationService_v1" />
+        <property name="serviceInterface" value="be.gerard.translation.interface_v1.TranslationService" />
+    </bean>
+    
+</beans>

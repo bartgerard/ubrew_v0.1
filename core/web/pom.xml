@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>core</artifactId>
+        <groupId>be.gerard</groupId>
+        <version>0.0.1</version>
+    </parent>
+
+    <groupId>be.gerard</groupId>
+    <artifactId>core-web</artifactId>
+    <version>0.0.1</version>
+    <packaging>war</packaging>
+
+    <name>core-web</name>
+
+    <properties>
+        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+
+        <!-- Core -->
+        <dependency>
+            <groupId>be.gerard</groupId>
+            <artifactId>core-authentication-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>be.gerard</groupId>
+            <artifactId>core-translation-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>be.gerard</groupId>
+            <artifactId>core-user-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>be.gerard</groupId>
+            <artifactId>core-application-service</artifactId>
+        </dependency>
+
+        <!-- JavaEE -->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+        </dependency>
+
+        <!-- Spring Test -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- H2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+
+    </dependencies>
+
+</project>

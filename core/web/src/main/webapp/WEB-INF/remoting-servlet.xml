@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Scan -->
+    <!--
+    <context:component-scan base-package="be.gerard.common.invoker" />
+    -->
+
+    <!-- HttpInvoker -->
+    <bean name="/authenticationService_v1" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+        <property name="serviceInterface" value="be.gerard.core.authentication.interface_v1.AuthenticationService"/>
+        <property name="service" ref="authenticationServiceImpl"/>
+    </bean>
+
+    <bean name="/userService_v1" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+        <property name="serviceInterface" value="be.gerard.core.user.interface_v1.UserService"/>
+        <property name="service" ref="userServiceImpl"/>
+    </bean>
+    <!-- be.gerard.common.invoker.CustomHttpInvokerServiceExporter -->
+
+    <!-- Remote Authentication Manager-->
+    <!--
+    <bean id="remoteAuthenticationManager" class="org.springframework.security.authentication.rcp.RemoteAuthenticationManagerImpl">
+        <property name="authenticationManager">
+            <ref local="authenticationManager" />
+        </property>
+    </bean>
+    -->
+</beans>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/translation-service">
+    <ResourceLink global="jdbc/general-service-datasource" name="jdbc/translation-service-datasource" type="javax.sql.DataSource"/>
+</Context>

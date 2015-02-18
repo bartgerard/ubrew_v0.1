@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GeneralUserViewDlg" widgetVar="GeneralUserViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{i18n.ViewGeneralUserTitle}">
+            <h:form id="GeneralUserViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{userBean.selected != null}">
+                        <h:outputText value="#{i18n.Id}"/>
+                        <h:outputText value="#{userBean.selected.id}" title="#{i18n.Id}"/>
+                        <h:outputText value="#{i18n.Birthdate}"/>
+                        <h:outputText value="#{userBean.selected.birthDate}" title="#{i18n.Birthdate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{i18n.Firstname}"/>
+                        <h:outputText value="#{userBean.selected.firstname}" title="#{i18n.Firstname}"/>
+                        <h:outputText value="#{i18n.Lastname}"/>
+                        <h:outputText value="#{userBean.selected.lastname}" title="#{i18n.Lastname}"/>
+                        <h:outputText value="#{i18n.Password}"/>
+                        <h:outputText value="*********" title="#{i18n.Password}"/>
+                        <h:outputText value="#{i18n.Username}"/>
+                        <h:outputText value="#{userBean.selected.username}" title="#{i18n.Username}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{i18n.Close}" onclick="GeneralUserViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

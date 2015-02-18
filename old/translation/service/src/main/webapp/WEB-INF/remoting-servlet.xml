@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
+    
+    <!-- Main Config -->
+    <import resource="classpath:be.gerard.translation.service.xml" />
+
+    <!-- JNDI -->
+    <!--<jee:jndi-lookup id="translation.service.properties" jndi-name="config/translation-service-properties" />-->
+    <jee:jndi-lookup id="translation.service.datasource" jndi-name="jdbc/translation-service-datasource" expected-type="javax.sql.DataSource" />
+    
+    <!-- HttpInvoker -->
+    <bean name="/translationService_v1" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+        <property name="serviceInterface" value="be.gerard.translation.interface_v1.TranslationService" />
+        <property name="service" ref="translationService"/>
+    </bean>
+    
+    <!-- Properties  -->
+    <bean id="be.gerard.translation.service.properties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="localOverride" value="true" />
+        <property name="ignoreResourceNotFound" value="true" />
+        <property name="locations">
+            <list>
+                <value>classpath:be.gerard.translation.service.properties</value>
+                <value>file:///Users/bartgerard/ubrew/_config/translation.service.properties</value>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- ProxyService(s) -->
+    <bean id="userProxyService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+        <property name="serviceInterface" value="be.gerard.general.interface_v1.UserService" />
+        <property name="serviceUrl" >
+            <value>${be.gerard.general.service.url}</value>
+        </property>
+    </bean>
+    
+    <!-- Aspect Oriented Programming -->
+    
+</beans>

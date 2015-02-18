@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd" >
+    
+    <!-- Scan -->
+    <context:component-scan base-package="be.gerard.common.invoker" />
+    
+    <!-- HttpInvoker -->
+    <bean name="/applicationAuthenticationService_v1" class="be.gerard.common.invoker.CustomHttpInvokerServiceExporter">
+        <property name="serviceInterface" value="be.gerard.general.interface_v1.ApplicationAuthenticationService" />
+        <property name="service" ref="applicationAuthenticationServiceImpl"/>
+    </bean>
+    <bean name="/userAuthenticationService_v1" class="be.gerard.common.invoker.CustomHttpInvokerServiceExporter">
+        <property name="serviceInterface" value="be.gerard.general.interface_v1.UserAuthenticationService" />
+        <property name="service" ref="userAuthenticationServiceImpl"/>
+    </bean>
+    
+    <bean name="/userService_v1" class="be.gerard.common.invoker.CustomHttpInvokerServiceExporter">
+        <property name="serviceInterface" value="be.gerard.general.interface_v1.UserService" />
+        <property name="service" ref="userServiceImpl"/>
+    </bean>
+    
+    <bean name="/translationService_v1" class="be.gerard.common.invoker.CustomHttpInvokerServiceExporter">
+        <property name="serviceInterface" value="be.gerard.general.interface_v1.TranslationService" />
+        <property name="service" ref="translationServiceImpl"/>
+    </bean>
+    
+    <!-- Remote Authentication Manager-->
+    <!--
+    <validator id="remoteAuthenticationManager" class="org.springframework.security.authentication.rcp.RemoteAuthenticationManagerImpl">
+        <property name="authenticationManager">
+            <ref local="authenticationManager" />
+        </property>
+    </validator>
+    -->
+</beans>

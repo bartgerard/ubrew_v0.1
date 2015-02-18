@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/general">
+    <!--<ResourceLink global="config/general-service-properties" name="config/general-service-properties" type="java.lang.String"/>-->
+    <Environment name="be.gerard.general.application.authentication.service.url" value="http://localhost:8080/general-service" type="java.lang.String"/>
+    <Environment name="be.gerard.general.application.key" value="general-web" type="java.lang.String"/>
+    <Environment name="be.gerard.general.application.password" value="todo" type="java.lang.String"/>
+</Context>

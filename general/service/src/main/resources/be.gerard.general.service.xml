@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:lang="http://www.springframework.org/schema/lang"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:annotation-config />
+    <context:component-scan base-package="be.gerard.general.service" />
+    
+    <!-- Resource(s) -->
+    <import resource="be.gerard.general.validations.xml" />
+    
+    <!--<validator id="userService" class="be.gerard.general.service.UserService"/>--> <!-- annotation-config creates beans for annotated classes. By default the name of these beans is camelCased. -->
+    
+    <!-- Encryption -->
+    <!--
+    <validator class="org.jasypt.util.text.StrongTextEncryptor" id="encryptor" >
+        <property name="password" value="BartRules!!!"/>
+    </validator>-->
+    
+    <bean id="strongPasswordEncryptor" class="org.jasypt.util.password.StrongPasswordEncryptor"/>
+    
+    <!-- Aspect Oriented Programming -->
+    
+    <bean id="loggingAdvice" class="be.gerard.common.aop.LoggingAdvice" />
+    <bean id="serviceExceptionAdvice" class="be.gerard.common.aop.ServiceExceptionAdvice" />
+    
+    <aop:config>
+        <aop:aspect ref="loggingAdvice">
+            <aop:around pointcut="be.gerard.common.aop.PointCutLibrary.springServiceOperation()" method="log"/>
+        </aop:aspect>
+        <aop:aspect ref="serviceExceptionAdvice">
+            <aop:after-throwing throwing="exception" pointcut="be.gerard.common.aop.PointCutLibrary.springServiceOperation()" method="handleException"/>
+        </aop:aspect>
+    </aop:config>
+    
+    <!-- DATABASE -->
+    
+    <beans profile="hib" >
+
+        <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+            <property name="dataSource" ref="db.general.datasource"/>
+            <property name="packagesToScan" value="be.gerard.general.service.model"/>
+            <property name="hibernateProperties">
+                <props>
+                    <prop key="hibernate.dialect">${be.gerard.general.hibernate.dialect}</prop>
+                    <prop key="hibernate.hbm2ddl.auto">${be.gerard.general.hibernate.hbm2ddl.auto}</prop>
+                    <prop key="hibernate.archive.autodetection">class</prop>
+                    <prop key="hibernate.generate_statistics">${be.gerard.general.generate_statistics}</prop>
+                    <prop key="hibernate.show_sql">${be.gerard.general.hibernate.show_sql}</prop>
+                    <prop key="hibernate.default_schema">${be.gerard.general.hibernate.default_schema}</prop>
+                </props>
+            </property>
+        </bean>
+    
+        <tx:annotation-driven transaction-manager="transactionManager"/>
+    
+        <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+            <property name="sessionFactory" ref="sessionFactory"/>
+        </bean>
+    
+    </beans>
+    
+    <beans profile="jpa">
+        
+        <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" >
+            <property name="dataSource" ref="db.general.datasource"/>
+            <property name="jpaVendorAdapter">
+                <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+            </property>
+            <property name="jpaProperties">
+                <props>
+                    <prop key="hibernate.dialect">${be.gerard.general.hibernate.dialect}</prop>
+                    <prop key="hibernate.hbm2ddl.auto">${be.gerard.general.hibernate.hbm2ddl.auto}</prop>
+                    <prop key="hibernate.archive.autodetection">class</prop>
+                    <prop key="hibernate.generate_statistics">${be.gerard.general.generate_statistics}</prop>
+                    <prop key="hibernate.show_sql">${be.gerard.general.hibernate.show_sql}</prop>
+                    <prop key="hibernate.format_sql">true</prop>
+                    <prop key="hibernate.ejb.naming_strategy_delegator">org.hibernate.cfg.naming.ImprovedNamingStrategyDelegator</prop>
+                </props>
+            </property>
+            <property name="packagesToScan" value="be.gerard.general.service.model"/>
+        </bean>
+    
+        <tx:annotation-driven transaction-manager="transactionManager"/>
+        
+        <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" >
+            <property name="entityManagerFactory" ref="entityManagerFactory" />
+        </bean>
+        
+        <!-- enables interpretation of the @PersistenceUnit/@PersistenceContext annotations providing convenient
+        access to EntityManagerFactory/EntityManager -->
+        <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+        
+    </beans>
+    
+</beans>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    <!-- Service(s) -->
+    
+    <bean id="applicationAuthenticationService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+        <property name="serviceInterface" value="be.gerard.general.interface_v1.ApplicationAuthenticationService" />
+        <property name="serviceUrl">
+            <value>#{applicationAuthenticationServiceUrl}/remoting/applicationAuthenticationService_v1</value>
+        </property>
+        <!--<property name="httpInvokerRequestExecutor" ref="customHttpInvokerRequestExecutor"/>-->
+    </bean>
+    <!--
+    <validator id="customHttpInvokerRequestExecutor" class="be.gerard.common.invoker.CustomHttpInvokerRequestExecutor" />
+    -->
+</beans>

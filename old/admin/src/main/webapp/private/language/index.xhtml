@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="languageProperties">
+
+            <p:growl id="messages" showDetail="true"/>
+
+            <!--<p:contextMenu for="cars" widgetVar="cMenu">   
+                <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('carsTable').showCellEditor();
+                        return false;"/>  
+                <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>  
+            </p:contextMenu> -->
+
+            <p:dataTable id="languageProperties" var="languageProperty" value="#{languagePropertyBean.languageProperties}" editable="true" editMode="cell" widgetVar="carsTable">
+
+                <f:facet name="header">
+                    #{languagePropertyBean.get("admin", "translations")}
+                </f:facet>
+
+                <p:ajax event="cellEdit" listener="#{languagePropertyBean.onCellEdit}" update=":languageProperties:messages" />
+
+                <p:column headerText="Application" style="width:25%">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{languageProperty.application}" /></f:facet>
+                        <f:facet name="input"><p:inputText id="modelInput" value="#{languageProperty.application}" style="width:96%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Key" style="width:25%">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{languageProperty.key}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{languageProperty.key}" style="width:96%" label="Year"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Language" style="width:25%">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{languageProperty.language}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{languageProperty.language}" style="width:96%" label="Year"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Value" style="width:25%">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{languageProperty.value}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{languageProperty.value}" style="width:96%" label="Year"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+            </p:dataTable>
+
+        </h:form>
+
+    </h:body>
+</html>
+

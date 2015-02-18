@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/templates/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{i18n.ListGeneralTranslationTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="content">
+
+            <h3>#{i18n.Translations}</h3>
+
+            <h:form id="TranslationUploadForm">
+                <p:messages id="messages" showDetail="true"/>
+                <p:fileUpload label="#{i18n.UploadTranslations}" fileUploadListener="#{translationBean.handleFileUpload}" mode="advanced" auto="true" allowTypes="/(\.|\/)(xlsx)$/" update=":TranslationUploadForm,:GeneralTranslationListForm" />
+            </h:form>
+
+            <h:form id="GeneralTranslationListForm">
+                <p:dataTable id="datalist" value="#{translationBean.items}" var="item"
+                             selectionMode="single" selection="#{translationBean.selected}"
+                             filteredValue="#{translationBean.selection}"
+                             paginator="true" paginatorPosition="bottom"
+                             rowKey="#{item.id}"
+                             rows="25"
+                             rowsPerPageTemplate="25,50,75,100">
+
+                    <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                    <p:column filterBy="#{item.application}" headerText="#{i18n.Application}" filterMatchMode="contains" >
+                        <h:outputText value="#{item.application}" />
+                    </p:column>
+
+                    <p:column filterBy="#{item.language}" headerText="#{i18n.Language}" filterMatchMode="exact" >
+                        <h:outputText value="#{item.language}"/>
+                    </p:column>
+
+                    <p:column filterBy="#{item.key}" headerText="#{i18n.Key}" filterMatchMode="contains" >
+                        <h:outputText value="#{item.key}"/>
+                    </p:column>
+
+                    <p:column filterBy="#{item.value}" headerText="#{i18n.Value}" filterMatchMode="contains" >
+                        <h:outputText value="#{item.value}"/>
+                    </p:column>
+
+                    <f:facet name="footer">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{i18n.Create}" actionListener="#{translationBean.prepareCreate}" update=":GeneralTranslationCreateForm" oncomplete="PF('GeneralTranslationCreateDialog').show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{i18n.View}" update=":GeneralTranslationViewForm" oncomplete="PF('GeneralTranslationViewDialog').show()" disabled="#{empty translationBean.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{i18n.Edit}" update=":GeneralTranslationEditForm" oncomplete="PF('GeneralTranslationEditDialog').show()" disabled="#{empty translationBean.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{i18n.Delete}" actionListener="#{translationBean.destroy}" update=":growl,datalist" disabled="#{empty translationBean.selected}"/>
+                    </f:facet>
+
+                </p:dataTable>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="toolbar">
+
+            <p:growl id="messages" />
+
+                <p:toolbar>
+                    <p:toolbarGroup align="left">
+                        <p:commandButton type="button" value="New" icon="ui-icon-document" />
+
+                        <p:commandButton type="button" value="Open" icon="ui-icon-folder-open"/>
+
+                        <p:separator />
+
+                        <p:commandButton type="button" title="Save" icon="ui-icon-disk"/>
+                        <p:commandButton type="button" title="Delete" icon="ui-icon-trash"/>
+                    </p:toolbarGroup>
+
+                    <p:toolbarGroup align="right">
+                        <p:menuButton value="Options">
+                            <p:menuitem value="Language" url="/private/language" />
+                        </p:menuButton>
+                    </p:toolbarGroup>
+                </p:toolbar>
+        </h:form>
+
+        <h:form id="configProperties">
+
+            <p:growl id="messages" showDetail="true"/>
+
+            <!--<p:contextMenu for="cars" widgetVar="cMenu">   
+                <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('carsTable').showCellEditor();
+                        return false;"/>  
+                <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>  
+            </p:contextMenu> -->
+
+            <p:dataTable id="configProperties" var="configProperty" value="#{configPropertyBean.configProperties}" editable="true" editMode="cell" widgetVar="carsTable">
+
+                <f:facet name="header">
+                    #{languagePropertyBean.get("admin", "configuration")}
+                </f:facet>
+
+                <p:ajax event="cellEdit" listener="#{configPropertyBean.onCellEdit}" update=":configProperties:messages" />
+
+                <p:column headerText="Application" style="width:25%">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{configProperty.application}" /></f:facet>
+                        <f:facet name="input"><p:inputText id="modelInput" value="#{configProperty.application}" style="width:96%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Key" style="width:25%">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{configProperty.key}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{configProperty.key}" style="width:96%" label="Year"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Value" style="width:25%">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{configProperty.value}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{configProperty.value}" style="width:96%" label="Year"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+            </p:dataTable>
+
+        </h:form>
+
+    </h:body>
+</html>
+
