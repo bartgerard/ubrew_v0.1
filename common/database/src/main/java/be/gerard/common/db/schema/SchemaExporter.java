@@ -79,7 +79,7 @@ public class SchemaExporter {
 
         if (create) {
             // Generate create script
-            schemaExport.setOutputFile(String.format("target/@s_ddl_%s_create.sql", app_key, dialect.getSimpleName()));
+            schemaExport.setOutputFile(String.format("target/%s_ddl_%s_create.sql", app_key, dialect.getSimpleName()));
             schemaExport.execute(true, false, false, true);
         }
 

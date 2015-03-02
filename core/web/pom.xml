@@ -39,6 +39,12 @@
             <groupId>be.gerard</groupId>
             <artifactId>core-application-service</artifactId>
         </dependency>
+        
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
 
         <!-- JavaEE -->
         <dependency>
