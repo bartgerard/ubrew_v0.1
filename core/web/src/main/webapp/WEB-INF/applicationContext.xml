@@ -18,7 +18,7 @@
         <property name="ignoreResourceNotFound" value="true"/>
         <property name="locations">
             <list>
-                <value>classpath:src/main/resources/be.gerard.core.service.properties</value>
+                <value>classpath:be.gerard.core.service.properties</value>
                 <value>file:///Users/bartgerard/workspace/ubrew/_config/general.properties</value>
             </list>
         </property>
@@ -31,7 +31,7 @@
     </bean>
 
     <!-- Main Config -->
-    <import resource="classpath:src/main/resources/be.gerard.core.service.xml"/>
+    <import resource="classpath:be.gerard.core.service.xml"/>
     <!--<import resource="classpath:be.gerard.common.logging.xml"/>-->
 
     <!-- Spring Security -->
