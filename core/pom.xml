@@ -13,10 +13,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>translation</module>
-        <module>authentication</module>
-        <module>user</module>
-        <module>application</module>
+        <module>interface</module>
+        <module>service</module>
         <module>web</module>
     </modules>
 

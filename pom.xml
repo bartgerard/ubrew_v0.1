@@ -134,42 +134,12 @@
             </dependency>
             <dependency>
                 <groupId>be.gerard</groupId>
-                <artifactId>core-translation-interface</artifactId>
+                <artifactId>core-interface</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>be.gerard</groupId>
-                <artifactId>core-translation-service</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>be.gerard</groupId>
-                <artifactId>core-authentication-interface</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>be.gerard</groupId>
-                <artifactId>core-authentication-service</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>be.gerard</groupId>
-                <artifactId>core-application-interface</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>be.gerard</groupId>
-                <artifactId>core-application-service</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>be.gerard</groupId>
-                <artifactId>core-user-interface</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>be.gerard</groupId>
-                <artifactId>core-user-service</artifactId>
+                <artifactId>core-service</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

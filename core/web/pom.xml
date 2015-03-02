@@ -25,19 +25,7 @@
         <!-- Core -->
         <dependency>
             <groupId>be.gerard</groupId>
-            <artifactId>core-authentication-service</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>be.gerard</groupId>
-            <artifactId>core-translation-service</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>be.gerard</groupId>
-            <artifactId>core-user-service</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>be.gerard</groupId>
-            <artifactId>core-application-service</artifactId>
+            <artifactId>core-service</artifactId>
         </dependency>
         
         <!-- Spring -->
@@ -50,19 +38,6 @@
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
-        </dependency>
-
-        <!-- Spring Test -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- H2 -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
         </dependency>
 
     </dependencies>

@@ -10,12 +10,12 @@
 
     <!-- HttpInvoker -->
     <bean name="/authenticationService_v1" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
-        <property name="serviceInterface" value="be.gerard.core.authentication.interface_v1.AuthenticationService"/>
+        <property name="serviceInterface" value="be.gerard.core.interface_v1.AuthenticationService"/>
         <property name="service" ref="authenticationServiceImpl"/>
     </bean>
 
     <bean name="/userService_v1" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
-        <property name="serviceInterface" value="be.gerard.core.user.interface_v1.UserService"/>
+        <property name="serviceInterface" value="be.gerard.core.interface_v1.UserService"/>
         <property name="service" ref="userServiceImpl"/>
     </bean>
     <!-- be.gerard.common.invoker.CustomHttpInvokerServiceExporter -->
