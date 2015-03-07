@@ -26,10 +26,12 @@
     </context-param>
 
     <!-- Spring Profile -->
+    <!--
     <context-param>
         <param-name>spring.profiles.active</param-name>
         <param-value>jpa</param-value>
     </context-param>
+    -->
 
     <!-- Create the Spring Container shared by all Servlet and Filters -->
     <listener>
