@@ -29,11 +29,6 @@
         </dependency>
         <dependency>
             <groupId>be.gerard</groupId>
-            <artifactId>general-service</artifactId>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>be.gerard</groupId>
             <artifactId>common-logging</artifactId>
         </dependency>
         <dependency>

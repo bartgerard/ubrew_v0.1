@@ -60,12 +60,6 @@
             <artifactId>h2</artifactId>
         </dependency>
 
-        <!-- Core -->
-        <dependency>
-            <groupId>be.gerard</groupId>
-            <artifactId>core-service</artifactId>
-        </dependency>
-
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>

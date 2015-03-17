@@ -24,7 +24,7 @@
         <!-- General Service -->
         <dependency>
             <groupId>be.gerard</groupId>
-            <artifactId>general-service</artifactId>
+            <artifactId>common-database</artifactId>
         </dependency>
         <dependency>
             <groupId>be.gerard</groupId>
