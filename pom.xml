@@ -48,6 +48,11 @@
             <!-- Gerard -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
+                <artifactId>common-properties</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>common-logging</artifactId>
                 <version>${project.version}</version>
             </dependency>

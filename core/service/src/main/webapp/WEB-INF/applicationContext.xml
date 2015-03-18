@@ -12,14 +12,12 @@
     <jee:jndi-lookup id="db.datasource.core" jndi-name="jdbc/db.datasource.core" expected-type="javax.sql.DataSource"/>
 
     <!-- Properties  -->
-    <bean id="be.gerard.core.service.properties"
-          class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+    <bean id="be.gerard.core.service.properties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="localOverride" value="true"/>
         <property name="ignoreResourceNotFound" value="true"/>
         <property name="locations">
             <list>
                 <value>classpath:be.gerard.core.service.properties</value>
-                <value>file:///Users/bartgerard/workspace/ubrew/_config/general.properties</value>
             </list>
         </property>
     </bean>

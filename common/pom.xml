@@ -10,6 +10,7 @@
     <artifactId>common</artifactId>
     <packaging>pom</packaging>
     <modules>
+        <module>properties</module>
         <module>exception</module>
         <module>testing</module>
         <module>service</module>
