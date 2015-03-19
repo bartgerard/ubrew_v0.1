@@ -3,7 +3,9 @@ package be.gerard.core.service.merger;
 import be.gerard.common.merger.MergeContext;
 import be.gerard.common.merger.Merger;
 import be.gerard.core.interface_v1.model.User;
+import be.gerard.core.service.model.UserDetailRecord;
 import be.gerard.core.service.model.UserRecord;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,9 +20,13 @@ public class UserMerger implements Merger<UserRecord, User, MergeContext> {
     @Override
     public void merge(UserRecord userRecord, User user, MergeContext context) {
         userRecord.setUsername(user.getUsername());
+
         userRecord.setFirstname(user.getFirstname());
         userRecord.setLastname(user.getLastname());
         userRecord.setBirthDate(user.getBirthDate());
+
+        userRecord.getEmails().stream().filter(email -> !userRecord.getEmails().contains(email)).forEach(userRecord::addEmail);
+        // TODO DELETE
     }
 
 }

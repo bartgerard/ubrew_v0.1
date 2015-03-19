@@ -30,14 +30,14 @@ public class UserDaoTest extends BaseTest {
         
         userDao.saveAndFlush(userRecord);
         
-        UserRecord userRecordAfterFindOne = userDao.findOne(USERNAME);
+        UserRecord userRecordAfterFindOne = userDao.findOne(userRecord.getCuid());
         Assert.assertNotNull("userDao.findOne did return null", userRecordAfterFindOne);
         
         UserRecord userRecordAfterFindByUsername = userDao.findByUsername(USERNAME);
         Assert.assertNotNull("userDao.findByUsername did return null", userRecordAfterFindByUsername);
         
         userDao.delete(userRecord);
-        Assert.assertNull("userDao did not delete record", userDao.findOne(USERNAME));
+        Assert.assertNull("userDao did not delete record", userDao.findOne(userRecord.getCuid()));
         
         Assert.assertNull("userDao.findByUsername did not return null", userDao.findByUsername(USERNAME + "_non_existing"));
     }

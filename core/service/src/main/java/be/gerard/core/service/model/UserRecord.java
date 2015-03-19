@@ -7,7 +7,7 @@ import be.gerard.core.interface_v1.model.User;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * UserRecord
@@ -20,8 +20,12 @@ import java.util.Objects;
 @Table(name = "core_user")
 public class UserRecord implements Serializable {
 
+    // Core User Id --> CUID
     @Id
-    @Column(name = "username", nullable = false, updatable = false)
+    @Column(name = "cuid", nullable = false)
+    private UUID cuid = UUID.randomUUID();
+
+    @Column(name = "username", nullable = false)
     private String username;
 
     @Column(name = "password", nullable = false)
@@ -40,7 +44,19 @@ public class UserRecord implements Serializable {
     @Column(name = "birthDate", nullable = false)
     private LocalDate birthDate;
 
+    @ElementCollection
+    @CollectionTable(name = "rel_user_email", joinColumns = @JoinColumn(name = "user_cuid"))
+    private final List<String> emails = new ArrayList<>();
+
     public UserRecord() {
+    }
+
+    public UUID getCuid() {
+        return cuid;
+    }
+
+    public void setCuid(UUID cuid) {
+        this.cuid = cuid;
     }
 
     public String getUsername() {
@@ -89,6 +105,18 @@ public class UserRecord implements Serializable {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public List<String> getEmails() {
+        return Collections.unmodifiableList(emails);
+    }
+
+    public void addEmail(String email) {
+        this.emails.add(email);
+    }
+
+    public void removeEmail(String email) {
+        this.emails.remove(email);
     }
 
     @Override

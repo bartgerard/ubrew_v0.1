@@ -32,6 +32,10 @@
             <groupId>be.gerard</groupId>
             <artifactId>common-merger</artifactId>
         </dependency>
+        <dependency>
+            <groupId>be.gerard</groupId>
+            <artifactId>common-decoder</artifactId>
+        </dependency>
 
         <!-- Spring Data -->
         <dependency>

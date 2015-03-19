@@ -1,14 +1,13 @@
 package be.gerard.core.interface_v1.model;
 
 import be.gerard.common.to.BaseTo;
-import java.time.LocalDate;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.time.LocalDate;
+import java.util.*;
 
 /**
  *
@@ -17,21 +16,6 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "user")
 public class User extends BaseTo {
-
-    public User() {
-    }
-
-    public User(String username, String firstname, String lastname, LocalDate birthDate) {
-        this(null, username, firstname, lastname, birthDate);
-    }
-
-    public User(Long id, String username, String firstname, String lastname, LocalDate birthDate) {
-        super(id);
-        this.username = username;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.birthDate = birthDate;
-    }
 
     @XmlElement(required = true)
     private String username;
@@ -46,7 +30,17 @@ public class User extends BaseTo {
     private LocalDate birthDate;
 
     @XmlElement(required = true)
+    private List<String> emails = new ArrayList<>();
+
+    @XmlElement(required = true)
     private final Map<String, String> properties = new HashMap<>();
+
+    public User() {
+    }
+
+    public User(String username) {
+        this.username = username;
+    }
 
     public String getUsername() {
         return username;
@@ -78,6 +72,10 @@ public class User extends BaseTo {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public List<String> getEmails() {
+        return emails;
     }
 
     public Map<String, String> getProperties() {

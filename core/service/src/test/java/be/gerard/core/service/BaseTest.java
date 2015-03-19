@@ -45,6 +45,7 @@ public class BaseTest {
     protected final String firstname = "FIRSTNAME";
     protected final String lastname = "LASTNAME";
     protected final LocalDate birthdate = LocalDate.of(1988, Month.MAY, 3);
+    protected final String email = "EMAIL";
     protected User user;
 
     @Autowired
@@ -59,7 +60,12 @@ public class BaseTest {
         UserSessionUtils.setUserSession(userSession);
 
         // User
-        user = new User(username, firstname, lastname, birthdate);
+        user = new User(username);
+
+        user.setFirstname(firstname);
+        user.setLastname(lastname);
+        user.setBirthDate(birthdate);
+        user.getEmails().add(email);
     }
 
 }
