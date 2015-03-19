@@ -3,8 +3,11 @@ package be.gerard.core.service.model;
 import be.gerard.common.converter.annotation.Convertible;
 import be.gerard.common.db.converter.LocalDatePersistenceConverter;
 import be.gerard.core.interface_v1.model.User;
+import org.hibernate.annotations.ForeignKey;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.*;
@@ -44,6 +47,7 @@ public class UserRecord implements Serializable {
     @Column(name = "birthDate", nullable = false)
     private LocalDate birthDate;
 
+    @ForeignKey(name = "fk_user_email")
     @ElementCollection
     @CollectionTable(name = "rel_user_email", joinColumns = @JoinColumn(name = "user_cuid"))
     private final List<String> emails = new ArrayList<>();

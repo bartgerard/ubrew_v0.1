@@ -3,9 +3,7 @@ package be.gerard.core.service.merger;
 import be.gerard.common.merger.MergeContext;
 import be.gerard.common.merger.Merger;
 import be.gerard.core.interface_v1.model.User;
-import be.gerard.core.service.model.UserDetailRecord;
 import be.gerard.core.service.model.UserRecord;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
