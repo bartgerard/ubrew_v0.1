@@ -18,6 +18,10 @@
         </dependency>
         <dependency>
             <groupId>be.gerard</groupId>
+            <artifactId>common-properties</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>be.gerard</groupId>
             <artifactId>common-database</artifactId>
         </dependency>
         <dependency>
