@@ -2,29 +2,24 @@ package be.gerard.ubrew.core.web.controller;
 
 import be.gerard.common.exception_v1.ServiceException;
 import be.gerard.common.web.GeneralBean;
-import be.gerard.general.interface_v1.UserService;
-import be.gerard.general.interface_v1.model.Address;
-import be.gerard.general.interface_v1.model.UserDetail;
-import javax.inject.Named;
+import be.gerard.core.interface_v1.model.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Scope;
+import javax.inject.Named;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.Objects;
 
 //@ViewScoped
 @Scope("session")
 @Named
-public class RegisterBean extends GeneralBean<UserDetail> implements Serializable {
+public class RegisterBean extends GeneralBean<User> implements Serializable {
 
     private static final Logger logger = LogManager.getLogger(RegisterBean.class.getName());
 
@@ -54,24 +49,24 @@ public class RegisterBean extends GeneralBean<UserDetail> implements Serializabl
 
     private String country;
 
-    private final List<Address> addresses = new ArrayList<>();
+//    private final List<Address> addresses = new ArrayList<>();
 
-    private Address address;
+//    private Address address;
 
     @Inject
     private LoginBean loginBean;
 
-    @Autowired
-    private UserService userService;
+//    @Autowired
+//    private UserService userService;
 
     @Value("${be.gerard.general.application.name}")
     private String applicationName;
 
     @Override
-    public UserDetail getSelected() {
+    public User getSelected() {
         if (super.getSelected() == null) {
-            setSelected(new UserDetail());
-            getSelected().add(new Address());
+            setSelected(new User());
+//            getSelected().add(new Address());
         }
         return super.getSelected();
     }
@@ -175,9 +170,9 @@ public class RegisterBean extends GeneralBean<UserDetail> implements Serializabl
         this.country = country;
     }
 
-    public List<Address> getAddresses() {
-        return addresses;
-    }
+ //   public List<Address> getAddresses() {
+ //       return addresses;
+ //   }
 
     public LoginBean getLoginBean() {
         return loginBean;
@@ -187,13 +182,13 @@ public class RegisterBean extends GeneralBean<UserDetail> implements Serializabl
         this.loginBean = loginBean;
     }
 
-    public UserService getUserService() {
-        return userService;
-    }
+//   public UserService getUserService() {
+//        return userService;
+//    }
 
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
+//    public void setUserService(UserService userService) {
+//        this.userService = userService;
+//    }
 
     //
     public void register() {
@@ -218,7 +213,7 @@ public class RegisterBean extends GeneralBean<UserDetail> implements Serializabl
         if (getSelected() != null) {
             try {
                 if (persistAction != PersistAction.DELETE) {
-                    getUserService().saveOrUpdate(getSelected(), password, "");
+//                    getUserService().save(getSelected(), password, "");
                 }
             } catch (ServiceException e) {
                 handleException(e);
@@ -226,8 +221,8 @@ public class RegisterBean extends GeneralBean<UserDetail> implements Serializabl
         }
     }
 
-    public Address getAddress() {
-        return address;
-    }
+//    public Address getAddress() {
+//        return address;
+//    }
 
 }

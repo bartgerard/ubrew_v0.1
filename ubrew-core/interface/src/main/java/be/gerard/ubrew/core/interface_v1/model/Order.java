@@ -1,12 +1,9 @@
 package be.gerard.ubrew.core.interface_v1.model;
 
-import be.gerard.general.interface_v1.model.UserDetail;
+import be.gerard.core.interface_v1.model.User;
+
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Order
@@ -17,17 +14,17 @@ public class Order implements Serializable {
 
     private Long id;
 
-    private UserDetail user;
+    private User user;
 
     private Date timestamp;
 
     private final List<OrderItem> items = new ArrayList<>();
 
-    public Order(UserDetail user, Date timestamp) {
+    public Order(User user, Date timestamp) {
         this(null, user, timestamp);
     }
 
-    public Order(Long id, UserDetail user, Date timestamp) {
+    public Order(Long id, User user, Date timestamp) {
         this.id = id;
         this.user = user;
         this.timestamp = timestamp;
@@ -41,11 +38,11 @@ public class Order implements Serializable {
         this.id = id;
     }
 
-    public UserDetail getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(UserDetail user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

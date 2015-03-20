@@ -1,17 +1,17 @@
 package be.gerard.ubrew.core.web.controller;
 
-import be.gerard.common.exception_v1.ServiceException;
-import be.gerard.general.interface_v1.UserAuthenticationService;
-import be.gerard.general.interface_v1.session.UserSession;
-import java.io.Serializable;
-import java.util.Arrays;
+import be.gerard.core.interface_v1.AuthenticationService;
+import be.gerard.core.interface_v1.session.UserSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Scope;
+import java.io.Serializable;
+import java.util.Arrays;
 
 @Scope("session")
 @Named("loginBean")
@@ -23,7 +23,7 @@ public class LoginBean implements Serializable {
     private PageBean pageBean;
 
     @Autowired
-    private UserAuthenticationService authenticationService;
+    private AuthenticationService authenticationService;
 
     @Value("${be.gerard.general.application.name}")
     private String applicationName;
@@ -69,15 +69,15 @@ public class LoginBean implements Serializable {
     }
     
     public void login(final String username, final String password) {
-        try {
+//        try {
             session = authenticationService.login(username, password);
             pageBean.setPage(PageBean.PAGE.CLICK_AND_BREW);
-        } catch (ServiceException e) {
-            e.getErrors().entrySet().stream().forEach((_error) -> {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, _error.getKey().getKey(), Arrays.toString(_error.getValue())));
-            });
-            FacesContext.getCurrentInstance().validationFailed();
-        }
+//        } catch (ServiceException e) {
+//            e.getErrors().entrySet().stream().forEach((_error) -> {
+//                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, _error.getKey().getKey(), Arrays.toString(_error.getValue())));
+//            });
+//            FacesContext.getCurrentInstance().validationFailed();
+//        }
     }
 
     public void logout() {
