@@ -14,7 +14,7 @@
         
         <dependency>
             <groupId>be.gerard</groupId>
-            <artifactId>common-authentication</artifactId>
+            <artifactId>core-interface</artifactId>
         </dependency>
         
         <!-- Spring -->

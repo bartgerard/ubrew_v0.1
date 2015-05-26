@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GeneralTranslationCreateDlg" widgetVar="GeneralTranslationCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{i18n.CreateGeneralTranslationTitle}">
+            <h:form id="GeneralTranslationCreateForm">
+
+                <p:messages id="errorMessages" autoUpdate="true"/>
+                
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{translationBean.selected != null}">
+                        <p:outputLabel value="#{i18n.Application}" for="application" />
+                        <p:inputText id="application" value="#{translationBean.selected.application}" title="#{i18n.Application}" required="true" requiredMessage="#{i18n.RequiredMessage_application}"/>
+                        <p:outputLabel value="#{i18n.Language}" for="language" />
+                        <p:inputText id="language" value="#{translationBean.selected.language}" title="#{i18n.Language}" required="true" requiredMessage="#{i18n.RequiredMessage_firstname}"/>
+                        <p:outputLabel value="#{i18n.Key}" for="key" />
+                        <p:inputText id="key" value="#{translationBean.selected.key}" title="#{i18n.Key}" required="true" requiredMessage="#{i18n.RequiredMessage_key}"/>
+                        <p:outputLabel value="#{i18n.Value}" for="value" />
+                        <p:inputText id="value" value="#{translationBean.selected.value}" title="#{i18n.Value}" required="true" requiredMessage="#{i18n.RequiredMessage_value}"/>
+                        <p:outputLabel value="#{i18n.ChangedBy}" for="changedBy" />
+                        <p:inputText id="changedBy" value="#{translationBean.selected.changedBy}" title="#{i18n.ChangedBy}" required="true" requiredMessage="#{i18n.RequiredMessage_changedBy}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{translationBean.create}" value="#{i18n.Save}" update="display,:GeneralTranslationListForm:datalist,:growl" oncomplete="handleSubmit(args,'GeneralTranslationCreateDialog');"/>
+                    <p:commandButton value="#{i18n.Cancel}" onclick="GeneralTranslationCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

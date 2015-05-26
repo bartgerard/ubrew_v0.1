@@ -1,6 +1,6 @@
 package be.gerard.ubrew.core.web.controller;
 
-import be.gerard.general.interface_v1.UserService;
+import be.gerard.core.interface_v1.UserService;
 import javax.inject.Named;
 
 import java.io.Serializable;

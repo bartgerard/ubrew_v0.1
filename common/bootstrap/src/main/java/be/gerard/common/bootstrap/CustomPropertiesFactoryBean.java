@@ -1,14 +1,15 @@
 package be.gerard.common.bootstrap;
 
-import be.gerard.common.authentication.util.AppSessionUtils;
-import be.gerard.general.interface_v1.ApplicationAuthenticationService;
-import be.gerard.general.interface_v1.session.AppSession;
-import java.io.IOException;
-import java.util.Properties;
+import be.gerard.core.interface_v1.AuthenticationService;
+import be.gerard.core.interface_v1.session.AppSession;
+import be.gerard.core.interface_v1.util.AppSessionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.util.Assert;
+
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * CustomPropertiesFactoryBean
@@ -19,7 +20,7 @@ import org.springframework.util.Assert;
 public class CustomPropertiesFactoryBean extends PropertiesFactoryBean {
 
     @Autowired
-    private ApplicationAuthenticationService applicationAuthenticationService;
+    private AuthenticationService authenticationService;
 
     @Value("#{applicationKey}")
     private String applicationKey;
@@ -27,12 +28,12 @@ public class CustomPropertiesFactoryBean extends PropertiesFactoryBean {
     @Value("#{applicationPassword}")
     private String applicationPassword;
 
-    public void setApplicationAuthenticationService(ApplicationAuthenticationService applicationAuthenticationService) {
-        this.applicationAuthenticationService = applicationAuthenticationService;
+    public AuthenticationService getAuthenticationService() {
+        return authenticationService;
     }
 
-    public ApplicationAuthenticationService getApplicationAuthenticationService() {
-        return applicationAuthenticationService;
+    public void setApplicationKey(String applicationKey) {
+        this.applicationKey = applicationKey;
     }
 
     public void setApplicationPassword(String applicationPassword) {
@@ -46,7 +47,7 @@ public class CustomPropertiesFactoryBean extends PropertiesFactoryBean {
     @Override
     protected Properties createProperties() throws IOException {
         Properties properties = super.createProperties();
-        AppSession appSession = applicationAuthenticationService.register(applicationKey, applicationPassword);
+        AppSession appSession = authenticationService.register(applicationKey, applicationPassword);
         Assert.notNull(appSession, String.format("password invalid for application [%s]", applicationKey));
         AppSessionUtils.setAppSession(appSession);
         // TODO

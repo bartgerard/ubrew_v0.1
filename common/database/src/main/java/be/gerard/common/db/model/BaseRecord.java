@@ -1,6 +1,6 @@
 package be.gerard.common.db.model;
 
-import be.gerard.common.authentication.util.UserSessionUtils;
+import be.gerard.core.interface_v1.util.UserSessionUtils;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;

@@ -1,6 +1,6 @@
 package be.gerard.general.service.decoder;
 
-import be.gerard.common.decoder.Decoder;
+import be.gerard.core.interface_v1.decoder.Decoder;
 import be.gerard.general.interface_v1.model.Address;
 import be.gerard.general.service.model.AddressRecord;
 import org.springframework.stereotype.Component;

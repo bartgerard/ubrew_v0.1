@@ -1,4 +1,3 @@
-
 package be.gerard.common.merger;
 
 import be.gerard.common.db.model.BaseRecord;

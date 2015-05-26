@@ -1,6 +1,6 @@
 package be.gerard.general.service;
 
-import be.gerard.common.exception_v1.ServiceException;
+import be.gerard.core.interface_v1.exception_v1.ServiceException;
 import be.gerard.general.interface_v1.UserService;
 import be.gerard.general.interface_v1.exception.error.UserServiceError;
 import be.gerard.general.interface_v1.model.Address;

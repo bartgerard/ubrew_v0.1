@@ -16,10 +16,25 @@
             <groupId>be.gerard</groupId>
             <artifactId>common-annotation</artifactId>
         </dependency>
+
         <dependency>
             <groupId>be.gerard</groupId>
-            <artifactId>general-interface</artifactId>
-            <type>jar</type>
+            <artifactId>common-exception</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>be.gerard</groupId>
+            <artifactId>common-to</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>be.gerard</groupId>
+            <artifactId>core-interface</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>be.gerard</groupId>
+            <artifactId>common-to</artifactId>
         </dependency>
         
     </dependencies>

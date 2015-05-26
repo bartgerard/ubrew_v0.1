@@ -28,10 +28,6 @@
         </dependency>
         <dependency>
             <groupId>be.gerard</groupId>
-            <artifactId>general-interface</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>be.gerard</groupId>
             <artifactId>common-web</artifactId>
         </dependency>
  

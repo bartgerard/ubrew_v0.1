@@ -1,10 +1,9 @@
 package be.gerard.core.service;
 
-import be.gerard.common.authentication.util.UserSessionUtils;
 import be.gerard.core.interface_v1.UserService;
 import be.gerard.core.interface_v1.model.User;
-import be.gerard.general.interface_v1.model.UserDetail;
-import be.gerard.general.interface_v1.session.UserSession;
+import be.gerard.core.interface_v1.session.UserSession;
+import be.gerard.core.interface_v1.util.UserSessionUtils;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,18 +53,18 @@ public class BaseTest {
     @Before
     public void before() {
         // TODO DELETE!!!
-        UserDetail userDetail = new UserDetail();
-        userDetail.setUsername(USERNAME);
-        UserSession userSession = new UserSession(userDetail);
+        User user = new User();
+        user.setUsername(USERNAME);
+        UserSession userSession = new UserSession(user);
         UserSessionUtils.setUserSession(userSession);
 
         // User
-        user = new User(username);
+        this.user = new User(username);
 
-        user.setFirstname(firstname);
-        user.setLastname(lastname);
-        user.setBirthDate(birthdate);
-        user.getEmails().add(email);
+        this.user.setFirstname(firstname);
+        this.user.setLastname(lastname);
+        this.user.setBirthDate(birthdate);
+        this.user.getEmails().add(email);
     }
 
 }

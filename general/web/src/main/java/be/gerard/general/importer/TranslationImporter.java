@@ -1,6 +1,5 @@
 package be.gerard.general.importer;
 
-import be.gerard.common.exception_v1.ServiceException;
 import be.gerard.general.interface_v1.exception.TranslationServiceException;
 import be.gerard.general.interface_v1.exception.error.TranslationServiceError;
 import be.gerard.general.interface_v1.model.Translation;
@@ -9,8 +8,7 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.ss.usermodel.Row;

@@ -1,6 +1,6 @@
 package be.gerard.general.service.model;
 
-import be.gerard.common.db.model.BaseRecord;
+import be.gerard.core.interface_v1.db.model.BaseRecord;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;

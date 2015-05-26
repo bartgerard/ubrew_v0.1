@@ -1,9 +1,9 @@
 package be.gerard.general.web.controller;
 
-import be.gerard.common.exception_v1.ServiceException;
+import be.gerard.core.interface_v1.exception_v1.ServiceException;
 import be.gerard.general.interface_v1.UserService;
 import be.gerard.general.interface_v1.model.UserDetail;
-import be.gerard.common.web.GeneralListBean;
+import be.gerard.core.interface_v1.web.GeneralListBean;
 import be.gerard.general.web.util.JsfUtil;
 import java.io.Serializable;
 import java.util.List;

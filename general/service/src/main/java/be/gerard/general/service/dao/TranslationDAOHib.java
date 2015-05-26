@@ -1,6 +1,6 @@
 package be.gerard.general.service.dao;
 
-import be.gerard.common.db.dao.DAOHib;
+import be.gerard.core.interface_v1.db.dao.DAOHib;
 import be.gerard.general.service.model.TranslationRecord;
 import java.util.List;
 import org.hibernate.criterion.Projections;

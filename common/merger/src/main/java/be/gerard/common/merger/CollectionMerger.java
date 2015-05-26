@@ -2,6 +2,7 @@ package be.gerard.common.merger;
 
 import be.gerard.common.db.model.BaseRecord;
 import be.gerard.common.to.BaseTo;
+
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;

@@ -21,10 +21,6 @@
             <groupId>be.gerard</groupId>
             <artifactId>common-invoker</artifactId>
         </dependency>
-        <dependency>
-            <groupId>be.gerard</groupId>
-            <artifactId>general-interface</artifactId>
-        </dependency>
         
         <!-- Spring -->
         <dependency>

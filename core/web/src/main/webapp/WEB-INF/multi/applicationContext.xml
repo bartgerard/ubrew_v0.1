@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:flow="http://www.springframework.org/schema/webflow-config"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:jms="http://www.springframework.org/schema/jms"
+       xmlns:lang="http://www.springframework.org/schema/lang"
+       xmlns:osgi="http://www.springframework.org/schema/osgi"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+          http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd
+          http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+          http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-4.0.xsd
+          http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-4.0.xsd
+          http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi-1.2.xsd
+          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+          http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+    
+    <!-- JNDI -->
+    <!--<jee:jndi-lookup id="general.service.properties" jndi-name="config/general-service-properties" />-->
+    <jee:jndi-lookup id="db.general.datasource" jndi-name="jdbc/db.datasource.general" expected-type="javax.sql.DataSource" />
+
+    <!-- Properties  -->
+    <bean id="be.gerard.general.properties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="localOverride" value="true" />
+        <property name="ignoreResourceNotFound" value="false" />
+        <property name="locations">
+            <list>
+                <value>classpath:be.gerard.general.service.properties</value>
+                <value>classpath:be.gerard.general.web.properties</value>
+                <value>file:///Users/bartgerard/ubrew/_config/general.properties</value>
+                <!--<value>file:///F:\bartgerard\workspace\ubrew\_config/general.properties</value>-->
+            </list>
+        </property>
+    </bean>
+    
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="properties" ref="be.gerard.general.properties"/>
+    </bean>
+
+    <!-- Resource(s) -->
+    <import resource="classpath:be.gerard.general.service.xml" />
+    <import resource="classpath:be.general.util.xml" />
+
+    <!-- Scan -->
+    <context:component-scan base-package="be.gerard.general.web.controller" />
+    
+    <!-- Spring Security -->
+    
+    <security:http auto-config="true" use-expressions="true">
+        <security:intercept-url pattern="/public/login.xhtml" access="permitAll"/>
+        <security:intercept-url pattern="/*" access="isAuthenticated()"/>
+        
+        <security:form-login login-page="/public/login.xhtml"/>
+    </security:http>
+    
+    <security:authentication-manager alias="authenticationManager" erase-credentials="true">
+        <security:authentication-provider ref="serviceAuthenticationProvider"/>
+    </security:authentication-manager>
+
+</beans>

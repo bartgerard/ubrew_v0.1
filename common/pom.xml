@@ -13,7 +13,6 @@
         <module>properties</module>
         <module>exception</module>
         <module>testing</module>
-        <module>service</module>
         <module>aop</module>
         <module>database</module>
         <module>validation</module>
@@ -21,7 +20,6 @@
         <module>decoder</module>
         <module>annotation</module>
         <module>invoker</module>
-        <module>authentication</module>
         <module>security</module>
         <module>bootstrap</module>
         <module>logging</module>

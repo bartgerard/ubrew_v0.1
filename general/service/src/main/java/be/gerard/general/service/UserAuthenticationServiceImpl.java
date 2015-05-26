@@ -1,10 +1,7 @@
 package be.gerard.general.service;
 
-import be.gerard.common.authentication.util.AppSessionUtils;
-import be.gerard.common.exception_v1.ServiceException;
-import be.gerard.general.interface_v1.UserAuthenticationService;
-import be.gerard.general.interface_v1.session.AppSession;
-import be.gerard.general.interface_v1.session.UserSession;
+import be.gerard.core.interface_v1.util.AppSessionUtils;
+import be.gerard.core.interface_v1.exception_v1.ServiceException;
 import be.gerard.general.service.dao.UserDAO;
 import be.gerard.general.service.dao.UserDetailDAO;
 import be.gerard.general.service.decoder.UserDetailDecoder;

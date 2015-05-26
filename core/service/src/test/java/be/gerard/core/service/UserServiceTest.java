@@ -17,7 +17,7 @@ public class UserServiceTest extends BaseTest {
     public void validSaveTest() {
         userService.save(user, password);
         
-        User userAfterFind = userService.findByUserNameAndPassword(username, password);
+        User userAfterFind = userService.findByUsernameAndPassword(username, password);
         Assert.assertNotNull("userService.findByUserNameAndPassword did return null", userAfterFind);
         Assert.assertEquals(username, userAfterFind.getUsername());
         Assert.assertEquals(firstname, userAfterFind.getFirstname());

@@ -15,6 +15,7 @@
     <modules>
         <module>interface</module>
         <module>service</module>
+        <module>web</module>
     </modules>
 
 </project>

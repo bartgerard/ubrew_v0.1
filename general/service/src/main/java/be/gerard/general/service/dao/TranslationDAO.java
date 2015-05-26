@@ -1,6 +1,6 @@
 package be.gerard.general.service.dao;
 
-import be.gerard.common.db.dao.DAO;
+import be.gerard.core.interface_v1.db.dao.DAO;
 import be.gerard.general.service.model.TranslationRecord;
 import java.util.List;
 

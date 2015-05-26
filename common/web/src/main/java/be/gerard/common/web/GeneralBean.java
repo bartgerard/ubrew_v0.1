@@ -1,11 +1,12 @@
 package be.gerard.common.web;
 
 import be.gerard.common.exception_v1.ServiceException;
-import be.gerard.general.util.MessageUtil;
 import java.io.Serializable;
 import java.util.Arrays;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+
+import be.gerard.common.web.util.MessageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -16,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public abstract class GeneralBean<T extends Serializable> implements Serializable {
 
     @Autowired
-    private MessageUtil i18n;
+    private MessageUtils i18n;
 
     public enum PersistAction {
 
@@ -27,7 +28,7 @@ public abstract class GeneralBean<T extends Serializable> implements Serializabl
 
     private T selected;
 
-    public MessageUtil getI18n() {
+    public MessageUtils getI18n() {
         return i18n;
     }
 

@@ -26,7 +26,7 @@
     <jdbc:embedded-database id="translation.service.datasource" type="DERBY" />
     
     <!-- Mock the user person service -->
-    <bean id="userProxyService" class="be.gerard.common.testing.easymock.EasyMockFactory">
+    <bean id="userProxyService" class="EasyMockFactory">
         <property name="type" value="be.gerard.general.interface_v1.UserService" />
     </bean>
     

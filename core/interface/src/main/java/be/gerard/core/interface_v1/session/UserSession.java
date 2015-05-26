@@ -2,11 +2,11 @@ package be.gerard.core.interface_v1.session;
 
 import be.gerard.core.interface_v1.model.User;
 
-import java.util.UUID;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.UUID;
 
 /**
  * UserSession

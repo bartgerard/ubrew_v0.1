@@ -16,6 +16,6 @@
     
     <!-- Aspect Oriented Programming -->
     <aop:aspectj-autoproxy/>
-    <bean id="validationAdvice" class="be.gerard.common.validation.aop.ValidationAdviceOld" />
+    <bean id="validationAdvice" class="ValidationAdviceOld" />
 
 </beans>

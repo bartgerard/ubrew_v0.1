@@ -1,7 +1,7 @@
 package be.gerard.general.service;
 
-import be.gerard.common.authentication.util.AppSessionUtils;
-import be.gerard.common.authentication.util.UserSessionUtils;
+import be.gerard.core.interface_v1.util.AppSessionUtils;
+import be.gerard.core.interface_v1.util.UserSessionUtils;
 import be.gerard.general.interface_v1.ApplicationAuthenticationService;
 import be.gerard.general.interface_v1.UserAuthenticationService;
 import be.gerard.general.interface_v1.session.AppSession;

@@ -1,6 +1,6 @@
 package be.gerard.general.interface_v1.model;
 
-import be.gerard.common.to.BaseTo;
+import be.gerard.core.interface_v1.to.BaseTo;
 
 /**
  *

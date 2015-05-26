@@ -32,6 +32,12 @@ public class TranslationServiceImpl implements TranslationService {
     private ConversionService conversionService;
 
     @Override
+    public String get(String application, Language language, String key) {
+        Translation translation = find(application, language, key);
+        return translation != null ? translation.getValue() : null;
+    }
+
+    @Override
     public Translation find(final Long id) {
         return conversionService.convert(translationDao.findOne(id), Translation.class);
     }

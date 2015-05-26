@@ -1,7 +1,7 @@
 package be.gerard.general.service.validation;
 
-import be.gerard.common.exception_v1.BusinessException;
-import be.gerard.common.validation.Validation;
+import be.gerard.core.interface_v1.exception_v1.BusinessException;
+import be.gerard.core.interface_v1.validation.Validation;
 import be.gerard.general.interface_v1.exception.error.UserServiceError;
 import java.io.Serializable;
 import java.util.Map;

@@ -33,15 +33,15 @@
     
     <!-- Aspect Oriented Programming -->
     
-    <bean id="loggingAdvice" class="be.gerard.common.aop.LoggingAdvice" />
-    <bean id="serviceExceptionAdvice" class="be.gerard.common.aop.ServiceExceptionAdvice" />
+    <bean id="loggingAdvice" class="LoggingAdvice" />
+    <bean id="serviceExceptionAdvice" class="be.gerard.core.interface_v1.aop.ServiceExceptionAdvice" />
     
     <aop:config>
         <aop:aspect ref="loggingAdvice">
-            <aop:around pointcut="be.gerard.common.aop.PointCutLibrary.springServiceOperation()" method="log"/>
+            <aop:around pointcut="be.gerard.core.interface_v1.aop.PointCutLibrary.springServiceOperation()" method="log"/>
         </aop:aspect>
         <aop:aspect ref="serviceExceptionAdvice">
-            <aop:after-throwing throwing="exception" pointcut="be.gerard.common.aop.PointCutLibrary.springServiceOperation()" method="handleException"/>
+            <aop:after-throwing throwing="exception" pointcut="be.gerard.core.interface_v1.aop.PointCutLibrary.springServiceOperation()" method="handleException"/>
         </aop:aspect>
     </aop:config>
     

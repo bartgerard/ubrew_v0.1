@@ -6,7 +6,7 @@
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
     
     <!-- ValidationChain -->
-    <bean id="validations" class="be.gerard.common.validation.Validations">
+    <bean id="validations" class="Validations">
         <constructor-arg>
             <map>
                 <entry key="user" value-ref="userValidation" />
@@ -19,6 +19,6 @@
     
     <!-- Aspect Oriented Programming -->
     <aop:aspectj-autoproxy/>
-    <bean id="validationAdvice" class="be.gerard.common.validation.aop.ValidationAdviceOld" />
+    <bean id="validationAdvice" class="ValidationAdviceOld" />
 
 </beans>

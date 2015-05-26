@@ -18,7 +18,13 @@
         <property name="serviceInterface" value="be.gerard.core.interface_v1.UserService"/>
         <property name="service" ref="userServiceImpl"/>
     </bean>
-    <!-- be.gerard.common.invoker.CustomHttpInvokerServiceExporter -->
+
+    <bean name="/translationService_v1" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+        <property name="serviceInterface" value="be.gerard.core.interface_v1.TranslationService"/>
+        <property name="service" ref="translationServiceImpl"/>
+    </bean>
+
+    <!-- CustomHttpInvokerServiceExporter -->
 
     <!-- Remote Authentication Manager-->
     <!--

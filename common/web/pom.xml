@@ -16,11 +16,9 @@
             <groupId>be.gerard</groupId>
             <artifactId>common-exception</artifactId>
         </dependency>
-        
-        <!-- General -->
         <dependency>
             <groupId>be.gerard</groupId>
-            <artifactId>general-util</artifactId>
+            <artifactId>core-interface</artifactId>
         </dependency>
         
         <!-- Javax -->

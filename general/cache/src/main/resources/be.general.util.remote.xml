@@ -4,14 +4,14 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-    
+
     <!-- Resource(s) -->
     <import resource="classpath:be.general.util.xml" />
     
     <!-- Service(s) -->
     
     <bean id="userService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-        <property name="serviceInterface" value="be.gerard.general.interface_v1.UserService" />
+        <property name="serviceInterface" value="be.gerard.core.interface_v1.UserService" />
         <property name="serviceUrl">
             <value>${be.gerard.general.user.service.url}</value>
         </property>
@@ -19,13 +19,13 @@
     </bean>
     
     <bean id="translationService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-        <property name="serviceInterface" value="be.gerard.general.interface_v1.TranslationService" />
+        <property name="serviceInterface" value="be.gerard.core.interface_v1.TranslationService" />
         <property name="serviceUrl">
             <value>${be.gerard.general.translation.service.url}</value>
         </property>
         <property name="httpInvokerRequestExecutor" ref="customHttpInvokerRequestExecutor"/>
     </bean>
 
-    <bean id="customHttpInvokerRequestExecutor" class="be.gerard.common.invoker.CustomHttpInvokerRequestExecutor" />
+    <bean id="customHttpInvokerRequestExecutor" class="CustomHttpInvokerRequestExecutor" />
     
 </beans>

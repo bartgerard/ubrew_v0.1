@@ -1,14 +1,10 @@
 package be.gerard.common.exception_v1.internal;
 
-import be.gerard.common.exception_v1.error.ServiceError;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 

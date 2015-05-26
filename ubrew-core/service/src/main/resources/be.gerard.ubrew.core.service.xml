@@ -25,7 +25,7 @@
     
     <!-- Aspect Oriented Programming -->
     
-    <bean id="loggingAdvice" class="be.gerard.common.aop.LoggingAdvice" />
+    <bean id="loggingAdvice" class="LoggingAdvice" />
     <bean id="serviceExceptionAdvice" class="be.gerard.common.aop.ServiceExceptionAdvice" />
     
     <aop:config>

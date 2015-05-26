@@ -7,14 +7,14 @@
     
     <!-- Service(s) -->
     
-    <bean id="applicationAuthenticationService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-        <property name="serviceInterface" value="be.gerard.general.interface_v1.ApplicationAuthenticationService" />
+    <bean id="authenticationService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+        <property name="serviceInterface" value="be.gerard.core.interface_v1.AuthenticationService" />
         <property name="serviceUrl">
-            <value>#{applicationAuthenticationServiceUrl}/remoting/applicationAuthenticationService_v1</value>
+            <value>#{coreServiceUrl}/remoting/authenticationService_v1</value>
         </property>
         <!--<property name="httpInvokerRequestExecutor" ref="customHttpInvokerRequestExecutor"/>-->
     </bean>
     <!--
-    <validator id="customHttpInvokerRequestExecutor" class="be.gerard.common.invoker.CustomHttpInvokerRequestExecutor" />
+    <validator id="customHttpInvokerRequestExecutor" class="CustomHttpInvokerRequestExecutor" />
     -->
 </beans>

@@ -11,6 +11,8 @@ import java.util.List;
  */
 public interface TranslationService {
 
+    String get(String application, Language language, String key);
+
     Translation find(Long id);
 
     Translation find(String application, Language language, String key);

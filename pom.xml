@@ -25,11 +25,10 @@
     </properties>
 
     <modules>
-        <module>general</module>
-        <module>test</module>
         <module>common</module>
         <module>core</module>
         <module>ubrew-core</module>
+        <module>evenizer</module>
     </modules>
 
     <dependencies>
@@ -109,11 +108,6 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>common-authentication</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
                 <artifactId>common-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -149,24 +143,7 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>general-resolver</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>general-util</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
                 <artifactId>ubrew-core-service</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <!-- General -->
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>general-interface</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

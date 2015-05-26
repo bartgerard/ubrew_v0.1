@@ -1,14 +1,13 @@
 package be.gerard.ubrew.core.interface_v1.exception.error;
 
-import be.gerard.general.interface_v1.exception.UserServiceException;
-import java.io.Serializable;
+import be.gerard.common.exception_v1.BusinessException;
 
 /**
  * BeerValidationError
  * 
  * @author bartgerard
  */
-public enum BeerValidationError implements UserServiceException.Error, Serializable {
+public enum BeerValidationError implements BusinessException.Error {
 
     NULL(0),
     TYPE_NULL(1),

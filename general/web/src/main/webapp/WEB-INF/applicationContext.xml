@@ -42,7 +42,7 @@
     -->
     
     <!-- Properties -->
-    <bean id="be.gerard.general.web.properties" class="be.gerard.common.bootstrap.CustomPropertiesFactoryBean">
+    <bean id="be.gerard.general.web.properties" class="CustomPropertiesFactoryBean">
         <property name="localOverride" value="true" />
         <property name="ignoreResourceNotFound" value="true" />
         <property name="locations">

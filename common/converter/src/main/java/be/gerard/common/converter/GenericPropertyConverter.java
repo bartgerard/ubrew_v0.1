@@ -1,9 +1,11 @@
 package be.gerard.common.converter;
 
 import be.gerard.common.converter.annotation.Convertible;
+
 import java.beans.PropertyDescriptor;
 import java.util.Collections;
 import java.util.Set;
+
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;

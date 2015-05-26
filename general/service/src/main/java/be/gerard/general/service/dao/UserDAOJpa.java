@@ -1,6 +1,6 @@
 package be.gerard.general.service.dao;
 
-import be.gerard.common.db.dao.DAOJpa;
+import be.gerard.core.interface_v1.db.dao.DAOJpa;
 import be.gerard.general.service.model.UserRecord;
 import org.jasypt.util.password.PasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;

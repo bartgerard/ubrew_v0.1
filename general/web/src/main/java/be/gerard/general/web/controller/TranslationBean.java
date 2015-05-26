@@ -1,11 +1,11 @@
 package be.gerard.general.web.controller;
 
-import be.gerard.common.exception_v1.ServiceException;
+import be.gerard.core.interface_v1.exception_v1.ServiceException;
 import be.gerard.general.importer.TranslationImporter;
 import be.gerard.general.interface_v1.TranslationService;
 import be.gerard.general.interface_v1.model.Translation;
 import be.gerard.general.util.MessageUtil;
-import be.gerard.common.web.GeneralListBean;
+import be.gerard.core.interface_v1.web.GeneralListBean;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;

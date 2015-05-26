@@ -1,6 +1,7 @@
 package be.gerard.common.exception_v1;
 
 import be.gerard.common.exception_v1.error.ServiceError;
+
 import java.util.Map;
 
 /**

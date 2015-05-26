@@ -33,7 +33,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public UserSession login(String username, String password) {
-        User user = userService.findByUserNameAndPassword(username, password);
+        User user = userService.findByUsernameAndPassword(username, password);
         UserSession userSession = new UserSession(user);
         return userSession;
     }
@@ -50,8 +50,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public AppSession register(String key, String password) throws ServiceException {
-        //ApplicationRecord applicationRecord = ;
-        return null;
+        // TODO validation
+        //applicationService;
+
+        AppSession appSession = new AppSession();
+        sessions.put(appSession.getToken(), appSession);
+        return appSession;
     }
 
     @Override

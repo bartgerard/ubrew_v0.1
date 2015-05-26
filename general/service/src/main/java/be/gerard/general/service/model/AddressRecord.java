@@ -1,6 +1,6 @@
 package be.gerard.general.service.model;
 
-import be.gerard.common.db.model.BaseRecord;
+import be.gerard.core.interface_v1.db.model.BaseRecord;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.SequenceGenerator;

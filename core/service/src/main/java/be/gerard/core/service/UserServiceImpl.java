@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * UserServiceImpl
  *
@@ -54,7 +57,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByUserNameAndPassword(String username, String password) {
+    public User findByUsernameAndPassword(String username, String password) {
         UserRecord userRecord = userDao.findByUsername(username);
 
         if (!passwordEncryptor.checkPassword(password, userRecord.getEncryptedPassword())) {
@@ -62,6 +65,22 @@ public class UserServiceImpl implements UserService {
         }
 
         return conversionService.convert(userRecord, User.class);
+    }
+
+    @Override
+    public User findByUsername(String username) {
+        return conversionService.convert(userDao.findByUsername(username), User.class);
+    }
+
+    @Override
+    public List<User> findAll() {
+        List<User> result = new ArrayList<>();
+
+        for (UserRecord userRecord : userDao.findAll()) {
+            result.add(conversionService.convert(userRecord, User.class));
+        }
+
+        return result;
     }
 
 }

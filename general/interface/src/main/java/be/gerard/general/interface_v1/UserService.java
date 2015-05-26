@@ -1,7 +1,7 @@
 package be.gerard.general.interface_v1;
 
-import be.gerard.common.annotation.validation.Validation;
-import be.gerard.common.exception_v1.ServiceException;
+import be.gerard.core.interface_v1.annotation.validation.Validation;
+import be.gerard.core.interface_v1.exception_v1.ServiceException;
 import be.gerard.general.interface_v1.model.UserDetail;
 import java.util.List;
 

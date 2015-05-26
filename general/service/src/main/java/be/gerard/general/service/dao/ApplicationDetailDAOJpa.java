@@ -1,6 +1,6 @@
 package be.gerard.general.service.dao;
 
-import be.gerard.common.db.dao.DAOJpa;
+import be.gerard.core.interface_v1.db.dao.DAOJpa;
 import be.gerard.general.service.model.ApplicationDetailRecord;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.context.annotation.Profile;
