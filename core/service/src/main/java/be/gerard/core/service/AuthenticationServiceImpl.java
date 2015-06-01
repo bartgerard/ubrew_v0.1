@@ -58,9 +58,4 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return appSession;
     }
 
-    @Override
-    public Map<String, String> retrieveProperties(UUID token) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

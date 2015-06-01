@@ -4,7 +4,6 @@ import be.gerard.common.exception_v1.ServiceException;
 import be.gerard.core.interface_v1.session.AppSession;
 import be.gerard.core.interface_v1.session.UserSession;
 
-import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -22,7 +21,5 @@ public interface AuthenticationService {
     UserSession findSession(UUID token);
 
     AppSession register(String key, String password) throws ServiceException;
-
-    Map<String, String> retrieveProperties(UUID token);
 
 }

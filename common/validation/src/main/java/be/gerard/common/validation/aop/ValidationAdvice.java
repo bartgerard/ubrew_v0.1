@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
  * @author bartgerard
  */
 @Aspect
-final class ValidationAdvice implements Serializable {
+public final class ValidationAdvice implements Serializable {
 
     @Autowired
     private ValidationService validationService;
