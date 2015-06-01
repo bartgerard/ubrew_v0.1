@@ -50,7 +50,11 @@ public class CustomPropertiesFactoryBean extends PropertiesFactoryBean {
         AppSession appSession = authenticationService.register(applicationKey, applicationPassword);
         Assert.notNull(appSession, String.format("password invalid for application [%s]", applicationKey));
         AppSessionUtils.setAppSession(appSession);
-        // TODO
+
+        // TODO ADD NEW APPLICATION SPECIFIC PROPERTIES TO PROPERTIES...
+        //properties.put();
+
+
         return properties;
     }
 

@@ -90,7 +90,7 @@ public class ApplicationScript {
                 .save();
 
         builderContext.buildApplication("core.web")
-                .property("test", "test", "test")
+                .property("be.gerard.core.service.url", "urls", "http://localhost:8080/core-service")
                 .build()
                 .save();
     }

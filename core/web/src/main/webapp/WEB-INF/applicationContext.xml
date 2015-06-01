@@ -37,9 +37,7 @@
 
     <!-- Resource(s) -->
     <import resource="classpath:be.gerard.common.bootstrap.xml"/>
-    <!--
     <import resource="classpath:be.general.util.remote.xml"/>
-    -->
     <import resource="classpath:be.gerard.common.logging.xml"/>
 
     <!-- Scan -->
