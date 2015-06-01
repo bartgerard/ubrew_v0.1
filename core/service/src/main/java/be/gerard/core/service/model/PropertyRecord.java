@@ -31,6 +31,10 @@ public class PropertyRecord extends BaseRecord {
     private PropertyRecord() {
     }
 
+    public PropertyRecord(String key) {
+        this.key = key;
+    }
+
     public PropertyRecord(String key, String group, String value) {
         this.key = key;
         this.group = group;
@@ -47,6 +51,10 @@ public class PropertyRecord extends BaseRecord {
 
     public String getValue() {
         return value;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
     }
 
     public void setValue(String value) {

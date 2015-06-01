@@ -8,6 +8,7 @@ import org.springframework.util.Assert;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * ApplicationRecord
@@ -47,6 +48,16 @@ public class ApplicationRecord extends BaseRecord {
         return properties;
     }
 
+    public PropertyRecord findProperty(String key) {
+        for (PropertyRecord property : properties) {
+            if (Objects.equals(property.getKey(), key)) {
+                return property;
+            }
+        }
+
+        return null;
+    }
+
     public void addProperty(PropertyRecord property) {
         Assert.notNull(property, String.format("property is invalid [null]"));
         Assert.isTrue(this.properties.add(property), String.format("property can not be added to application.properties [key=%s]", property.getKey()));
@@ -55,6 +66,10 @@ public class ApplicationRecord extends BaseRecord {
     public void removeProperty(PropertyRecord property) {
         Assert.notNull(property, String.format("property is invalid [null]"));
         Assert.isTrue(this.properties.remove(property), String.format("property can not be removed from application.properties [key=%s]", property.getKey()));
+    }
+
+    public void clearProperties() {
+        this.properties.clear();
     }
 
 }

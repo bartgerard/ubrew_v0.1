@@ -80,7 +80,17 @@ public class ApplicationScript {
     @Rollback(false)
     public void initApplications() {
         builderContext.load();
+
+        builderContext.buildUser("bgerard")
+                .firstname("FIRSTNAME")
+                .lastname("LASTNAME")
+                .birthDate(LocalDate.of(1988, Month.MAY, 3))
+                .password("PASSWORD")
+                .save();
+
         builderContext.buildApplication("core.web")
+                .property("test", "test", "test")
+                .build()
                 .save();
     }
 
