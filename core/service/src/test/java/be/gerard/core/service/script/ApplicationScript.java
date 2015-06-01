@@ -5,7 +5,8 @@ import be.gerard.core.interface_v1.model.User;
 import be.gerard.core.interface_v1.session.UserSession;
 import be.gerard.core.interface_v1.util.UserSessionUtils;
 import be.gerard.core.service.builder.BuilderContext;
-import be.gerard.core.service.config.CoreApplicationConfig;
+import be.gerard.core.service.config.CoreServiceConfig;
+import be.gerard.core.service.config.DefaultDataBaseConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,7 +27,7 @@ import java.time.Month;
  * @version v0.0.1
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = CoreApplicationConfig.class)
+@ContextConfiguration(classes = {CoreServiceConfig.class, DefaultDataBaseConfig.class})
 @PropertySource("classpath:be.gerard.core.service.test.properties")
 @Transactional
 public class ApplicationScript {

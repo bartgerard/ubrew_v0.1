@@ -20,9 +20,9 @@ import org.springframework.core.io.Resource;
  * @version v0.0.1
  */
 @Configuration
-@Import({DataBaseConfig.class, ConverterConfig.class, ValidationConfig.class})
+@Import({ConverterConfig.class, ValidationConfig.class})
 @ComponentScan("be.gerard.core.service")
-public class CoreApplicationConfig {
+public class CoreServiceConfig {
 
     @Bean
     public PropertyPlaceholderConfigurer propertyPlaceholderConfigurer() {

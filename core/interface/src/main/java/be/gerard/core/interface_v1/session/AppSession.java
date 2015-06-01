@@ -1,9 +1,9 @@
 package be.gerard.core.interface_v1.session;
 
-import java.util.UUID;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
+import java.util.UUID;
 
 /**
  * AppSession
@@ -16,6 +16,7 @@ import javax.xml.bind.annotation.XmlType;
 public class AppSession extends BaseSession<UUID> {
 
     public AppSession() {
+        super(UUID.randomUUID());
     }
 
     public AppSession(UUID token) {
