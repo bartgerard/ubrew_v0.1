@@ -70,6 +70,7 @@ public class DefaultDataBaseConfig extends AbstractDataBaseConfig {
         Properties properties = new Properties();
 
         properties.put(Environment.HBM2DDL_AUTO, "update");
+        //properties.put(Environment.HBM2DDL_AUTO, "create-drop");
         properties.put(Environment.GENERATE_STATISTICS, false);
         properties.put(Environment.SHOW_SQL, false);
 

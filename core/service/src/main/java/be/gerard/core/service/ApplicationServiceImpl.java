@@ -52,14 +52,21 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public Application instantiate(String appKey, String reference, String password, Collection<String> ips, Collection<String> macs) {
-        ApplicationRecord applicationRecord = applicationDao.findByKey(appKey);
+    public void instantiate(String appKey, String reference, String password, Collection<String> ips, Collection<String> macs) {
+        ApplicationInstanceRecord applicationInstanceRecord = applicationInstanceDao.findByApplicationAndReference(appKey, reference);
 
-        Assert.notNull(applicationRecord, String.format("application does not exist [appKey=%s]", appKey));
+        if (applicationInstanceRecord == null) {
+            ApplicationRecord applicationRecord = applicationDao.findByKey(appKey);
 
-        // TODO Validate reference + appId does not exist
+            Assert.notNull(applicationRecord, String.format("application does not exist [appKey=%s]", appKey));
 
-        ApplicationInstanceRecord applicationInstanceRecord = new ApplicationInstanceRecord(applicationRecord, reference, password);
+            // TODO Validate reference + appId does not exist
+
+            applicationInstanceRecord = new ApplicationInstanceRecord(applicationRecord, reference, password);
+        }
+
+        applicationInstanceRecord.clearAllowedIps();
+        applicationInstanceRecord.clearAllowedMacs();
 
         for (String ip : ips) {
             applicationInstanceRecord.addIp(ip);
@@ -71,7 +78,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         applicationInstanceDao.saveAndFlush(applicationInstanceRecord);
 
-        return conversionService.convert(applicationInstanceRecord.getApplication(), Application.class);
+        //return conversionService.convert(applicationInstanceRecord.getApplication(), Application.class);
     }
 
     @Override

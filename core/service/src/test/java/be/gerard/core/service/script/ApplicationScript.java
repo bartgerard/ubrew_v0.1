@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Arrays;
 
 /**
  * ApplicationScript
@@ -80,8 +81,6 @@ public class ApplicationScript {
     @Test
     @Rollback(false)
     public void initApplications() {
-        builderContext.load();
-
         builderContext.buildUser("bgerard")
                 .firstname("FIRSTNAME")
                 .lastname("LASTNAME")
@@ -93,6 +92,14 @@ public class ApplicationScript {
                 .property("be.gerard.core.service.url", "urls", "http://localhost:8080/core-service")
                 .build()
                 .save();
+
+        applicationService.instantiate(
+                "core.web",
+                "core.web.1",
+                "password",
+                Arrays.asList("127.0.0.1"),
+                Arrays.asList()
+        );
     }
 
 }

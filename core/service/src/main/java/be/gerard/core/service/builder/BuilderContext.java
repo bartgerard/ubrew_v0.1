@@ -8,9 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * BuilderContext
  *
@@ -20,7 +17,7 @@ import java.util.Map;
 @Component
 public class BuilderContext {
 
-    private final Map<String, ApplicationRecord> applicationRecordMap = new HashMap<>();
+//    private final Map<String, ApplicationRecord> applicationRecordMap = new HashMap<>();
 
     @Autowired
     private UserDao userDao;
@@ -28,23 +25,34 @@ public class BuilderContext {
     @Autowired
     private ApplicationDao applicationDao;
 
-    public void load() {
-        applicationRecordMap.clear();
-
-        for (ApplicationRecord applicationRecord : applicationDao.findAll()) {
-            applicationRecordMap.put(applicationRecord.getKey(), applicationRecord);
-        }
-    }
+//    public void load() {
+//        applicationRecordMap.clear();
+//
+//        for (ApplicationRecord applicationRecord : applicationDao.findAll()) {
+//            applicationRecordMap.put(applicationRecord.getKey(), applicationRecord);
+//        }
+//    }
 
     // Get Or Create
 
+//    public ApplicationRecord getOrCreateApplication(String key) {
+//        Assert.hasText(key, "key is invalid [null]");
+//        ApplicationRecord applicationRecord = applicationRecordMap.get(key);
+//
+//        if (applicationRecord == null) {
+//            applicationRecord = new ApplicationRecord(key);
+//            applicationRecordMap.put(applicationRecord.getKey(), applicationRecord);
+//        }
+//
+//        return applicationRecord;
+//    }
+
     public ApplicationRecord getOrCreateApplication(String key) {
         Assert.hasText(key, "key is invalid [null]");
-        ApplicationRecord applicationRecord = applicationRecordMap.get(key);
+        ApplicationRecord applicationRecord = applicationDao.findByKey(key);
 
         if (applicationRecord == null) {
             applicationRecord = new ApplicationRecord(key);
-            applicationRecordMap.put(applicationRecord.getKey(), applicationRecord);
         }
 
         return applicationRecord;
@@ -74,7 +82,7 @@ public class BuilderContext {
     // Save
 
     public void save(ApplicationRecord applicationRecord) {
-        applicationDao.save(applicationRecord);
+        applicationDao.saveAndFlush(applicationRecord);
     }
 
     public void save(UserRecord userRecord) {

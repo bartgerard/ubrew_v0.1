@@ -9,6 +9,7 @@ import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.util.Assert;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -24,6 +25,9 @@ public class CustomPropertiesFactoryBean extends PropertiesFactoryBean {
 
     @Value("#{applicationKey}")
     private String applicationKey;
+
+    @Value("#{applicationReference}")
+    private String applicationReference;
 
     @Value("#{applicationPassword}")
     private String applicationPassword;
@@ -47,12 +51,14 @@ public class CustomPropertiesFactoryBean extends PropertiesFactoryBean {
     @Override
     protected Properties createProperties() throws IOException {
         Properties properties = super.createProperties();
-        AppSession appSession = authenticationService.register(applicationKey, applicationPassword);
+        AppSession appSession = authenticationService.register(applicationKey, applicationReference, applicationPassword);
         Assert.notNull(appSession, String.format("password invalid for application [%s]", applicationKey));
         AppSessionUtils.setAppSession(appSession);
 
-        // TODO ADD NEW APPLICATION SPECIFIC PROPERTIES TO PROPERTIES...
-        //properties.put();
+        // ADD NEW APPLICATION SPECIFIC PROPERTIES TO PROPERTIES...
+        for (Map.Entry<String, String> property : appSession.getProperties().entrySet()) {
+            properties.put(property.getKey(), property.getValue());
+        }
 
 
         return properties;

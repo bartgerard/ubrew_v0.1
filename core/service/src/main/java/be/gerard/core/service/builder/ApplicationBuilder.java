@@ -3,8 +3,8 @@ package be.gerard.core.service.builder;
 import be.gerard.core.service.model.ApplicationRecord;
 import be.gerard.core.service.model.PropertyRecord;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * ApplicationBuilder
@@ -18,7 +18,7 @@ public class ApplicationBuilder {
 
     private final BuilderContext builderContext;
 
-    private final List<PropertyRecord> properties = new ArrayList<>();
+    private final Set<PropertyRecord> properties = new HashSet<>();
 
     ApplicationBuilder(ApplicationRecord applicationRecord, BuilderContext builderContext) {
         this.applicationRecord = applicationRecord;
@@ -30,6 +30,10 @@ public class ApplicationBuilder {
 
         if (property == null) {
             property = new PropertyRecord(key);
+        }
+
+        if (!properties.contains(property)) {
+            properties.add(property);
         }
 
         property.setGroup(group);

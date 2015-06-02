@@ -7,6 +7,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.converter.ConverterFactory;
 import org.springframework.core.convert.converter.GenericConverter;
 import org.springframework.core.convert.support.GenericConversionService;
+import org.springframework.stereotype.Service;
 
 /**
  * ConversionServiceFactoryBean
@@ -14,6 +15,7 @@ import org.springframework.core.convert.support.GenericConversionService;
  * @author bartgerard
  * @version 0.0.1
  */
+@Service
 public class ConversionServiceImpl extends ConversionServiceFactoryBean implements BeanPostProcessor {
 
     public GenericConversionService getConversionService() {

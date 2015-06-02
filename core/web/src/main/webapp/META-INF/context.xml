@@ -2,6 +2,7 @@
 <Context antiJARLocking="true" path="/core-web">
     <!--<ResourceLink global="config/general-service-properties" name="config/general-service-properties" type="java.lang.String"/>-->
     <Environment name="be.gerard.core.service.url" value="http://localhost:8080/core-service" type="java.lang.String"/>
-    <Environment name="be.gerard.core.application.key" value="core-web" type="java.lang.String"/>
+    <Environment name="be.gerard.core.application.key" value="core.web" type="java.lang.String"/>
+    <Environment name="be.gerard.core.application.reference" value="core.web.1" type="java.lang.String"/>
     <Environment name="be.gerard.core.application.password" value="todo" type="java.lang.String"/>
 </Context>

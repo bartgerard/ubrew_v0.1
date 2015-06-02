@@ -15,7 +15,7 @@ public interface ApplicationService {
 
     Application save(Application application);
 
-    Application instantiate(String appKey, String reference, String password, Collection<String> ips, Collection<String> macs);
+    void instantiate(String appKey, String reference, String password, Collection<String> ips, Collection<String> macs);
 
     void delete(String appKey, String reference);
 

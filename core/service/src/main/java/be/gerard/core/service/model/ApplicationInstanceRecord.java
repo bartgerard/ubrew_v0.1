@@ -91,6 +91,10 @@ public class ApplicationInstanceRecord extends BaseRecord {
         return this.allowedIps.contains(ip);
     }
 
+    public void clearAllowedIps() {
+        allowedIps.clear();
+    }
+
     public Set<String> getAllowedMacs() {
         return Collections.unmodifiableSet(allowedMacs);
     }
@@ -107,6 +111,10 @@ public class ApplicationInstanceRecord extends BaseRecord {
 
     public boolean isMacAllowed(String mac) {
         return this.allowedMacs.contains(mac);
+    }
+
+    public void clearAllowedMacs() {
+        allowedMacs.clear();
     }
 
 }

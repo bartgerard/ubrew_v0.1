@@ -20,6 +20,6 @@ public interface AuthenticationService {
 
     UserSession findSession(UUID token);
 
-    AppSession register(String key, String password) throws ServiceException;
+    AppSession register(String appKey, String reference, String password) throws ServiceException;
 
 }
