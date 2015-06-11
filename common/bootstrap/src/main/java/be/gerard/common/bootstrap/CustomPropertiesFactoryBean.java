@@ -32,22 +32,6 @@ public class CustomPropertiesFactoryBean extends PropertiesFactoryBean {
     @Value("#{applicationPassword}")
     private String applicationPassword;
 
-    public AuthenticationService getAuthenticationService() {
-        return authenticationService;
-    }
-
-    public void setApplicationKey(String applicationKey) {
-        this.applicationKey = applicationKey;
-    }
-
-    public void setApplicationPassword(String applicationPassword) {
-        this.applicationPassword = applicationPassword;
-    }
-
-    public String getApplicationPassword() {
-        return applicationPassword;
-    }
-
     @Override
     protected Properties createProperties() throws IOException {
         Properties properties = super.createProperties();
