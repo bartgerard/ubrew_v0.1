@@ -15,13 +15,13 @@
                      expected-type="java.lang.String"/>
 
     <!-- Initial Properties -->
-    <!--<util:properties id="be.gerard.general.web.properties" location="be.gerard.general.web.properties" />-->
+    <!--<util:properties id="be.gerard.core.web.properties" location="be.gerard.core.web.properties" />-->
 
     <!--
     <validator class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
         <property name="ignoreResourceNotFound" value="true"/>
-        <property name="properties" ref="be.gerard.general.web.properties"/>
+        <property name="properties" ref="be.gerard.core.web.properties"/>
     </validator>
     -->
 
@@ -31,14 +31,14 @@
         <property name="ignoreResourceNotFound" value="false"/>
         <property name="locations">
             <list>
-                <value>classpath:be.gerard.general.web.properties</value>
+                <value>classpath:be.gerard.core.web.properties</value>
             </list>
         </property>
     </bean>
 
     <!-- Resource(s) -->
     <import resource="classpath:be.gerard.common.bootstrap.xml"/>
-    <import resource="classpath:be.general.util.remote.xml"/>
+    <import resource="classpath:be.gerard.core.util.remote.xml"/>
     <import resource="classpath:be.gerard.common.logging.xml"/>
 
     <!-- Scan -->

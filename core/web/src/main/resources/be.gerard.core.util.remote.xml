@@ -7,17 +7,13 @@
 
     <bean id="userService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
         <property name="serviceInterface" value="be.gerard.core.interface_v1.UserService"/>
-        <property name="serviceUrl">
-            <value>${be.gerard.core.service.url}/remoting/userService_v1</value>
-        </property>
+        <property name="serviceUrl" value="${be.gerard.core.service.url}/remoting/userService_v1"/>
         <property name="httpInvokerRequestExecutor" ref="customHttpInvokerRequestExecutor"/>
     </bean>
 
     <bean id="translationService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
         <property name="serviceInterface" value="be.gerard.core.interface_v1.TranslationService"/>
-        <property name="serviceUrl">
-            <value>${be.gerard.core.service.url}/remoting/translationService_v1</value>
-        </property>
+        <property name="serviceUrl" value="${be.gerard.core.service.url}/remoting/translationService_v1"/>
         <property name="httpInvokerRequestExecutor" ref="customHttpInvokerRequestExecutor"/>
     </bean>
 

@@ -36,7 +36,7 @@
         <property name="locations">
             <list>
                 <value>classpath:be.gerard.general.service.properties</value>
-                <value>classpath:be.gerard.general.web.properties</value>
+                <value>classpath:be.gerard.core.web.properties</value>
                 <value>file:///Users/bartgerard/ubrew/_config/general.properties</value>
                 <!--<value>file:///F:\bartgerard\workspace\ubrew\_config/general.properties</value>-->
             </list>
