@@ -17,14 +17,8 @@
     <!-- Initial Properties -->
     <!--<util:properties id="be.gerard.core.web.properties" location="be.gerard.core.web.properties" />-->
 
-    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
-        <property name="ignoreResourceNotFound" value="true"/>
-        <property name="properties" ref="classpath:be.gerard.core.web.properties"/>
-    </bean>
-
     <!-- Properties -->
-    <bean id="be.gerard.general.web.properties" class="be.gerard.common.bootstrap.CustomPropertiesFactoryBean">
+    <bean id="be.gerard.core.web.properties" class="be.gerard.common.bootstrap.CustomPropertiesFactoryBean">
         <property name="localOverride" value="true"/>
         <property name="ignoreResourceNotFound" value="false"/>
         <property name="locations">
@@ -33,6 +27,14 @@
             </list>
         </property>
     </bean>
+
+    <!--
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="properties" ref="be.gerard.core.web.properties"/>
+    </bean>
+    -->
 
     <!-- Resource(s) -->
     <import resource="classpath:be.gerard.common.bootstrap.xml"/>
