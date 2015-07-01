@@ -18,6 +18,9 @@ import java.util.*;
 public class User extends BaseTo {
 
     @XmlElement(required = true)
+    private UUID cuid;
+
+    @XmlElement(required = true)
     private String username;
 
     @XmlElement(required = true)
@@ -36,6 +39,14 @@ public class User extends BaseTo {
     private final Map<String, String> properties = new HashMap<>();
 
     public User() {
+    }
+
+    public UUID getCuid() {
+        return cuid;
+    }
+
+    public void setCuid(UUID cuid) {
+        this.cuid = cuid;
     }
 
     public User(String username) {
