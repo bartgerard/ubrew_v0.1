@@ -39,7 +39,7 @@ public class MessageResolver implements Serializable {
             result = translationService.get(applicationName, Language.get(defaultLanguage), key);
         }
 
-        return result != null ? result : String.format(KEY_NOT_FOUND, new Object[]{key});
+        return result != null ? result : String.format(KEY_NOT_FOUND, key);
     }
 
 }

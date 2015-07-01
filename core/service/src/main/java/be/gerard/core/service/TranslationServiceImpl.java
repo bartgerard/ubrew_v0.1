@@ -91,12 +91,24 @@ public class TranslationServiceImpl implements TranslationService {
 
     @Override
     public List<Translation> findAll() {
-        return conversionService.convert(translationDao.findAll(), List.class);
+        List<Translation> results = new ArrayList<>();
+
+        for (TranslationRecord translationRecord : translationDao.findAll()) {
+            results.add(conversionService.convert(translationRecord, Translation.class));
+        }
+
+        return results;
     }
 
     @Override
     public List<Translation> findAll(final String application) {
-        return conversionService.convert(translationDao.findByApplication(application), List.class);
+        List<Translation> results = new ArrayList<>();
+
+        for (TranslationRecord translationRecord : translationDao.findByApplication(application)) {
+            results.add(conversionService.convert(translationRecord, Translation.class));
+        }
+
+        return results;
     }
 
     @Override
