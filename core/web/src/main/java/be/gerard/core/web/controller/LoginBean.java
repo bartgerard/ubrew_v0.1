@@ -22,7 +22,7 @@ public class LoginBean implements Serializable {
     @Autowired
     private AuthenticationService authenticationService;
 
-    @Value("${be.gerard.general.application.name}")
+    @Value("${be.gerard.core.application.name}")
     private String applicationName;
     
     private String username;

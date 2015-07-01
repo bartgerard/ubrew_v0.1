@@ -25,7 +25,7 @@ public class UserBean extends GeneralListBean<User> implements Serializable {
     @Autowired
     private UserService userService;
 
-    @Value("${be.gerard.general.application.name}")
+    @Value("${be.gerard.core.application.name}")
     private String applicationName;
 
     private String password;

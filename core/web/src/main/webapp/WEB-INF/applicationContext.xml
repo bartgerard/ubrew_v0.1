@@ -17,6 +17,8 @@
     <!-- Initial Properties -->
     <!--<util:properties id="be.gerard.core.web.properties" location="be.gerard.core.web.properties" />-->
 
+    <context:property-placeholder location="classpath:be.gerard.core.web.properties"/>
+
     <!-- Properties -->
     <bean id="be.gerard.core.web.properties" class="be.gerard.common.bootstrap.CustomPropertiesFactoryBean">
         <property name="localOverride" value="true"/>

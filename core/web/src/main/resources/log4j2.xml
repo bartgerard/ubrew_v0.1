@@ -15,7 +15,9 @@
         <Logger name="be.gerard.general.service" level="trace" />
         
         <Logger name="be.gerard.common" level="info" />
-        
+
+        <Logger name="log4j.logger.org.springframework" level="debug" />
+
     </Loggers>
     
 </Configuration>
