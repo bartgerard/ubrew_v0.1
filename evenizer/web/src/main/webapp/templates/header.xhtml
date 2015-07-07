@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:body>
+
+        <!-- Fixed navbar -->
+        <header class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <h:form>
+                        <h:commandLink value="Evenizer" class="navbar-brand" />
+                    </h:form>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    <h:form>
+                        <ul class="nav navbar-nav">
+                            <li class='#{pageBean.page.user ? "active" : null}'>
+                                <h:commandLink value="Avonden" action='#{pageBean.switchPage("USER")}' />
+                            </li>
+                            <li class='#{pageBean.page.translation ? "active" : null}'>
+                                <h:commandLink value="Content" action='#{pageBean.switchPage("TRANSLATION")}' />
+                            </li>
+                        </ul>
+                    </h:form>
+
+                    <h:form class="navbar-form navbar-right" role="form">
+                        <div class="form-group">
+                            <h:commandButton value="Nieuw" action="#{pageBean.switchPage('NEW')}" class="btn btn-success" />
+                        </div>
+                    </h:form>
+
+                </div>
+
+            </div>
+        </header>
+
+    </h:body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <!-- Bootstrap -->
+        <h:outputStylesheet library="bootstrap" name="css/bootstrap.min.css" />
+        <h:outputStylesheet library="evenizer" name="css/evenizer.css" />
+
+    </h:head>
+    
+    <h:body>
+        <h:outputScript library="bootstrap" name="js/bootstrap.min.js" />
+            
+        <ui:include src="header.xhtml"/>
+
+        <div class="container">
+            <ui:insert name="content">content</ui:insert>
+        </div> <!-- /container -->
+            
+        <ui:include src="footer.xhtml"/>
+
+    </h:body>
+
+</html>

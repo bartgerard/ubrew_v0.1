@@ -14,6 +14,8 @@ public class Evening {
 
     private LocalDate date;
 
+    private String theme;
+
     private final List<Entry> entries = new ArrayList<>();
 
     public LocalDate getDate() {
@@ -26,6 +28,14 @@ public class Evening {
 
     public List<Entry> getEntries() {
         return entries;
+    }
+
+    public String getTheme() {
+        return theme;
+    }
+
+    public void setTheme(String theme) {
+        this.theme = theme;
     }
 
 }

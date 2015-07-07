@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+          http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd">
+
+    <!-- JNDI -->
+    <!--
+    <jee:jndi-lookup id="coreServiceUrl" jndi-name="be.gerard.core.service.url" expected-type="java.lang.String"/>
+    <jee:jndi-lookup id="applicationKey" jndi-name="be.gerard.core.application.key" expected-type="java.lang.String"/>
+    <jee:jndi-lookup id="applicationReference" jndi-name="be.gerard.core.application.reference" expected-type="java.lang.String"/>
+    <jee:jndi-lookup id="applicationPassword" jndi-name="be.gerard.core.application.password"
+                     expected-type="java.lang.String"/>
+                     -->
+
+    <!-- Initial Properties -->
+    <!--
+    <context:property-placeholder location="classpath:be.gerard.core.web.properties"/>
+    -->
+
+    <!-- Properties -->
+    <!--
+    <bean id="be.gerard.core.web.properties" class="be.gerard.common.bootstrap.CustomPropertiesFactoryBean">
+        <property name="localOverride" value="true"/>
+        <property name="ignoreResourceNotFound" value="false"/>
+        <property name="locations">
+            <list>
+                <value>classpath:be.gerard.core.web.properties</value>
+            </list>
+        </property>
+    </bean>
+    -->
+
+    <!-- Resource(s) -->
+    <!--
+    <import resource="classpath:be.gerard.common.bootstrap.xml"/>
+    <import resource="classpath:be.gerard.core.util.remote.xml"/>
+    <import resource="classpath:be.gerard.common.logging.xml"/>
+    -->
+
+    <!-- Scan -->
+    <context:component-scan base-package="be.gerard.evenizer.web.controller"/>
+    <!--
+    <context:component-scan base-package="be.gerard.common.web"/>
+    <context:component-scan base-package="be.gerard.core.interface_v1.util"/>
+    -->
+
+
+</beans>

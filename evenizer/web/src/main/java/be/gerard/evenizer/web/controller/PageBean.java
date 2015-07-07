@@ -1,4 +1,4 @@
-package be.gerard.core.web.controller;
+package be.gerard.evenizer.web.controller;
 
 import org.springframework.context.annotation.Scope;
 
@@ -14,7 +14,8 @@ public class PageBean implements Serializable {
     public enum PAGE {
 
         USER("/admin/user/List.xhtml"),
-        TRANSLATION("/admin/translation/List.xhtml");
+        TRANSLATION("/admin/translation/List.xhtml"),
+        NEW("/public/new.xhtml");
 
         PAGE(String path) {
             this.path = path;
