@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+    <title>T.A.R.D.I.S.</title>
+    <h:outputStylesheet library="bootstrap" name="css/bootstrap.min.css" />
+    <h:outputStylesheet library="time" name="css/time.css"/>
+
+    <h:outputScript library="jquery" name="js/jquery-2.1.4.min.js" />
+    <h:outputScript library="bootstrap" name="js/bootstrap.min.js" />
+    <h:outputScript library="time" name="js/time.js" />
+
+</h:head>
+
+<h:body>
+
+    <div class="widget">
+        <h:graphicImage library="time" name="images/clock.svg" alt="clock" class="clock">
+            <h:graphicImage id="clockLong" library="time" name="images/arrow_long.svg" alt="long" class="arrowLong"/>
+            <h:graphicImage id="clockShort" library="time" name="images/arrow_short.svg" alt="short" class="arrowShort"/>
+        </h:graphicImage>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar" style="width:80%">
+            70%
+        </div>
+    </div>
+
+</h:body>
+
+</html>

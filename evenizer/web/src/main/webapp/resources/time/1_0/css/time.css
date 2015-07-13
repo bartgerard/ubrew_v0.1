@@ -1,0 +1,38 @@
+
+body {
+    background-color: #245580;
+}
+
+div.widget {
+    position: relative;
+}
+
+.clock {
+    z-index: 1;
+}
+
+.arrowLong {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: tick 60s infinite;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+}
+
+.arrowShort {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: tick 3600s infinite;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+}
+
+@keyframes tick {
+
+    100% {
+        transform: rotate(360deg);
+    }
+
+}
