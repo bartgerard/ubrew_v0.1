@@ -7,6 +7,8 @@ div.widget {
     position: relative;
 }
 
+/* Clock */
+
 .clock {
     z-index: 1;
 }
@@ -35,4 +37,19 @@ div.widget {
         transform: rotate(360deg);
     }
 
+}
+
+/* Button */
+
+.button {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.specificImageExample {
+    width: 100px;
+    height: 100px;
+    background-image: url(#{resource['time:images/button.svg']});
+    background-size: 100px 100px;
 }
