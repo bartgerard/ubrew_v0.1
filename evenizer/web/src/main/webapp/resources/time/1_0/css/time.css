@@ -7,6 +7,14 @@ div.widget {
     position: relative;
 }
 
+/* Day And Night */
+
+.dayAndNight {
+    width:300px;
+    height:300px;
+    background: url(#{resource[ 'time:images/day_night.png' ]}) no-repeat center;
+}
+
 /* Spiral */
 
 .spiral {
