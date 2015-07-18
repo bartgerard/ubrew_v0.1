@@ -21,18 +21,49 @@
 
 <h:body>
 
-    <div class="widget">
-        <h:graphicImage library="time" name="images/clock.svg" alt="clock" class="clock">
-            <h:graphicImage id="clockLong" library="time" name="images/arrow_long.svg" alt="long" class="arrowLong"/>
-            <h:graphicImage id="clockShort" library="time" name="images/arrow_short.svg" alt="short"
-                            class="arrowShort"/>
-        </h:graphicImage>
+    <div class="display displayDestination">
+        <div class="month">---</div>
+        <div class="day">--</div>
+        <div class="year">----</div>
+        <div class="hours">--</div>
+        <div class="minutes">--</div>
+        <div class="seconds">--</div>
+    </div>
+
+    <div class="display displayPresent">
+        <div class="month">---</div>
+        <div class="day">--</div>
+        <div class="year">----</div>
+        <div class="hours">--</div>
+        <div class="minutes">--</div>
+        <div class="seconds">--</div>
+    </div>
+
+    <div class="display displayLast">
+        <div class="month">---</div>
+        <div class="day">--</div>
+        <div class="year">----</div>
+        <div class="hours">--</div>
+        <div class="minutes">--</div>
+        <div class="seconds">--</div>
     </div>
 
     <div class="widget">
-        <h:graphicImage library="time" name="images/button_base.svg" alt="button base" class="button"/>
-        <h:graphicImage library="time" name="images/button.svg" alt="button" class="button"/>
+        <div class="clock">
+            <h:graphicImage id="clockLong" library="time" name="images/arrow_long.svg" alt="long" class="arrowLong"/>
+            <h:graphicImage id="clockShort" library="time" name="images/arrow_short.svg" alt="short"
+                            class="arrowShort"/>
+        </div>
     </div>
+
+    <div class="widget">
+        <div class="button">
+            <h:graphicImage library="time" name="images/button.svg" alt="button" class="buttonImage"/>
+        </div>
+    </div>
+
+    <div class="spiral"></div>
+
 <!--
     <div class="progress">
         <div class="progress-bar" style="width:80%">
@@ -40,6 +71,10 @@
         </div>
     </div>
     -->
+
+    <div class="widget">
+
+    </div>
 
 </h:body>
 

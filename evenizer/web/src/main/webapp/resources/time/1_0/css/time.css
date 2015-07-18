@@ -7,10 +7,24 @@ div.widget {
     position: relative;
 }
 
+/* Spiral */
+
+.spiral {
+    width:250px;
+    height:250px;
+    border-radius: 50%;
+    background: url(#{resource[ 'time:images/spiral.jpg' ]}) no-repeat center;
+
+    animation: tick 6s linear 0s infinite normal;
+    animation-play-state: paused;
+}
+
 /* Clock */
 
 .clock {
-    z-index: 1;
+    width: 24pc;
+    height: 24pc;
+    background: url(#{resource[ 'time:images/clock.svg' ]}) no-repeat center;
 }
 
 .arrowLong {
@@ -39,9 +53,27 @@ div.widget {
 
 }
 
+@keyframes spin {
+
+    0% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+
+}
+
 /* Button */
 
 .button {
+    width: 146pt;
+    height: 146pt;
+    background: url(#{resource[ 'time:images/button_base.svg' ]}) no-repeat center;
+}
+
+.buttonImage {
     position: absolute;
     top: 0;
     left: 0;
@@ -52,4 +84,108 @@ div.widget {
     height: 100px;
     background-image: url(#{resource['time:images/button.svg']});
     background-size: 100px 100px;
+}
+
+/* Display */
+
+.displayDestination {
+    width: 600px;
+    height: 118px;
+    background: url(#{resource[ 'time:images/display_destination.png' ]}) no-repeat center;
+
+    color: orangered;
+}
+
+.displayLast {
+    width: 600px;
+    height: 118px;
+    background: url(#{resource[ 'time:images/display_last.png' ]}) no-repeat center;
+
+    color: lawngreen;
+}
+
+.displayPresent {
+    width: 699px;
+    height: 118px;
+    background: url(#{resource[ 'time:images/display_present.png' ]}) no-repeat center;
+
+    color: yellow;
+}
+
+.displayDestination {
+    width: 699px;
+    height: 118px;
+    background: url(#{resource[ 'time:images/display_destination_v2.png' ]}) no-repeat center;
+
+    color: orangered;
+}
+
+.displayLast {
+    width: 699px;
+    height: 118px;
+    background: url(#{resource[ 'time:images/display_last_v2.png' ]}) no-repeat center;
+
+    color: lawngreen;
+}
+
+.displayPresent {
+    width: 699px;
+    height: 118px;
+    background: url(#{resource[ 'time:images/display_present_v2.png' ]}) no-repeat center;
+
+    color: yellow;
+}
+
+.display {
+    position: relative;
+    font-size: 32px;
+    text-align: center;
+}
+
+.display > .month {
+    position: absolute;
+    top: 36px;
+    left: 16px;
+    width: 114px;
+    height: 44px;
+}
+
+.display > .day {
+    position: absolute;
+    top: 36px;
+    left: 144px;
+    width: 84px;
+    height: 44px;
+}
+
+.display > .year {
+    position: absolute;
+    top: 36px;
+    left: 244px;
+    width: 140px;
+    height: 44px;
+}
+
+.display > .hours {
+    position: absolute;
+    top: 36px;
+    left: 414px;
+    width: 70px;
+    height: 44px;
+}
+
+.display > .minutes {
+    position: absolute;
+    top: 36px;
+    left: 512px;
+    width: 70px;
+    height: 44px;
+}
+
+.display > .seconds {
+    position: absolute;
+    top: 36px;
+    left: 612px;
+    width: 70px;
+    height: 44px;
 }
