@@ -49,10 +49,6 @@ $(document).ready(function () {
 
     /*$("#slider").slider();*/
 
-    var timeIndex = 0;
-
-    var times = [".time1", ".time2", ".time3", ".time4", ".time5", ".time6"];
-
     $(".timeCover").click(function () {
 
         timeIndex = (timeIndex + 1) % 6;
@@ -60,23 +56,65 @@ $(document).ready(function () {
         for (i = 0; i < times.length; i++) {
             if (i == timeIndex) {
                 $(times[i]).css("z-index", 1);
+                offsetDestination = timeOffsets[i];
+                tick();
             } else {
                 $(times[i]).css("z-index", 0);
             }
         }
-    })
+    });
 
 
 });
 
+var timeIndex = 0;
+
+var times = [".time1", ".time2", ".time3", ".time4", ".time5", ".time6"];
+
+var now = new Date();
+
+var timeOffsets = [
+    {
+        year: -10000 - now.getFullYear(),
+        month: (6 - now.getMonth()) % 12,
+        day: 0,
+        date: now
+    },
+    {
+        year: -3500 - now.getFullYear(),
+        month: (5 - now.getMonth()) % 12,
+        day: 0,
+        date: now
+    },
+    {
+        year: 0 - now.getFullYear(),
+        month: (4 - now.getMonth()) % 12,
+        day: 0,
+        date: now
+    },
+    {
+        year: 800 - now.getFullYear(),
+        month: (3 - now.getMonth()) % 12,
+        day: 0,
+        date: now
+    },
+    {
+        year: 1492 - now.getFullYear(),
+        month: (2 - now.getMonth()) % 12,
+        day: 0,
+        date: now
+    },
+    {
+        year: 42596 - now.getFullYear(),
+        month: (1 - now.getMonth()) % 12,
+        day: 0,
+        date: now
+    }
+];
+
 var interval = setInterval(tick, 1000);
 
-var offsetDestination = {
-    year: -20000,
-    month: 20,
-    day: 0,
-    date: new Date()
-};
+var offsetDestination = timeOffsets[0];
 
 var offsetPresent = {
     year: 0,

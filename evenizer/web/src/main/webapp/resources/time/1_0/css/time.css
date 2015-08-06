@@ -47,9 +47,10 @@ div.widget.col {
 
     z-index: 1;
 
-    animation: heath 40s infinite;
-    animation-timing-function: linear;
+    animation: heath 10s infinite;
+    animation-timing-function: ease-in-out;
     animation-delay: 0s;
+    animation-direction: alternate;
 }
 
 .heathCover {
@@ -157,11 +158,43 @@ div.widget.col {
 @keyframes heath {
 
     0% {
-        transform: rotate(10deg);
+        transform: rotate(70deg);
+    }
+
+    10% {
+        transform: rotate(90deg);
+    }
+
+    20% {
+        transform: rotate(75deg);
+    }
+
+    30% {
+        transform: rotate(95deg);
+    }
+
+    40% {
+        transform: rotate(80deg);
+    }
+
+    50% {
+        transform: rotate(100deg);
+    }
+
+    60% {
+        transform: rotate(85deg);
+    }
+
+    70% {
+        transform: rotate(105deg);
+    }
+
+    80% {
+        transform: rotate(90deg);
     }
 
     100% {
-        transform: rotate(170deg);
+        transform: rotate(130deg);
     }
 
 }
