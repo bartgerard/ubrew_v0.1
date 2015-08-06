@@ -21,62 +21,120 @@
 
 <h:body>
 
-    <div class="display displayDestination">
-        <div class="month">---</div>
-        <div class="day">--</div>
-        <div class="year">----</div>
-        <div class="hours">--</div>
-        <div class="minutes">--</div>
-        <div class="seconds">--</div>
+    <div class="main flexBox vertical">
+
+        <div class="col white">
+            <h1>T.A.R.D.I.S.</h1>
+
+            <h2>Time and relative Dimension in Space</h2>
+        </div>
+
+        <div class="col flexBox">
+
+            <div class="col flexBox vertical">
+
+                <div class="col display displayDestination">
+                    <div class="month">---</div>
+                    <div class="day">--</div>
+                    <div class="year">----</div>
+                    <div class="hours">--</div>
+                    <div class="minutes">--</div>
+                    <div class="seconds">--</div>
+                </div>
+
+                <div class="col display displayPresent">
+                    <div class="month">---</div>
+                    <div class="day">--</div>
+                    <div class="year">----</div>
+                    <div class="hours">--</div>
+                    <div class="minutes">--</div>
+                    <div class="seconds">--</div>
+                </div>
+
+                <div class="col display displayLast">
+                    <div class="month">---</div>
+                    <div class="day">--</div>
+                    <div class="year">----</div>
+                    <div class="hours">--</div>
+                    <div class="minutes">--</div>
+                    <div class="seconds">--</div>
+                </div>
+
+            </div>
+
+            <div class="col timeWidget">
+                <div class="time time1"></div>
+                <div class="time time2"></div>
+                <div class="time time3"></div>
+                <div class="time time4"></div>
+                <div class="time time5"></div>
+                <div class="time time6"></div>
+                <div class="timeCover"></div>
+            </div>
+
+        </div>
+
+        <div class="col flexBox">
+
+            <div class="col widget">
+                <div class="dayAndNight"></div>
+                <div class="dayAndNightCover"></div>
+            </div>
+
+            <div class="col widget">
+                <div class="heathDisplayBackground"></div>
+                <div class="heathArrow"></div>
+                <div class="heathCover"></div>
+            </div>
+
+            <div class="col widget">
+                <div class="fluxOuter"></div>
+                <div class="fluxInner"></div>
+                <div class="fluxCover"></div>
+            </div>
+
+            <div class="col widget">
+                <div class="buttonBase"></div>
+                <div class="button"></div>
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="display displayPresent">
-        <div class="month">---</div>
-        <div class="day">--</div>
-        <div class="year">----</div>
-        <div class="hours">--</div>
-        <div class="minutes">--</div>
-        <div class="seconds">--</div>
+    <!--
+    <div class="widget">
+        <div class="buttonOld">
+            <h:graphicImage library="time" name="images/button.svg" alt="button" class="buttonImage"/>
+        </div>
     </div>
+    -->
 
-    <div class="display displayLast">
-        <div class="month">---</div>
-        <div class="day">--</div>
-        <div class="year">----</div>
-        <div class="hours">--</div>
-        <div class="minutes">--</div>
-        <div class="seconds">--</div>
-    </div>
+    <!--
+    <div class="spiral"></div>
+    -->
+
+    <!--
+        <div class="progress">
+            <div class="progress-bar" style="width:80%">
+                70%
+            </div>
+        </div>
+        -->
 
     <div class="widget">
+
+    </div>
+
+    <!--
+    <div style="position: relative">
         <div class="clock">
             <h:graphicImage id="clockLong" library="time" name="images/arrow_long.svg" alt="long" class="arrowLong"/>
             <h:graphicImage id="clockShort" library="time" name="images/arrow_short.svg" alt="short"
                             class="arrowShort"/>
         </div>
     </div>
-
-    <div class="widget">
-        <div class="button">
-            <h:graphicImage library="time" name="images/button.svg" alt="button" class="buttonImage"/>
-        </div>
-    </div>
-
-    <div class="spiral"></div>
-
-<!--
-    <div class="progress">
-        <div class="progress-bar" style="width:80%">
-            70%
-        </div>
-    </div>
     -->
-
-    <div class="widget">
-
-    </div>
-
-    <div class="dayAndNight"></div>
 
 </h:body>
 

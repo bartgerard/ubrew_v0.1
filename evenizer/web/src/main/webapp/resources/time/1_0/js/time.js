@@ -33,12 +33,38 @@ $(document).ready(function () {
         $(".clock > .arrowShort").css("animation-direction", "reverse");
         $(".spiral").css("animation-play-state", "running");
 
+        offsetPresent = offsetDestination;
+        offsetLast = offsetDestination;
+
+        offsetDestination = {
+            year: 0,
+            month: 0,
+            day: 0,
+            date: null
+        };
         offsetLast.date = new Date();
 
         tick();
     });
 
     /*$("#slider").slider();*/
+
+    var timeIndex = 0;
+
+    var times = [".time1", ".time2", ".time3", ".time4", ".time5", ".time6"];
+
+    $(".timeCover").click(function () {
+
+        timeIndex = (timeIndex + 1) % 6;
+
+        for (i = 0; i < times.length; i++) {
+            if (i == timeIndex) {
+                $(times[i]).css("z-index", 1);
+            } else {
+                $(times[i]).css("z-index", 0);
+            }
+        }
+    })
 
 
 });
@@ -55,12 +81,13 @@ var offsetDestination = {
 var offsetPresent = {
     year: 0,
     month: 0,
-    day: 0
+    day: 0,
+    date: null
 };
 
 var offsetLast = {
-    year: -20000,
-    month: 20,
+    year: 0,
+    month: 0,
     day: 0,
     date: null
 };

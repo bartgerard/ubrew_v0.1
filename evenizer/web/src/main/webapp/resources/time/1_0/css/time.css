@@ -4,15 +4,88 @@ body {
 }
 
 div.widget {
+    width:300px;
+    height:340px;
+
     position: relative;
+    margin: auto;
+}
+
+div.widget > div {
+    width:300px;
+    height:300px;
+
+    position: absolute;
+    margin: auto;
+}
+
+div.widget.col {
 }
 
 /* Day And Night */
 
 .dayAndNight {
-    width:300px;
-    height:300px;
     background: url(#{resource[ 'time:images/day_night.png' ]}) no-repeat center;
+}
+
+.dayAndNightCover {
+    background: url(#{resource[ 'time:images/day_night_cover.png' ]}) no-repeat center;
+
+    z-index: 2;
+}
+
+/* Heath */
+
+.heathDisplayBackground {
+    background: url(#{resource[ 'time:images/heath_base_v2.png' ]}) no-repeat center;
+
+    z-index: 0;
+}
+
+.heathArrow {
+    background: url(#{resource[ 'time:images/heath_arrow.png' ]}) no-repeat center;
+
+    z-index: 1;
+
+    animation: heath 40s infinite;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+}
+
+.heathCover {
+    background: url(#{resource[ 'time:images/heath_cover.png' ]}) no-repeat center;
+
+    z-index: 2;
+}
+
+/* Flux */
+
+.fluxCover {
+    background: url(#{resource[ 'time:images/flux_cover_v2.png' ]}) no-repeat center;
+
+    z-index: 3;
+}
+
+.fluxInner {
+    background: url(#{resource[ 'time:images/flux_inner.png' ]}) no-repeat center;
+
+    z-index: 2;
+
+    animation: spin 5s infinite;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+}
+
+.fluxOuter {
+    background: url(#{resource[ 'time:images/flux_outer.png' ]}) no-repeat center;
+
+    z-index: 1;
+
+    animation: spin 5s infinite;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+
+    animation-direction: reverse;
 }
 
 /* Spiral */
@@ -53,6 +126,14 @@ div.widget {
     animation-delay: 0s;
 }
 
+@keyframes spin {
+
+    100% {
+        transform: rotate(360deg);
+    }
+
+}
+
 @keyframes tick {
 
     100% {
@@ -73,15 +154,39 @@ div.widget {
 
 }
 
+@keyframes heath {
+
+    0% {
+        transform: rotate(10deg);
+    }
+
+    100% {
+        transform: rotate(170deg);
+    }
+
+}
+
 /* Button */
 
+.buttonBase {
+    background: url(#{resource[ 'time:images/button_base_v2.png' ]}) no-repeat center;
+}
+
 .button {
+    background: url(#{resource[ 'time:images/button_v2.png' ]}) no-repeat center;
+}
+
+.button:active {
+    background: url(#{resource[ 'time:images/button_pushed_v2.png' ]}) no-repeat center;
+}
+
+.buttonOld {
     width: 146pt;
     height: 146pt;
     background: url(#{resource[ 'time:images/button_base.svg' ]}) no-repeat center;
 }
 
-.buttonImage {
+.buttonImageOld {
     position: absolute;
     top: 0;
     left: 0;
@@ -96,7 +201,7 @@ div.widget {
 
 /* Display */
 
-.displayDestination {
+.displayDestinationOld {
     width: 600px;
     height: 118px;
     background: url(#{resource[ 'time:images/display_destination.png' ]}) no-repeat center;
@@ -104,7 +209,7 @@ div.widget {
     color: orangered;
 }
 
-.displayLast {
+.displayLastOld {
     width: 600px;
     height: 118px;
     background: url(#{resource[ 'time:images/display_last.png' ]}) no-repeat center;
@@ -112,7 +217,7 @@ div.widget {
     color: lawngreen;
 }
 
-.displayPresent {
+.displayPresentOld {
     width: 699px;
     height: 118px;
     background: url(#{resource[ 'time:images/display_present.png' ]}) no-repeat center;
@@ -196,4 +301,80 @@ div.widget {
     left: 612px;
     width: 70px;
     height: 44px;
+}
+
+/* General */
+
+.flexBox {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.vertical {
+    flex-direction: column;
+}
+
+.main > .col {
+    margin: 10px;
+}
+
+.white {
+    color: white;
+}
+
+/* Times */
+
+.timeWidget {
+    width:540px;
+    height:340px;
+
+    position: relative;
+}
+
+.time {
+    width:500px;
+    height:300px;
+
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+}
+
+.time1 {
+    background: url(#{resource[ 'time:images/time_1.png' ]}) no-repeat center;
+}
+
+.time2 {
+    background: url(#{resource[ 'time:images/time_2.png' ]}) no-repeat center;
+}
+
+.time3 {
+    background: url(#{resource[ 'time:images/time_3.png' ]}) no-repeat center;
+}
+
+.time4 {
+    background: url(#{resource[ 'time:images/time_4.png' ]}) no-repeat center;
+}
+
+.time5 {
+    background: url(#{resource[ 'time:images/time_5.png' ]}) no-repeat center;
+}
+
+.time6 {
+    background: url(#{resource[ 'time:images/time_6.png' ]}) no-repeat center;
+}
+
+.timeCover {
+    background: url(#{resource[ 'time:images/time_cover.png' ]}) no-repeat center;
+
+    width:540px;
+    height:340px;
+
+    position: absolute;
+
+    top: 0px;
+    left: 0px;
+
+    z-index: 10;
 }
