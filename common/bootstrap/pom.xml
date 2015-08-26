@@ -18,6 +18,11 @@
             <groupId>be.gerard</groupId>
             <artifactId>core-interface</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>be.gerard</groupId>
+            <artifactId>common-invoker</artifactId>
+        </dependency>
         
         <!-- Spring -->
         <dependency>

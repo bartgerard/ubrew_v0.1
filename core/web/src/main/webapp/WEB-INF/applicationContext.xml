@@ -39,7 +39,9 @@
     -->
 
     <!-- Resource(s) -->
+    <!--
     <import resource="classpath:be.gerard.core.util.remote.xml"/>
+    -->
 
     <!-- Scan -->
     <context:component-scan base-package="be.gerard.common.logging"/>
