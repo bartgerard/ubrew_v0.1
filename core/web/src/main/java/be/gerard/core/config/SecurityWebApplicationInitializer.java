@@ -1,4 +1,4 @@
-package be.gerard.core.config.security;
+package be.gerard.core.config;
 
 /**
  * SecurityWebApplicationInitializer

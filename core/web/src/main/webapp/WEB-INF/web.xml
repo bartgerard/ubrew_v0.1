@@ -19,13 +19,26 @@
     </listener>
 
     <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+    </context-param>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            be.gerard.core.config.CoreWebConfig
+            be.gerard.core.config.SecurityConfig
+        </param-value>
+    </context-param>
+<!--
+    <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
             /WEB-INF/applicationContext.xml
-            /WEB-INF/security-context.xml
         </param-value>
     </context-param>
+    -->
     <!--
+            /WEB-INF/security-context.xml
     -->
 
 
