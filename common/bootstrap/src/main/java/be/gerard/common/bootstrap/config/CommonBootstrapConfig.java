@@ -22,7 +22,7 @@ public class CommonBootstrapConfig {
     public HttpInvokerProxyFactoryBean authenticationService() {
         HttpInvokerProxyFactoryBean httpInvokerProxyFactoryBean = new HttpInvokerProxyFactoryBean();
         httpInvokerProxyFactoryBean.setServiceInterface(AuthenticationService.class);
-        httpInvokerProxyFactoryBean.setServiceUrl(coreServiceUrl);
+        httpInvokerProxyFactoryBean.setServiceUrl(coreServiceUrl + "/remoting/authenticationService_v1");
         return httpInvokerProxyFactoryBean;
     }
 

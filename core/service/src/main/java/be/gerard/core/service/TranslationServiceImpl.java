@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author bartgerard
  */
 @Service
@@ -32,8 +31,8 @@ public class TranslationServiceImpl implements TranslationService {
     private ConversionService conversionService;
 
     @Override
-    public String get(String application, Language language, String key) {
-        Translation translation = find(application, language, key);
+    public String get(String application, String prefix, Language language, String key) {
+        Translation translation = find(application, prefix, language, key);
         return translation != null ? translation.getValue() : null;
     }
 
@@ -43,21 +42,26 @@ public class TranslationServiceImpl implements TranslationService {
     }
 
     @Override
-    public Translation find(final String application, final Language language, final String key) {
-        return conversionService.convert(translationDao.findByApplicationAndLanguageAndKey(application, language.getCode(), key), Translation.class);
+    public Translation find(
+            final String application,
+            final String prefix,
+            final Language language,
+            final String key
+    ) {
+        return conversionService.convert(translationDao.findByApplicationAndPrefixAndLanguageAndKey(application, prefix, language.getCode(), key), Translation.class);
     }
 
     @Transactional(readOnly = false)
     @Override
     public List<Translation> save(final List<Translation> translations) {
         Assert.notEmpty(translations, "translations is invalid [EMPTY]");
-        
+
         List<Translation> result = new ArrayList<>();
-        
+
         for (Translation translation : translations) {
             result.add(save(translation));
         }
-        
+
         return result;
     }
 
@@ -66,14 +70,22 @@ public class TranslationServiceImpl implements TranslationService {
     public Translation save(final Translation translation) {
         LOG.entry(translation);
 
-        TranslationRecord translationRecord = translationDao.findByApplicationAndLanguageAndKey(translation.getApplication(), translation.getLanguage(), translation.getKey());
+        TranslationRecord translationRecord = translationDao.findByApplicationAndPrefixAndLanguageAndKey(
+                translation.getApplication(), translation.getPrefix(), translation.getLanguage(), translation.getKey()
+        );
 
         if (translationRecord == null) {
-            translationRecord = translationDao.save(new TranslationRecord(translation.getApplication(), translation.getLanguage(), translation.getKey(), translation.getValue()));
-        } else {
+            translationRecord = new TranslationRecord();
+            translationRecord.setApplication(translation.getApplication());
+            translationRecord.setPrefix(translation.getPrefix());
+            translationRecord.setType(translation.getType());
+            translationRecord.setLanguage(translation.getLanguage());
+            translationRecord.setKey(translation.getKey());
             translationRecord.setValue(translation.getValue());
-            translationDao.save(translationRecord);
         }
+
+        translationRecord.setValue(translation.getValue());
+        translationDao.save(translationRecord);
 
         return LOG.exit(conversionService.convert(translationRecord, Translation.class));
     }
@@ -114,7 +126,7 @@ public class TranslationServiceImpl implements TranslationService {
     @Override
     public List<String> findAllSupportedLanguages() {
         return new ArrayList<>();
-    //    return translationDao.findAllSupportedLanguages();
+        //    return translationDao.findAllSupportedLanguages();
     }
 
 }

@@ -24,6 +24,8 @@ function rotate() {
 
 $(document).ready(function () {
 
+    tick();
+
     $(".clock").click(function () {
         $(this).hide();
     });
@@ -138,6 +140,9 @@ function tick() {
 
     var dayPercentage = date.getTime() % dayInMilliseconds / dayInMilliseconds;
     $('.dayAndNight').css('transform', 'rotate(' + dayPercentage * 360 + 'deg)');
+
+    clock('#actualTime > ', date, offsetPresent.year);
+    clock('#currentTime > ', date, offsetPresent.year);
 }
 
 function tickA(element, date, offsetYear, offsetMonth) {
@@ -156,6 +161,12 @@ function tickA(element, date, offsetYear, offsetMonth) {
         $(element + '.minutes').text('--');
         $(element + '.seconds').text('--');
     }
+}
+
+function clock(element, date, offsetYear) {
+    $(element + '.clockHours').css({transform: 'rotate(' + (date.getHours() * 360 / 24) + 'deg)'});
+    $(element + '.clockMinutes').css({transform: 'rotate(' + (date.getMinutes() * 360 / 60) + 'deg)'});
+    $(element + '.clockSeconds').css({transform: 'rotate(' + (date.getSeconds() * 360 / 60) + 'deg)'});
 }
 
 var dayInMilliseconds = 1000 * 60 * 60 * 24;

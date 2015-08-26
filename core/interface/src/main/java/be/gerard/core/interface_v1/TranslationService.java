@@ -11,11 +11,11 @@ import java.util.List;
  */
 public interface TranslationService {
 
-    String get(String application, Language language, String key);
+    String get(String application, String prefix, Language language, String key);
 
     Translation find(Long id);
 
-    Translation find(String application, Language language, String key);
+    Translation find(String application, String prefix, Language language, String key);
 
     Translation save(@Validate Translation translation);
 

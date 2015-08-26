@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <!-- Spring Security -->
+    <security:http security="none" pattern="/resources/**"/>
+    <security:http security="none" pattern="/templates/**"/>
+
+    <security:http auto-config="true" use-expressions="true">
+        <security:intercept-url pattern="/logout" access="permitAll"/>
+        <security:intercept-url pattern="/login" access="permitAll"/>
+        <security:intercept-url pattern="/public/login.xhtml" access="permitAll"/>
+        <security:intercept-url pattern="/templates/header.xhtml" access="permitAll"/>
+        <security:intercept-url pattern="/*" access="isAuthenticated()"/>
+
+        <security:form-login login-page="/public/login.xhtml"/>
+        <security:http-basic/>
+    </security:http>
+
+    <security:authentication-manager alias="authenticationManager" erase-credentials="true">
+        <security:authentication-provider ref="commonAuthenticationProvider"/>
+        <!--
+        <security:authentication-provider ref="serviceAuthenticationProvider"/>
+        -->
+    </security:authentication-manager>
+
+</beans>

@@ -33,10 +33,10 @@ public class MessageResolver implements Serializable {
         Assert.notNull(language, "language not valid [null].");
         Assert.notNull(key, "key not valid [null].");
 
-        String result = translationService.get(applicationName, Language.get(language), key);
+        String result = translationService.get(applicationName, "common", Language.get(language), key);
 
         if (result == null && !defaultLanguage.equals(language)) {
-            result = translationService.get(applicationName, Language.get(defaultLanguage), key);
+            result = translationService.get(applicationName, "common", Language.get(defaultLanguage), key);
         }
 
         return result != null ? result : String.format(KEY_NOT_FOUND, key);

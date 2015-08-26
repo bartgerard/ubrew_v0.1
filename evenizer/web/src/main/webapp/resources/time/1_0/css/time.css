@@ -4,16 +4,16 @@ body {
 }
 
 div.widget {
-    width:300px;
-    height:340px;
+    width: 300px;
+    height: 340px;
 
     position: relative;
     margin: auto;
 }
 
 div.widget > div {
-    width:300px;
-    height:300px;
+    width: 300px;
+    height: 300px;
 
     position: absolute;
     margin: auto;
@@ -92,8 +92,8 @@ div.widget.col {
 /* Spiral */
 
 .spiral {
-    width:250px;
-    height:250px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     background: url(#{resource[ 'time:images/spiral.jpg' ]}) no-repeat center;
 
@@ -228,7 +228,7 @@ div.widget.col {
 .specificImageExample {
     width: 100px;
     height: 100px;
-    background-image: url(#{resource['time:images/button.svg']});
+    background-image: url(#{resource[ 'time:images/button.svg' ]});
     background-size: 100px 100px;
 }
 
@@ -358,15 +358,15 @@ div.widget.col {
 /* Times */
 
 .timeWidget {
-    width:540px;
-    height:340px;
+    width: 540px;
+    height: 340px;
 
     position: relative;
 }
 
 .time {
-    width:500px;
-    height:300px;
+    width: 500px;
+    height: 300px;
 
     position: absolute;
 
@@ -376,6 +376,7 @@ div.widget.col {
 
 .time1 {
     background: url(#{resource[ 'time:images/time_1.png' ]}) no-repeat center;
+    z-index: 1;
 }
 
 .time2 {
@@ -401,13 +402,49 @@ div.widget.col {
 .timeCover {
     background: url(#{resource[ 'time:images/time_cover.png' ]}) no-repeat center;
 
-    width:540px;
-    height:340px;
+    width: 540px;
+    height: 340px;
 
     position: absolute;
 
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
 
     z-index: 10;
+}
+
+/* clock */
+
+.clockBase {
+    background: url(#{resource[ 'time:images/clock_base_v2.png' ]}) no-repeat center;
+}
+
+.clockSeconds {
+    background: url(#{resource[ 'time:images/clock_seconds.png' ]}) no-repeat center;
+    /*
+    animation: tick 60s linear 0s infinite normal;
+    */
+}
+
+.clockMinutes {
+    background: url(#{resource[ 'time:images/clock_minutes.png' ]}) no-repeat center;
+    /*
+    animation: tick 3600s linear 0s infinite normal;
+    */
+}
+
+.clockHours {
+    background: url(#{resource[ 'time:images/clock_hours.png' ]}) no-repeat center;
+    /*
+    animation: tick 86400s linear 0s infinite normal;
+    */
+}
+
+.clockCover {
+    background: url(#{resource[ 'time:images/clock_cover.png' ]}) no-repeat center;
+}
+
+.clockYears {
+    background: url(#{resource[ 'time:images/clock_years.png' ]}) no-repeat center;
+    animation: tick 5s linear 0s infinite reverse;
 }

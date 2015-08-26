@@ -2,6 +2,7 @@ package be.gerard.core.service.model;
 
 import be.gerard.common.converter.annotation.Convertible;
 import be.gerard.common.db.model.BaseRecord;
+import be.gerard.core.interface_v1.enums.TranslationType;
 import be.gerard.core.interface_v1.model.Translation;
 
 import javax.persistence.*;
@@ -14,24 +15,21 @@ import javax.persistence.*;
 @Entity
 @SequenceGenerator(name = BaseRecord.SEQUENCE_GENERATOR, sequenceName = "s_translation", allocationSize = BaseRecord.SEQUENCE_ALLOCATION_SIZE)
 @Table(name = "core_translation", uniqueConstraints = {
-        @UniqueConstraint(name = "uk_translation_key_lan_app", columnNames = {"translation_key", "translation_language", "app_key"})})
+        @UniqueConstraint(name = "uk_translation_key_lan_app", columnNames = {"prefix", "translation_key", "translation_language", "app_key"})})
 public class TranslationRecord extends BaseRecord {
-
-    public TranslationRecord() {
-    }
-
-    public TranslationRecord(String application, String language, String key, String value) {
-        this.application = application;
-        this.language = language;
-        this.key = key;
-        this.value = value;
-    }
 
     @Column(name = "app_key", nullable = false)
     private String application;
 
     @Column(name = "translation_language", nullable = false)
     private String language;
+
+    @Column(name = "prefix", nullable = false)
+    private String prefix;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type", nullable = false, length = 20)
+    private TranslationType type;
 
     @Column(name = "translation_key", nullable = false)
     private String key;
@@ -45,6 +43,22 @@ public class TranslationRecord extends BaseRecord {
 
     public void setApplication(String application) {
         this.application = application;
+    }
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
+
+    public TranslationType getType() {
+        return type;
+    }
+
+    public void setType(TranslationType type) {
+        this.type = type;
     }
 
     public String getKey() {

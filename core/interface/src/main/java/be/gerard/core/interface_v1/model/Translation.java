@@ -1,9 +1,9 @@
 package be.gerard.core.interface_v1.model;
 
 import be.gerard.common.to.BaseTo;
+import be.gerard.core.interface_v1.enums.TranslationType;
 
 /**
- *
  * @author bartgerard
  */
 public class Translation extends BaseTo {
@@ -11,18 +11,44 @@ public class Translation extends BaseTo {
     public Translation() {
     }
 
-    public Translation(String application, String language, String key, String value) {
-        this(application, language, key, value, null);
+    public Translation(
+            String application,
+            String language,
+            String prefix,
+            TranslationType type,
+            String key,
+            String value
+    ) {
+        this(application, language, prefix, type, key, value, null);
     }
 
-    public Translation(String application, String language, String key, String value, String changedBy) {
-        this(null, application, language, key, value, changedBy);
+    public Translation(
+            String application,
+            String language,
+            String prefix,
+            TranslationType type,
+            String key,
+            String value,
+            String changedBy
+    ) {
+        this(null, application, language, prefix, type, key, value, changedBy);
     }
 
-    public Translation(Long id, String application, String language, String key, String value, String changedBy) {
+    public Translation(
+            Long id,
+            String application,
+            String language,
+            String prefix,
+            TranslationType type,
+            String key,
+            String value,
+            String changedBy
+    ) {
         super(id);
         this.application = application;
         this.language = language;
+        this.prefix = prefix;
+        this.type = type;
         this.key = key;
         this.value = value;
         this.changedBy = changedBy;
@@ -31,6 +57,10 @@ public class Translation extends BaseTo {
     private String application;
 
     private String language;
+
+    private String prefix;
+
+    private TranslationType type;
 
     private String key;
 
@@ -60,6 +90,22 @@ public class Translation extends BaseTo {
 
     public void setLanguage(String language) {
         this.language = language;
+    }
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
+
+    public TranslationType getType() {
+        return type;
+    }
+
+    public void setType(TranslationType type) {
+        this.type = type;
     }
 
     public String getKey() {

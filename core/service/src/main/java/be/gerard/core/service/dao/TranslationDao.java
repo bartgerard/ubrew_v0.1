@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface TranslationDao extends JpaRepository<TranslationRecord, Long> {
 
-    TranslationRecord findByApplicationAndLanguageAndKey(String application, String language, String key);
+    TranslationRecord findByApplicationAndPrefixAndLanguageAndKey(String application, String prefix, String language, String key);
 
     List<TranslationRecord> findByApplication(String application);
 

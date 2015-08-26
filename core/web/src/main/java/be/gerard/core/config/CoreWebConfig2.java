@@ -2,7 +2,6 @@ package be.gerard.core.config;
 
 import be.gerard.common.bootstrap.CustomPropertiesFactoryBean;
 import be.gerard.common.bootstrap.config.CommonBootstrapConfig;
-import be.gerard.common.logging.config.CommonLoggingConfig;
 import be.gerard.core.interface_v1.config.CoreInterfaceConfig;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
@@ -24,14 +23,14 @@ import java.io.IOException;
 @ComponentScan({
         "be.gerard.core.web.controller",
         "be.gerard.common.web",
-        "be.gerard.core.interface_v1.util"
+        "be.gerard.core.interface_v1.util",
+        "be.gerard.common.security"
 })
 @Import({
         CommonBootstrapConfig.class,
-        CommonLoggingConfig.class,
         CoreInterfaceConfig.class
 })
-public class CoreWebConfig {
+public class CoreWebConfig2 {
 
     @Bean
     public PropertiesFactoryBean propertiesFactoryBean() {

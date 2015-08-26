@@ -9,9 +9,7 @@
     
     <bean id="authenticationService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
         <property name="serviceInterface" value="be.gerard.core.interface_v1.AuthenticationService" />
-        <property name="serviceUrl">
-            <value>#{coreServiceUrl}/remoting/authenticationService_v1</value>
-        </property>
+        <property name="serviceUrl" value="#{coreServiceUrl}/remoting/authenticationService_v1"/>
         <!--<property name="httpInvokerRequestExecutor" ref="customHttpInvokerRequestExecutor"/>-->
     </bean>
     <!--

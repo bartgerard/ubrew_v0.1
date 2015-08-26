@@ -1,12 +1,13 @@
 package be.gerard.common.db.schema;
 
-import java.util.Collection;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.dialect.Dialect;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
+
+import java.util.Collection;
 
 /**
  * SchemaExporter

@@ -18,10 +18,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <runSuite>**/*TestSuite*.class</runSuite>
-        <spring.version>4.1.2.RELEASE</spring.version>
-        <spring.security.version>3.2.5.RELEASE</spring.security.version>
+        <spring.version>4.2.0.RELEASE</spring.version>
+        <spring.security.version>4.0.2.RELEASE</spring.security.version>
         <hibernate.version>4.3.7.Final</hibernate.version>
-        <aspectj.version>1.8.4</aspectj.version>
+        <hibernate.version.new>5.0.0.Final</hibernate.version.new>
+        <aspectj.version>1.8.6</aspectj.version>
     </properties>
 
     <modules>
