@@ -1,6 +1,5 @@
 package be.gerard.core.service.script;
 
-import be.gerard.core.interface_v1.ApplicationService;
 import be.gerard.core.interface_v1.model.User;
 import be.gerard.core.interface_v1.session.UserSession;
 import be.gerard.core.interface_v1.util.UserSessionUtils;
@@ -19,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.Collections;
 
 /**
  * ApplicationScript
@@ -31,23 +29,11 @@ import java.util.Collections;
 @ContextConfiguration(classes = {CoreServiceConfig.class, DefaultDataBaseConfig.class})
 @PropertySource("classpath:be.gerard.core.service.test.properties")
 @Transactional
-public class ApplicationScript {
+public class RoleScript {
 
     public static final String USERNAME = "bgerard";
-    public static final String PASSWORD = "password";
-    public static final String FIRSTNAME = "FIRSTNAME";
-    public static final String LASTNAME = "LASTNAME";
-    public static final LocalDate BIRTHDATE = LocalDate.of(1988, Month.MAY, 3);
-    public static final String APP_KEY = "key_123";
-    public static final String REFERENCE = "instance_1";
-    public static final String IP = "127.0.0.1";
-    public static final String MAC = "AB:CD:EF:GH";
-    public static final String PROP1_KEY = "property1";
-    public static final String PROP1_GROUP = "group1";
-    public static final String PROP1_VALUE = "value1";
 
     protected final String username = "bgerard";
-    protected final String password = "password";
     protected final String firstname = "FIRSTNAME";
     protected final String lastname = "LASTNAME";
     protected final LocalDate birthdate = LocalDate.of(1988, Month.MAY, 3);
@@ -58,12 +44,8 @@ public class ApplicationScript {
     @Autowired
     private BuilderContext builderContext;
 
-    @Autowired
-    private ApplicationService applicationService;
-
     @Before
     public void before() {
-        // TODO DELETE!!!
         User user = new User();
         user.setUsername(USERNAME);
         UserSession userSession = new UserSession(user);
@@ -80,26 +62,17 @@ public class ApplicationScript {
 
     @Test
     @Rollback(false)
-    public void initApplications() {
-        builderContext.buildUser("bgerard")
-                .firstname("FIRSTNAME")
-                .lastname("LASTNAME")
-                .birthDate(LocalDate.of(1988, Month.MAY, 3))
-                .password("PASSWORD")
-                .save();
+    public void initRoles() {
+        builderContext.buildRole("USER")
+                .build().save();
+        builderContext.buildRole("ADMIN")
+                .addPrivilege("CRUD_USER")
+                .addPrivilege("CRUD_TRANSLATION")
+                .build().save();
 
-        builderContext.buildApplication("core.web")
-                .property("be.gerard.core.service.url", "urls", "http://localhost:8080/core-service")
-                .build()
-                .save();
-
-        applicationService.instantiate(
-                "core.web",
-                "core.web.1",
-                "password",
-                Collections.singletonList("127.0.0.1"),
-                Collections.emptyList()
-        );
+        builderContext.buildUser(USERNAME)
+                .assignRole("ADMIN")
+                .build().save();
     }
 
 }

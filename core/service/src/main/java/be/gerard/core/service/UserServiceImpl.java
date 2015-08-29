@@ -9,6 +9,7 @@ import org.jasypt.util.password.PasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,9 +61,8 @@ public class UserServiceImpl implements UserService {
     public User findByUsernameAndPassword(String username, String password) {
         UserRecord userRecord = userDao.findByUsername(username);
 
-        if (!passwordEncryptor.checkPassword(password, userRecord.getEncryptedPassword())) {
-            throw new IllegalArgumentException();
-        }
+        Assert.notNull(userRecord, "username or password is invalid");
+        Assert.isTrue(passwordEncryptor.checkPassword(password, userRecord.getEncryptedPassword()), "username or password is invalid");
 
         return conversionService.convert(userRecord, User.class);
     }

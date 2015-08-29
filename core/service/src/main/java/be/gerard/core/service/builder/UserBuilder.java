@@ -1,9 +1,12 @@
 package be.gerard.core.service.builder;
 
+import be.gerard.core.service.model.RoleRecord;
 import be.gerard.core.service.model.UserRecord;
 import org.springframework.util.Assert;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * UserBuilder
@@ -11,43 +14,52 @@ import java.time.LocalDate;
  * @author bartgerard
  * @version v0.0.1
  */
-public class UserBuilder {
+public class UserBuilder extends Builder<UserRecord> {
 
-    private final UserRecord userRecord;
-
-    private final BuilderContext builderContext;
+    private final Set<RoleRecord> roles = new HashSet<>();
 
     public UserBuilder(UserRecord userRecord, BuilderContext builderContext) {
-        this.userRecord = userRecord;
-        this.builderContext = builderContext;
+        super(userRecord, builderContext);
     }
 
     public UserBuilder password(String password) {
         Assert.hasText(password, "user.password is invalid [null]");
-        userRecord.setEncryptedPassword(password);
+        getRecord().setEncryptedPassword(getBuilderContext().getPasswordEncryptor().encryptPassword(password));
         return this;
     }
 
     public UserBuilder firstname(String firstname) {
         Assert.hasText(firstname, "user.firstname is invalid [null]");
-        userRecord.setFirstname(firstname);
+        getRecord().setFirstname(firstname);
         return this;
     }
 
     public UserBuilder lastname(String lastname) {
         Assert.hasText(lastname, "user.firstname is invalid [null]");
-        userRecord.setLastname(lastname);
+        getRecord().setLastname(lastname);
         return this;
     }
 
     public UserBuilder birthDate(LocalDate birthDate) {
         Assert.notNull(birthDate, "user.birthDate is invalid [null]");
-        userRecord.setBirthDate(birthDate);
+        getRecord().setBirthDate(birthDate);
+        return this;
+    }
+
+    public UserBuilder assignRole(String roleName) {
+        Assert.notNull(roleName, "user.role is invalid [null]");
+        roles.add(getBuilderContext().getOrCreateRole(roleName));
+        return this;
+    }
+
+    public UserBuilder build() {
+        getRecord().getRoles().clear();
+        getRecord().getRoles().addAll(roles);
         return this;
     }
 
     public void save() {
-        builderContext.save(userRecord);
+        getBuilderContext().save(getRecord());
     }
 
 }

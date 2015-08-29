@@ -27,7 +27,9 @@ import java.util.UUID;
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
 
-    private final Map<UUID, AppSession> sessions = new HashMap<>();
+    private final Map<UUID, AppSession> appSessions = new HashMap<>();
+
+    private final Map<UUID, UserSession> userSessions = new HashMap<>();
 
     @Autowired
     private UserService userService;
@@ -45,17 +47,18 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public UserSession login(String username, String password) {
         User user = userService.findByUsernameAndPassword(username, password);
         UserSession userSession = new UserSession(user);
+        userSessions.put(userSession.getToken(), userSession);
         return userSession;
     }
 
     @Override
     public void logout(UUID token) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        userSessions.remove(token);
     }
 
     @Override
     public UserSession findSession(UUID token) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return userSessions.get(token);
     }
 
     @Override
@@ -70,7 +73,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }
 
         //appSession.setApplication(conversionService.convert(applicationInstanceRecord.getApplication(), Application.class));
-        sessions.put(appSession.getToken(), appSession);
+        appSessions.put(appSession.getToken(), appSession);
         return appSession;
     }
 

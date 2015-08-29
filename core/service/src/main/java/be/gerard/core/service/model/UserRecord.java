@@ -52,6 +52,15 @@ public class UserRecord implements Serializable {
     @CollectionTable(name = "rel_user_email", joinColumns = @JoinColumn(name = "user_cuid"))
     private final List<String> emails = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(
+            name = "core_user2role",
+            joinColumns = @JoinColumn(name = "user_cuid"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    @ForeignKey(name = "fk_u2r_user", inverseName = "fk_u2r_role")
+    private final Set<RoleRecord> roles = new HashSet<>();
+
     public UserRecord() {
     }
 
@@ -121,6 +130,10 @@ public class UserRecord implements Serializable {
 
     public void removeEmail(String email) {
         this.emails.remove(email);
+    }
+
+    public Set<RoleRecord> getRoles() {
+        return roles;
     }
 
     @Override

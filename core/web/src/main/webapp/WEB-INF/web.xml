@@ -11,6 +11,7 @@
     </context-param>
 
     <!-- Spring -->
+    <!--
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -26,9 +27,9 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>
             be.gerard.core.config.CoreWebConfig
-            be.gerard.core.config.SecurityConfig
         </param-value>
     </context-param>
+    -->
 <!--
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -43,6 +44,7 @@
 
 
     <!-- Spring Security -->
+    <!--
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -51,6 +53,7 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    -->
 
     <!-- Welcome page -->
     <welcome-file-list>

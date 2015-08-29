@@ -1,7 +1,8 @@
 package be.gerard.common.security;
 
-import java.util.ArrayList;
-import java.util.List;
+import be.gerard.core.interface_v1.AuthenticationService;
+import be.gerard.core.interface_v1.session.UserSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -9,6 +10,9 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * CommonAuthenticationManager
@@ -19,10 +23,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class CommonAuthenticationProvider implements AuthenticationProvider {
 
+    @Autowired
+    private AuthenticationService authenticationService;
+
     @Override
-    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+    public CommonAuthenticationToken authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
+
+        UserSession userSession = authenticationService.login(username, password);
+
 //        UserTO user;
 //        try {
 //            user = personManager.login(username, password);
@@ -32,9 +42,9 @@ public class CommonAuthenticationProvider implements AuthenticationProvider {
 //        }
         //user authenticated
         List<GrantedAuthority> grantedAuths = new ArrayList<>();
-        grantedAuths.add(new SimpleGrantedAuthority("ROLE_USER"));
-        Authentication auth = new UsernamePasswordAuthenticationToken(username, password, grantedAuths);
-        return auth;
+        grantedAuths.add(new SimpleGrantedAuthority("USER"));
+        grantedAuths.add(new SimpleGrantedAuthority("ADMIN"));
+        return new CommonAuthenticationToken(username, userSession, grantedAuths);
     }
 
     @Override

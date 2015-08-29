@@ -12,21 +12,16 @@ import java.util.Set;
  * @author bartgerard
  * @version v0.0.1
  */
-public class ApplicationBuilder {
-
-    private final ApplicationRecord applicationRecord;
-
-    private final BuilderContext builderContext;
+public class ApplicationBuilder extends Builder<ApplicationRecord> {
 
     private final Set<PropertyRecord> properties = new HashSet<>();
 
     ApplicationBuilder(ApplicationRecord applicationRecord, BuilderContext builderContext) {
-        this.applicationRecord = applicationRecord;
-        this.builderContext = builderContext;
+        super(applicationRecord, builderContext);
     }
 
     public ApplicationBuilder property(String key, String group, String value) {
-        PropertyRecord property = applicationRecord.findProperty(key);
+        PropertyRecord property = getRecord().findProperty(key);
 
         if (property == null) {
             property = new PropertyRecord(key);
@@ -43,17 +38,18 @@ public class ApplicationBuilder {
     }
 
     public ApplicationBuilder build() {
-        applicationRecord.clearProperties();
+        getRecord().clearProperties();
 
         for (PropertyRecord property : properties) {
-            applicationRecord.addProperty(property);
+            getRecord().addProperty(property);
         }
 
         return this;
     }
 
+    @Override
     public void save() {
-        builderContext.save(applicationRecord);
+        getBuilderContext().save(getRecord());
     }
 
 }

@@ -1,8 +1,10 @@
 package be.gerard.common.security;
 
-import java.util.Collection;
-import org.springframework.security.authentication.AbstractAuthenticationToken;
+import be.gerard.core.interface_v1.session.UserSession;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
+
+import java.util.Collection;
 
 /**
  * CommonAuthenticationToken
@@ -10,20 +12,14 @@ import org.springframework.security.core.GrantedAuthority;
  * @author bartgerard
  * @version 0.0.1
  */
-public class CommonAuthenticationToken extends AbstractAuthenticationToken {
+public class CommonAuthenticationToken extends UsernamePasswordAuthenticationToken {
 
-    public CommonAuthenticationToken(Collection<? extends GrantedAuthority> authorities) {
-        super(authorities);
+    public CommonAuthenticationToken(String username, UserSession userSession, Collection<? extends GrantedAuthority> authorities) {
+        super(username, userSession, authorities);
     }
 
-    @Override
-    public String getCredentials() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Object getPrincipal() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public UserSession getSession() {
+        return (UserSession) getCredentials();
     }
 
 }

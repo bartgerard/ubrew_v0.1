@@ -12,6 +12,11 @@
     <packaging>jar</packaging>
     
     <dependencies>
+
+        <dependency>
+            <groupId>be.gerard</groupId>
+            <artifactId>core-interface</artifactId>
+        </dependency>
         
         <!-- Spring Security -->
         <dependency>

@@ -17,7 +17,7 @@ import org.springframework.context.annotation.ImportResource;
         "be.gerard.core.web.controller",
         "be.gerard.common.web",
         "be.gerard.core.interface_v1.util",
-        "be.gerard.common.security"
+        "be.gerard.common.security.config"
 })
 @ImportResource("classpath:be.gerard.core.web.xml")
 public class CoreWebConfig {
