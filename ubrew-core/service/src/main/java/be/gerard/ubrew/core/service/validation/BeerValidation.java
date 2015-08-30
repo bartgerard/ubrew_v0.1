@@ -4,11 +4,12 @@ import be.gerard.common.exception_v1.BusinessException;
 import be.gerard.common.validation.Validation;
 import be.gerard.ubrew.core.interface_v1.exception.error.BeerValidationError;
 import be.gerard.ubrew.core.interface_v1.model.product.Beer;
-import be.gerard.ubrew.core.service.dao.BeerTypeDao;
+import be.gerard.ubrew.core.service.dao.BeerTypeDao2;
 import be.gerard.ubrew.core.service.model.product.BeerTypeRecord;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Map;
 
 /**
  * BeerValidation
@@ -22,7 +23,7 @@ public class BeerValidation implements Validation<Beer> {
 //    private Validations validations;
 
     @Autowired
-    private BeerTypeDao beerTypeDao;
+    private BeerTypeDao2 beerTypeDao;
 
     @Override
     public boolean isApplicable(Object object) {

@@ -1,8 +1,8 @@
 package be.gerard.core.service.dao;
 
+import be.gerard.core.service.BaseTest;
 import be.gerard.core.service.model.ApplicationInstanceRecord;
 import be.gerard.core.service.model.ApplicationRecord;
-import be.gerard.core.service.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author bartgerard
  * @version 0.0.1
  */
-public class ApplicationInstanceDaoTest extends BaseTest {
+public class ApplicationInstanceDao2Test extends BaseTest {
     
     @Autowired
     private ApplicationInstanceDao applicationInstanceDao;

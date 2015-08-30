@@ -4,23 +4,22 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- *
- * @author bartgerard
  * @param <E>
  * @param <K>
+ * @author bartgerard
  */
-public interface DAO<E, K extends Serializable> {
+public interface Dao2<E, K extends Serializable> {
 
     E find(final K id);
 
     E saveOrUpdate(final E e);
 
     void delete(final E e);
-    
+
     int count();
 
     List<E> findAll();
-    
+
     List<E> findRange(int[] range);
-    
+
 }

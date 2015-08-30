@@ -1,34 +1,40 @@
 package be.gerard.common.db.dao;
 
-import java.io.Serializable;
-import java.lang.reflect.ParameterizedType;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import org.hibernate.Session;
 import org.springframework.context.annotation.Profile;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
+import java.util.List;
+
 /**
- *
- * @author bartgerard
  * @param <E> Entity
  * @param <K> Key
+ * @author bartgerard
  */
 @Profile("jpa")
 @Transactional(readOnly = true)
-public abstract class DAOJpa<E, K extends Serializable> implements DAO<E, K> {
+public abstract class Dao2Jpa<E, K extends Serializable> implements Dao2<E, K> {
 
+    private final Class<E> entityClass;
     private EntityManager entityManager;
 
-    @PersistenceContext
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public Dao2Jpa() {
+        Assert.isInstanceOf(ParameterizedType.class, getClass().getGenericSuperclass(), String.format("genericSuperClass is invalid [%s]", getClass().getGenericSuperclass()));
+        entityClass = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
     public EntityManager getEntityManager() {
         return entityManager;
+    }
+
+    @PersistenceContext
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
     public Session getSession() {
@@ -39,15 +45,8 @@ public abstract class DAOJpa<E, K extends Serializable> implements DAO<E, K> {
         return getEntityManager().unwrap(Session.class);
     }
 
-    private final Class<E> entityClass;
-
     protected Class<E> getEntityClass() {
         return entityClass;
-    }
-
-    public DAOJpa() {
-        Assert.isInstanceOf(ParameterizedType.class, getClass().getGenericSuperclass(), String.format("genericSuperClass is invalid [%s]", getClass().getGenericSuperclass()));
-        entityClass = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
     @Transactional(readOnly = true)
