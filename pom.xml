@@ -28,7 +28,7 @@
     <modules>
         <module>common</module>
         <module>core</module>
-        <module>ubrew-core</module>
+        <module>ubrew</module>
         <module>evenizer</module>
         <module>game</module>
     </modules>
