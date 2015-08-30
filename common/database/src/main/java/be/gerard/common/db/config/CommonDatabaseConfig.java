@@ -1,6 +1,7 @@
 package be.gerard.common.db.config;
 
 import org.hibernate.cfg.Environment;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -20,10 +21,10 @@ import java.util.Properties;
  */
 @Configuration
 @EnableTransactionManagement
-public abstract class AbstractDatabase2Config {
+public abstract class CommonDatabaseConfig {
 
-    @Bean
-    protected abstract DataSource dataSource();
+    @Autowired
+    private DataSource dataSource;
 
     @Bean
     public EntityManagerFactory entityManagerFactory() {
@@ -37,7 +38,7 @@ public abstract class AbstractDatabase2Config {
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setDataSource(dataSource());
+        factory.setDataSource(dataSource);
         factory.setPackagesToScan(packagesToScan());
         factory.setJpaProperties(jpaProperties());
 

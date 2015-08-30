@@ -1,11 +1,12 @@
 package be.gerard.core.service.script;
 
+import be.gerard.common.db.config.PropertyDataSourceConfig;
 import be.gerard.core.interface_v1.model.User;
 import be.gerard.core.interface_v1.session.UserSession;
 import be.gerard.core.interface_v1.util.UserSessionUtils;
 import be.gerard.core.service.builder.BuilderContext;
-import be.gerard.core.service.config.CoreServiceConfig;
 import be.gerard.core.service.config.CoreDatabaseConfig;
+import be.gerard.core.service.config.CoreServiceConfig;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,11 @@ import java.time.Month;
  * @version v0.0.1
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {CoreServiceConfig.class, CoreDatabaseConfig.class})
+@ContextConfiguration(classes = {
+        CoreServiceConfig.class,
+        PropertyDataSourceConfig.class,
+        CoreDatabaseConfig.class
+})
 @PropertySource("classpath:be.gerard.core.service.test.properties")
 @Transactional
 public class CommonScript {

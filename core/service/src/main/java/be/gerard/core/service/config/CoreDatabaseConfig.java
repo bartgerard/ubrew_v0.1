@@ -1,16 +1,16 @@
 package be.gerard.core.service.config;
 
-import be.gerard.common.db.config.PropertyDatabaseConfig;
+import be.gerard.common.db.config.CommonDatabaseConfig;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
- * DatabaseConfig
+ * CoreDatabaseConfig
  *
  * @author bartgerard
  * @version v0.0.1
  */
 @EnableJpaRepositories("be.gerard.core.service.dao")
-public class CoreDatabaseConfig extends PropertyDatabaseConfig {
+public class CoreDatabaseConfig extends CommonDatabaseConfig {
 
     @Override
     protected String[] packagesToScan() {
