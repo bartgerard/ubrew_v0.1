@@ -2,7 +2,7 @@ package be.gerard.core.service;
 
 import be.gerard.core.service.dao.ApplicationDaoTest;
 import be.gerard.core.service.dao.UserDaoTest;
-import be.gerard.core.service.schema.CoreAuthenticationSchemaExportTest;
+import be.gerard.core.service.schema.CoreSchemaExportTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -14,7 +14,7 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        CoreAuthenticationSchemaExportTest.class,
+        CoreSchemaExportTest.class,
         UserDaoTest.class,
         ApplicationDaoTest.class,
         UserServiceTest.class,

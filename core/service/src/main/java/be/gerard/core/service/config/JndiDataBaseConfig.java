@@ -1,8 +1,8 @@
 package be.gerard.core.service.config;
 
+import be.gerard.common.db.config.AbstractDataBaseConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -15,7 +15,6 @@ import javax.sql.DataSource;
  * @version v0.0.1
  */
 @Configuration
-@EnableJpaRepositories("be.gerard.core.service.dao")
 @EnableTransactionManagement
 public class JndiDataBaseConfig extends AbstractDataBaseConfig {
 

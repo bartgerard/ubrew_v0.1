@@ -29,6 +29,6 @@
     </bean>
     
     <!-- DataSource -->
-    <jdbc:embedded-database id="db.ubrew.core.datasource" type="DERBY" />
+    <jdbc:embedded-database id="db.ubrew.core.datasource" type="H2 " />
     
 </beans>

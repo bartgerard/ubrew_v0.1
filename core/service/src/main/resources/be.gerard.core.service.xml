@@ -10,8 +10,12 @@
           http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <!-- Import(s) -->
+    <bean class="be.gerard.common.validation.config.ValidationConfig"/>
+    <bean class="be.gerard.common.converter.config.ConverterConfig"/>
+    <!--
     <import resource="classpath:be.gerard.common.validation.xml"/>
     <import resource="classpath:be.gerard.common.conversion.encoder.xml"/>
+    -->
 
     <!-- Scan -->
     <context:component-scan base-package="be.gerard.core.service">

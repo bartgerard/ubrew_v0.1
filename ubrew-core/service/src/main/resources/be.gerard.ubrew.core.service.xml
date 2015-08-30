@@ -20,12 +20,12 @@
     
     <!-- Resource(s) -->
     <import resource="be.gerard.ubrew.core.validations.xml" />
-    
+
     <bean id="strongPasswordEncryptor" class="org.jasypt.util.password.StrongPasswordEncryptor"/>
-    
+
     <!-- Aspect Oriented Programming -->
     
-    <bean id="loggingAdvice" class="LoggingAdvice" />
+    <bean id="loggingAdvice" class="be.gerard.common.aop.LoggingAdvice" />
     <bean id="serviceExceptionAdvice" class="be.gerard.common.aop.ServiceExceptionAdvice" />
     
     <aop:config>
@@ -52,7 +52,7 @@
                     <prop key="hibernate.show_sql">${be.gerard.ubrew.core.hibernate.show_sql}</prop>
                 </props>
             </property>
-            <property name="packagesToScan" value="be.gerard.general.service.model, be.gerard.ubrew.core.service.model"/>
+            <property name="packagesToScan" value="be.gerard.ubrew.core.service.model"/>
         </bean>
     
         <tx:annotation-driven transaction-manager="transactionManager"/>
@@ -81,7 +81,7 @@
                     <prop key="hibernate.ejb.naming_strategy_delegator">org.hibernate.cfg.naming.ImprovedNamingStrategyDelegator</prop>
                 </props>
             </property>
-            <property name="packagesToScan" value="be.gerard.general.service.model, be.gerard.ubrew.core.service.model"/>
+            <property name="packagesToScan" value="be.gerard.ubrew.core.service.model"/>
         </bean>
     
         <tx:annotation-driven transaction-manager="transactionManager"/>

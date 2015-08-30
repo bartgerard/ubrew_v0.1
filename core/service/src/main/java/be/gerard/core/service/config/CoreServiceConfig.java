@@ -21,7 +21,11 @@ import org.springframework.core.io.Resource;
  */
 @Configuration
 @Import({ConverterConfig.class, ValidationConfig.class})
-@ComponentScan("be.gerard.core.service")
+@ComponentScan({
+        "be.gerard.core.service",
+        "be.gerard.common.validation.config",
+        "be.gerard.common.converter.config"
+})
 public class CoreServiceConfig {
 
     @Bean
@@ -33,7 +37,7 @@ public class CoreServiceConfig {
     }
 
     public Resource[] locations() {
-        return new ClassPathResource[] {new ClassPathResource("be.gerard.core.service.test.properties")};
+        return new ClassPathResource[]{new ClassPathResource("be.gerard.core.service.test.properties")};
     }
 
     @Bean

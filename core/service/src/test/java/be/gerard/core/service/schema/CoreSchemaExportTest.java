@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:be.gerard.core.service.test.xml"})
 @Transactional
-public class CoreAuthenticationSchemaExportTest extends SchemaExporter {
+public class CoreSchemaExportTest extends SchemaExporter {
 
     @Autowired
     private LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean;
