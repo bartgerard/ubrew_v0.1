@@ -3,7 +3,7 @@ package be.gerard.ubrew.core.service;
 import be.gerard.ubrew.core.interface_v1.BeerService;
 import be.gerard.ubrew.core.interface_v1.model.product.Beer;
 import be.gerard.ubrew.core.interface_v1.model.product.BeerType;
-import be.gerard.ubrew.core.service.dao.BeerTypeDao2;
+import be.gerard.ubrew.core.service.dao.BeerTypeDao;
 import be.gerard.ubrew.core.service.decoder.BeerTypeDecoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ import java.util.List;
 public class BeerServiceImpl implements BeerService {
     
     @Autowired
-    private BeerTypeDao2 beerTypeDao;
+    private BeerTypeDao beerTypeDao;
     
     @Autowired
     private BeerTypeDecoder beerTypeDecoder;

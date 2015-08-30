@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author bartgerard
  * @version 0.0.1
  */
-public class ApplicationInstanceDao2Test extends BaseTest {
+public class ApplicationInstanceDaoTest extends BaseTest {
     
     @Autowired
     private ApplicationInstanceDao applicationInstanceDao;

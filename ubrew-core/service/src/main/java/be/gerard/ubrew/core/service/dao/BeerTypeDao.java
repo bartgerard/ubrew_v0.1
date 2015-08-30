@@ -1,6 +1,6 @@
 package be.gerard.ubrew.core.service.dao;
 
-import be.gerard.common.db.dao.Dao2;
+import be.gerard.common.db.dao.Dao;
 import be.gerard.ubrew.core.service.model.product.BeerTypeRecord;
 
 /**
@@ -8,6 +8,6 @@ import be.gerard.ubrew.core.service.model.product.BeerTypeRecord;
  *
  * @author bartgerard
  */
-public interface BeerTypeDao2 extends Dao2<BeerTypeRecord, Long> {
+public interface BeerTypeDao extends Dao<BeerTypeRecord, Long> {
 
 }

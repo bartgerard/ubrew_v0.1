@@ -8,7 +8,7 @@ import java.util.List;
  * @param <K>
  * @author bartgerard
  */
-public interface Dao2<E, K extends Serializable> {
+public interface Dao<E, K extends Serializable> {
 
     E find(final K id);
 

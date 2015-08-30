@@ -18,12 +18,12 @@ import java.util.List;
  */
 @Profile("jpa")
 @Transactional(readOnly = true)
-public abstract class Dao2Jpa<E, K extends Serializable> implements Dao2<E, K> {
+public abstract class DaoJpa<E, K extends Serializable> implements Dao<E, K> {
 
     private final Class<E> entityClass;
     private EntityManager entityManager;
 
-    public Dao2Jpa() {
+    public DaoJpa() {
         Assert.isInstanceOf(ParameterizedType.class, getClass().getGenericSuperclass(), String.format("genericSuperClass is invalid [%s]", getClass().getGenericSuperclass()));
         entityClass = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }

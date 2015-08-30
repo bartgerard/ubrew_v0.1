@@ -14,7 +14,7 @@ import java.time.LocalDate;
  * @author bartgerard
  * @version 0.0.1
  */
-public class UserDao2Test extends BaseTest {
+public class UserDaoTest extends BaseTest {
     
     @Autowired
     private UserDao userDao;

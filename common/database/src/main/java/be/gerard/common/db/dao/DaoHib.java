@@ -17,14 +17,14 @@ import java.util.List;
  * @author bartgerard
  */
 @Profile("hib")
-public abstract class Dao2Hib<E, K extends Serializable> implements Dao2<E, K> {
+public abstract class DaoHib<E, K extends Serializable> implements Dao<E, K> {
 
     private final Class<E> entityClass;
     @Autowired(required = true)
     //@Qualifier(value = "sessionFactory")
     private SessionFactory sessionFactory;
 
-    public Dao2Hib() {
+    public DaoHib() {
         Assert.isInstanceOf(ParameterizedType.class, getClass().getGenericSuperclass(), String.format("genericSuperClass is invalid [%s]", getClass().getGenericSuperclass()));
         entityClass = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
