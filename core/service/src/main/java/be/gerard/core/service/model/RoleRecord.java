@@ -34,7 +34,7 @@ public class RoleRecord extends BaseRecord {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "core_role2privilege",
+            name = "rel_role2privilege",
             joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "privilege_id")
     )

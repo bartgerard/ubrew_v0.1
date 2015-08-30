@@ -5,10 +5,19 @@ import be.gerard.common.db.model.BaseRecord;
 import be.gerard.core.interface_v1.model.Application;
 import org.springframework.util.Assert;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * ApplicationRecord
@@ -27,11 +36,12 @@ public class ApplicationRecord extends BaseRecord {
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "rel_application_property",
-            joinColumns = @JoinColumn(name = "property_id")
+            name = "rel_application2property",
+            joinColumns = @JoinColumn(name = "application_id"),
+            inverseJoinColumns = @JoinColumn(name = "property_id")
     )
-    @org.hibernate.annotations.ForeignKey(name = "fk_application_property", inverseName = "fk_property_application")
-    private List<PropertyRecord> properties = new ArrayList<>();
+        @org.hibernate.annotations.ForeignKey(name = "fk_a2p_property", inverseName = "fk_a2p_application")
+    private Set<PropertyRecord> properties = new HashSet<>();
 
     private ApplicationRecord() {
     }
@@ -44,7 +54,7 @@ public class ApplicationRecord extends BaseRecord {
         return key;
     }
 
-    public List<PropertyRecord> getProperties() {
+    public Set<PropertyRecord> getProperties() {
         return properties;
     }
 
@@ -59,12 +69,12 @@ public class ApplicationRecord extends BaseRecord {
     }
 
     public void addProperty(PropertyRecord property) {
-        Assert.notNull(property, String.format("property is invalid [null]"));
+        Assert.notNull(property, "property is invalid [null]");
         Assert.isTrue(this.properties.add(property), String.format("property can not be added to application.properties [key=%s]", property.getKey()));
     }
 
     public void removeProperty(PropertyRecord property) {
-        Assert.notNull(property, String.format("property is invalid [null]"));
+        Assert.notNull(property, "property is invalid [null]");
         Assert.isTrue(this.properties.remove(property), String.format("property can not be removed from application.properties [key=%s]", property.getKey()));
     }
 

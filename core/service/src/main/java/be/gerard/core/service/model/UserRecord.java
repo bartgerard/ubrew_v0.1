@@ -63,7 +63,7 @@ public class UserRecord extends BaseRecord {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "core_user2role",
+            name = "rel_user2role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
