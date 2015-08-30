@@ -20,7 +20,7 @@ import org.springframework.core.io.Resource;
 @Import({
         ConverterConfig.class,
         ValidationConfig.class,
-        UbrewCoreJndiDataSourceConfig.class
+        DataSourceConfig.class
 })
 public class UbrewCoreServiceConfig {
 

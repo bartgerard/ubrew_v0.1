@@ -3,12 +3,12 @@ package be.gerard.ubrew.core.service.config;
 import be.gerard.common.db.config.JndiDataSourceConfig;
 
 /**
- * UbrewCoreJndiDataSourceConfig
+ * DataSourceConfig
  *
  * @author bartgerard
  * @version v0.0.1
  */
-public class UbrewCoreJndiDataSourceConfig extends JndiDataSourceConfig {
+public class DataSourceConfig extends JndiDataSourceConfig {
 
     @Override
     protected String dataSourceName() {
