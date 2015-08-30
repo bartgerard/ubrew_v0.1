@@ -12,7 +12,7 @@ import javax.sql.DataSource;
  * @author bartgerard
  * @version v0.0.1
  */
-public class EmbeddedDataSourceConfig extends DataSource2Config {
+public class EmbeddedDataSourceConfig extends DataSourceConfig {
 
     @Bean
     public DataSource dataSource() {

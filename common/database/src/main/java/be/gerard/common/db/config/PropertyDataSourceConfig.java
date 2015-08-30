@@ -12,7 +12,7 @@ import javax.sql.DataSource;
  * @author bartgerard
  * @version v0.0.1
  */
-public class PropertyDataSourceConfig extends DataSource2Config {
+public class PropertyDataSourceConfig extends DataSourceConfig {
 
     @Value("${db.driver.class.name}")
     private String driverClassName;
