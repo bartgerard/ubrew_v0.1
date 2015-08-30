@@ -58,8 +58,4 @@ public class UserBuilder extends Builder<UserRecord> {
         return this;
     }
 
-    public void save() {
-        getBuilderContext().save(getRecord());
-    }
-
 }

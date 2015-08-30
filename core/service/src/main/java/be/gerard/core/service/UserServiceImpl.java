@@ -1,9 +1,11 @@
 package be.gerard.core.service;
 
 import be.gerard.core.interface_v1.UserService;
+import be.gerard.core.interface_v1.model.Role;
 import be.gerard.core.interface_v1.model.User;
 import be.gerard.core.service.dao.UserDao;
 import be.gerard.core.service.merger.UserMerger;
+import be.gerard.core.service.model.RoleRecord;
 import be.gerard.core.service.model.UserRecord;
 import org.jasypt.util.password.PasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +66,13 @@ public class UserServiceImpl implements UserService {
         Assert.notNull(userRecord, "username or password is invalid");
         Assert.isTrue(passwordEncryptor.checkPassword(password, userRecord.getEncryptedPassword()), "username or password is invalid");
 
-        return conversionService.convert(userRecord, User.class);
+        User user = conversionService.convert(userRecord, User.class);
+
+        for (RoleRecord roleRecord : userRecord.getRoles()) {
+            user.getRoles().add(conversionService.convert(roleRecord, Role.class));
+        }
+
+        return user;
     }
 
     @Override

@@ -64,6 +64,8 @@
                     </f:facet>
 
                 </p:dataTable>
+
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </h:form>
 
             <ui:include src="Create.xhtml"/>

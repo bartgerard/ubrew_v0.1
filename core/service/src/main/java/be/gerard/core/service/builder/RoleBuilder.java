@@ -31,9 +31,4 @@ public class RoleBuilder extends Builder<RoleRecord> {
         return this;
     }
 
-    @Override
-    public void save() {
-        getBuilderContext().save(getRecord());
-    }
-
 }

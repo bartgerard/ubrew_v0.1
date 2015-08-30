@@ -13,6 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
+import javax.annotation.PostConstruct;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * BuilderContext
  *
@@ -22,7 +26,15 @@ import org.springframework.util.Assert;
 @Component
 public class BuilderContext {
 
-//    private final Map<String, ApplicationRecord> applicationRecordMap = new HashMap<>();
+    // MAPS
+
+    private final Map<String, ApplicationRecord> applications = new HashMap<>();
+
+    private final Map<String, UserRecord> users = new HashMap<>();
+
+    private final Map<String, RoleRecord> roles = new HashMap<>();
+
+    private final Map<String, PrivilegeRecord> privileges = new HashMap<>();
 
     @Autowired
     private PasswordEncryptor passwordEncryptor;
@@ -39,27 +51,38 @@ public class BuilderContext {
     @Autowired
     private PrivilegeDao privilegeDao;
 
-//    public void load() {
-//        applicationRecordMap.clear();
-//
-//        for (ApplicationRecord applicationRecord : applicationDao.findAll()) {
-//            applicationRecordMap.put(applicationRecord.getKey(), applicationRecord);
-//        }
-//    }
+    @PostConstruct
+    public void load() {
+        // Applications
+        applications.clear();
+
+        for (ApplicationRecord applicationRecord : applicationDao.findAll()) {
+            applications.put(applicationRecord.getKey(), applicationRecord);
+        }
+
+        // Users
+        users.clear();
+
+        for (UserRecord userRecord : userDao.findAll()) {
+            users.put(userRecord.getUsername(), userRecord);
+        }
+
+        // Roles
+        roles.clear();
+
+        for (RoleRecord roleRecord : roleDao.findAll()) {
+            roles.put(roleRecord.getName(), roleRecord);
+        }
+
+        // Privileges
+        privileges.clear();
+
+        for (PrivilegeRecord privilegeRecord : privilegeDao.findAll()) {
+            privileges.put(privilegeRecord.getName(), privilegeRecord);
+        }
+    }
 
     // Get Or Create
-
-//    public ApplicationRecord getOrCreateApplication(String key) {
-//        Assert.hasText(key, "key is invalid [null]");
-//        ApplicationRecord applicationRecord = applicationRecordMap.get(key);
-//
-//        if (applicationRecord == null) {
-//            applicationRecord = new ApplicationRecord(key);
-//            applicationRecordMap.put(applicationRecord.getKey(), applicationRecord);
-//        }
-//
-//        return applicationRecord;
-//    }
 
 
     public PasswordEncryptor getPasswordEncryptor() {
@@ -69,10 +92,11 @@ public class BuilderContext {
     public ApplicationRecord getOrCreateApplication(String key) {
         Assert.hasText(key, "key is invalid [null]");
 
-        ApplicationRecord applicationRecord = applicationDao.findByKey(key);
+        ApplicationRecord applicationRecord = applications.get(key);
 
         if (applicationRecord == null) {
             applicationRecord = new ApplicationRecord(key);
+            applications.put(key, applicationRecord);
         }
 
         return applicationRecord;
@@ -81,11 +105,12 @@ public class BuilderContext {
     public UserRecord getOrCreateUser(String username) {
         Assert.hasText(username, "username is invalid [null]");
 
-        UserRecord userRecord = userDao.findByUsername(username);
+        UserRecord userRecord = users.get(username);
 
         if (userRecord == null) {
             userRecord = new UserRecord();
             userRecord.setUsername(username);
+            users.put(username, userRecord);
         }
 
         return userRecord;
@@ -94,11 +119,12 @@ public class BuilderContext {
     public RoleRecord getOrCreateRole(String roleName) {
         Assert.hasText(roleName, "roleName is invalid [null]");
 
-        RoleRecord roleRecord = roleDao.findByName(roleName);
+        RoleRecord roleRecord = roles.get(roleName);
 
         if (roleRecord == null) {
             roleRecord = new RoleRecord();
             roleRecord.setName(roleName);
+            roles.put(roleName, roleRecord);
         }
 
         return roleRecord;
@@ -107,11 +133,12 @@ public class BuilderContext {
     public PrivilegeRecord getOrCreatePrivilege(String privilegeName) {
         Assert.hasText(privilegeName, "privilegeName is invalid [null]");
 
-        PrivilegeRecord privilegeRecord = privilegeDao.findByName(privilegeName);
+        PrivilegeRecord privilegeRecord = privileges.get(privilegeName);
 
         if (privilegeRecord == null) {
             privilegeRecord = new PrivilegeRecord();
             privilegeRecord.setName(privilegeName);
+            privileges.put(privilegeName, privilegeRecord);
         }
 
         return privilegeRecord;
@@ -131,10 +158,6 @@ public class BuilderContext {
         return new RoleBuilder(getOrCreateRole(roleName), this);
     }
 
-    public PrivilegeBuilder buildPrivilege(String privilegeName) {
-        return new PrivilegeBuilder(getOrCreatePrivilege(privilegeName), this);
-    }
-
     // Save
 
     public void save(ApplicationRecord applicationRecord) {
@@ -151,6 +174,13 @@ public class BuilderContext {
 
     public void save(PrivilegeRecord privilegeRecord) {
         privilegeDao.save(privilegeRecord);
+    }
+
+    public void saveAll() {
+        privilegeDao.save(privileges.values());
+        roleDao.save(roles.values());
+        userDao.save(users.values());
+        applicationDao.save(applications.values());
     }
 
 }

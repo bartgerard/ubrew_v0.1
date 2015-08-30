@@ -47,9 +47,4 @@ public class ApplicationBuilder extends Builder<ApplicationRecord> {
         return this;
     }
 
-    @Override
-    public void save() {
-        getBuilderContext().save(getRecord());
-    }
-
 }

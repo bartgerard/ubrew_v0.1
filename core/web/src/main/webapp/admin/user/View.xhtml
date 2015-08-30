@@ -29,6 +29,8 @@
                     </p:panelGrid>
                     <p:commandButton value="#{i18n.Close}" onclick="GeneralUserViewDialog.hide()"/>
                 </h:panelGroup>
+
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </h:form>
         </p:dialog>
 

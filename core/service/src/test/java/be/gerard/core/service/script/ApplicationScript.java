@@ -81,17 +81,11 @@ public class ApplicationScript {
     @Test
     @Rollback(false)
     public void initApplications() {
-        builderContext.buildUser("bgerard")
-                .firstname("FIRSTNAME")
-                .lastname("LASTNAME")
-                .birthDate(LocalDate.of(1988, Month.MAY, 3))
-                .password("PASSWORD")
-                .save();
-
         builderContext.buildApplication("core.web")
                 .property("be.gerard.core.service.url", "urls", "http://localhost:8080/core-service")
-                .build()
-                .save();
+                .build();
+
+        builderContext.saveAll();
 
         applicationService.instantiate(
                 "core.web",

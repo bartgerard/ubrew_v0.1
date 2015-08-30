@@ -38,6 +38,9 @@ public class User extends BaseTo {
     @XmlElement(required = true)
     private final Map<String, String> properties = new HashMap<>();
 
+    @XmlElement(required = true)
+    private final Set<Role> roles = new HashSet<>();
+
     public User() {
     }
 
@@ -103,6 +106,10 @@ public class User extends BaseTo {
 
     public void remove(final String key) {
         properties.remove(key);
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
     }
 
 }

@@ -2,15 +2,28 @@ package be.gerard.core.service.model;
 
 import be.gerard.common.converter.annotation.Convertible;
 import be.gerard.common.db.converter.LocalDatePersistenceConverter;
+import be.gerard.common.db.model.BaseRecord;
 import be.gerard.core.interface_v1.model.User;
 import org.hibernate.annotations.ForeignKey;
 
-import javax.persistence.*;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.Convert;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.io.Serializable;
+import javax.persistence.UniqueConstraint;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * UserRecord
@@ -20,13 +33,9 @@ import java.util.*;
  */
 @Convertible(defaultTargetType = User.class)
 @Entity
-@Table(name = "core_user")
-public class UserRecord implements Serializable {
-
-    // Core User Id --> CUID
-    @Id
-    @Column(name = "cuid", nullable = false)
-    private UUID cuid = UUID.randomUUID();
+@SequenceGenerator(name = BaseRecord.SEQUENCE_GENERATOR, sequenceName = "s_user", allocationSize = BaseRecord.SEQUENCE_ALLOCATION_SIZE)
+@Table(name = "core_user", uniqueConstraints = @UniqueConstraint(name = "uk_user_username", columnNames = {"username"}))
+public class UserRecord extends BaseRecord {
 
     @Column(name = "username", nullable = false)
     private String username;
@@ -49,27 +58,19 @@ public class UserRecord implements Serializable {
 
     @ForeignKey(name = "fk_user_email")
     @ElementCollection
-    @CollectionTable(name = "rel_user_email", joinColumns = @JoinColumn(name = "user_cuid"))
+    @CollectionTable(name = "rel_user_email", joinColumns = @JoinColumn(name = "user_id"))
     private final List<String> emails = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "core_user2role",
-            joinColumns = @JoinColumn(name = "user_cuid"),
+            joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     @ForeignKey(name = "fk_u2r_user", inverseName = "fk_u2r_role")
     private final Set<RoleRecord> roles = new HashSet<>();
 
     public UserRecord() {
-    }
-
-    public UUID getCuid() {
-        return cuid;
-    }
-
-    public void setCuid(UUID cuid) {
-        this.cuid = cuid;
     }
 
     public String getUsername() {
@@ -134,33 +135,6 @@ public class UserRecord implements Serializable {
 
     public Set<RoleRecord> getRoles() {
         return roles;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 67 * hash + Objects.hashCode(this.username);
-        hash = 67 * hash + Objects.hashCode(this.password);
-        hash = 67 * hash + (this.enabled ? 1 : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final UserRecord other = (UserRecord) obj;
-        if (!Objects.equals(this.username, other.username)) {
-            return false;
-        }
-        if (!Objects.equals(this.password, other.password)) {
-            return false;
-        }
-        return this.enabled == other.enabled;
     }
 
     @Override

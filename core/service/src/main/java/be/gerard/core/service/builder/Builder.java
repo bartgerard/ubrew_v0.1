@@ -1,12 +1,14 @@
 package be.gerard.core.service.builder;
 
+import be.gerard.common.db.model.BaseRecord;
+
 /**
  * Builder
  *
  * @author bartgerard
  * @version v0.0.1
  */
-public abstract class Builder<T> {
+public abstract class Builder<T extends BaseRecord> {
 
     private final T record;
 
@@ -24,7 +26,5 @@ public abstract class Builder<T> {
     protected BuilderContext getBuilderContext() {
         return builderContext;
     }
-
-    public abstract void save();
 
 }

@@ -16,7 +16,6 @@
         <module>interface</module>
         <module>service</module>
         <module>web</module>
-        <module>core-web2</module>
     </modules>
 
 </project>

@@ -1,6 +1,7 @@
 package be.gerard.common.security;
 
 import be.gerard.core.interface_v1.AuthenticationService;
+import be.gerard.core.interface_v1.model.Role;
 import be.gerard.core.interface_v1.session.UserSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -11,8 +12,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * CommonAuthenticationManager
@@ -33,18 +35,11 @@ public class CommonAuthenticationProvider implements AuthenticationProvider {
 
         UserSession userSession = authenticationService.login(username, password);
 
-//        UserTO user;
-//        try {
-//            user = personManager.login(username, password);
-//            SessionUtils.setConnectedUser(user);
-//        } catch (CRBSClientException e) {
-//             return null;
-//        }
-        //user authenticated
-        List<GrantedAuthority> grantedAuths = new ArrayList<>();
-        grantedAuths.add(new SimpleGrantedAuthority("USER"));
-        grantedAuths.add(new SimpleGrantedAuthority("ADMIN"));
-        return new CommonAuthenticationToken(username, userSession, grantedAuths);
+        return new CommonAuthenticationToken(username, userSession, toAuthorities(userSession.getUser().getRoles()));
+    }
+
+    private List<GrantedAuthority> toAuthorities(Collection<Role> roles) {
+        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
 
     @Override

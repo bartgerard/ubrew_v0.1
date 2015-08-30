@@ -1,5 +1,6 @@
 package be.gerard.core.interface_v1.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,7 +10,7 @@ import java.util.Set;
  * @author bartgerard
  * @version v0.0.1
  */
-public class Role {
+public class Role implements Serializable {
 
     private String name;
 

@@ -28,6 +28,8 @@
                     <p:commandButton actionListener="#{userBean.create}" value="#{i18n.Save}" update="display,:GeneralUserListForm:datalist,:growl" oncomplete="handleSubmit(args,'GeneralUserCreateDialog');"/>
                     <p:commandButton value="#{i18n.Cancel}" onclick="GeneralUserCreateDialog.hide()"/>
                 </h:panelGroup>
+
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </h:form>
         </p:dialog>
 

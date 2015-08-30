@@ -28,6 +28,8 @@
                     <p:commandButton actionListener="#{translationBean.update}" value="#{i18n.Save}" update="display,:GeneralTranslationListForm:datalist,:growl" oncomplete="handleSubmit(args, 'GeneralTranslationEditDialog');"/>
                     <p:commandButton value="#{i18n.Cancel}" onclick="GeneralTranslationEditDialog.hide()"/>
                 </h:panelGroup>
+
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </h:form>
         </p:dialog>
 

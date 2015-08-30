@@ -5,9 +5,9 @@ import be.gerard.common.db.model.BaseRecord;
 import be.gerard.core.interface_v1.model.Role;
 import org.hibernate.annotations.ForeignKey;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -32,7 +32,7 @@ public class RoleRecord extends BaseRecord {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "core_role2privilege",
             joinColumns = @JoinColumn(name = "role_id"),

@@ -6,6 +6,7 @@ import be.gerard.core.interface_v1.util.UserSessionUtils;
 import be.gerard.core.service.builder.BuilderContext;
 import be.gerard.core.service.config.CoreServiceConfig;
 import be.gerard.core.service.config.DefaultDataBaseConfig;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -61,18 +62,31 @@ public class RoleScript {
     }
 
     @Test
+    public void testpassword() {
+        String password = builderContext.getOrCreateUser("bgerard").getEncryptedPassword();
+        Assert.assertTrue(builderContext.getPasswordEncryptor().checkPassword("PASSWORD", password));
+    }
+
+    @Test
     @Rollback(false)
     public void initRoles() {
         builderContext.buildRole("USER")
-                .build().save();
+                .build();
+
         builderContext.buildRole("ADMIN")
                 .addPrivilege("CRUD_USER")
                 .addPrivilege("CRUD_TRANSLATION")
-                .build().save();
+                .build();
 
         builderContext.buildUser(USERNAME)
+                .firstname("firstname")
+                .lastname("lastname")
+                .birthDate(LocalDate.of(1988, Month.MAY, 3))
+                .password("password")
                 .assignRole("ADMIN")
-                .build().save();
+                .build();
+
+        builderContext.saveAll();
     }
 
 }
