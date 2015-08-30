@@ -2,7 +2,7 @@ package be.gerard.ubrew.core.service.schema;
 
 import be.gerard.common.db.config.EmbeddedDataSourceConfig;
 import be.gerard.common.db.schema.SchemaExporter;
-import be.gerard.ubrew.core.service.config.UbrewCoreDatabaseConfig;
+import be.gerard.ubrew.core.service.config.UbrewCoreDatabaseConfig2;
 import org.hibernate.dialect.MySQLDialect;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {
         EmbeddedDataSourceConfig.class,
-        UbrewCoreDatabaseConfig.class
+        UbrewCoreDatabaseConfig2.class
 })
 @Transactional
 public class UbrewCoreSchemaExportTest extends SchemaExporter {

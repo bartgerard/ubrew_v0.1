@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-    <artifactId>ubrew-core</artifactId>
-    <groupId>be.gerard</groupId>
-    <version>0.0.1</version>
-  </parent>
+        <artifactId>ubrew-core</artifactId>
+        <groupId>be.gerard</groupId>
+        <version>0.0.1</version>
+    </parent>
 
     <groupId>be.gerard</groupId>
-    <artifactId>ubrew-core-service</artifactId>
+    <artifactId>ubrew-service</artifactId>
     <version>0.0.1</version>
     <packaging>war</packaging>
 
-    <name>ubrew-core-service</name>
+    <name>ubrew-service</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>

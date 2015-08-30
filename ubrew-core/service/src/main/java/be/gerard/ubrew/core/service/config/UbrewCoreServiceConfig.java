@@ -17,7 +17,11 @@ import org.springframework.core.io.Resource;
  * @version v0.0.1
  */
 @Configuration
-@Import({ConverterConfig.class, ValidationConfig.class})
+@Import({
+        ConverterConfig.class,
+        ValidationConfig.class,
+        UbrewCoreJndiDataSourceConfig.class
+})
 public class UbrewCoreServiceConfig {
 
     @Bean

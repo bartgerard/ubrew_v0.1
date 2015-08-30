@@ -1,6 +1,8 @@
 package be.gerard.core.service.schema;
 
+import be.gerard.common.db.config.EmbeddedDataSourceConfig;
 import be.gerard.common.db.schema.SchemaExporter;
+import be.gerard.core.service.config.CoreDatabaseConfig;
 import org.hibernate.dialect.MySQLDialect;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +19,10 @@ import org.springframework.transaction.annotation.Transactional;
  * @version 0.0.1
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:be.gerard.core.service.test.xml"})
+@ContextConfiguration(classes = {
+        EmbeddedDataSourceConfig.class,
+        CoreDatabaseConfig.class
+})
 @Transactional
 public class CoreSchemaExportTest extends SchemaExporter {
 
