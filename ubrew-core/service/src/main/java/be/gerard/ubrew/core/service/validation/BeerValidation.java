@@ -4,7 +4,7 @@ import be.gerard.common.exception_v1.BusinessException;
 import be.gerard.common.validation.Validation;
 import be.gerard.ubrew.core.interface_v1.exception.error.BeerValidationError;
 import be.gerard.ubrew.core.interface_v1.model.product.Beer;
-import be.gerard.ubrew.core.service.dao.BeerTypeDAO;
+import be.gerard.ubrew.core.service.dao.BeerTypeDao;
 import be.gerard.ubrew.core.service.model.product.BeerTypeRecord;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class BeerValidation implements Validation<Beer> {
 //    private Validations validations;
 
     @Autowired
-    private BeerTypeDAO beerTypeDAO;
+    private BeerTypeDao beerTypeDao;
 
     @Override
     public boolean isApplicable(Object object) {
@@ -34,7 +34,7 @@ public class BeerValidation implements Validation<Beer> {
         if (beer == null) {
             errors.put(BeerValidationError.NULL, new String[]{});
         } else {
-            BeerTypeRecord beerTypeRecord = beerTypeDAO.find(beer.getBeerType().getId());
+            BeerTypeRecord beerTypeRecord = beerTypeDao.findOne(beer.getBeerType().getId());
 
             if (beer.getBeerType() == null) {
                 errors.put(BeerValidationError.TYPE_NULL, new String[]{});

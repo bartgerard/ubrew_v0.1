@@ -1,13 +1,10 @@
-package be.gerard.core.service.config;
+package be.gerard.ubrew.core.service.config;
 
 import be.gerard.common.converter.config.ConverterConfig;
 import be.gerard.common.properties.EnvironmentPropertyPlaceholderConfigurer;
 import be.gerard.common.validation.config.ValidationConfig;
-import org.jasypt.util.password.PasswordEncryptor;
-import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.io.ClassPathResource;
@@ -21,12 +18,7 @@ import org.springframework.core.io.Resource;
  */
 @Configuration
 @Import({ConverterConfig.class, ValidationConfig.class})
-@ComponentScan({
-        "be.gerard.core.service",
-        "be.gerard.common.validation.config",
-        "be.gerard.common.converter.config"
-})
-public class CoreServiceConfig {
+public class UbrewCoreServiceConfig {
 
     @Bean
     public PropertyPlaceholderConfigurer propertyPlaceholderConfigurer() {
@@ -37,12 +29,7 @@ public class CoreServiceConfig {
     }
 
     protected Resource[] locations() {
-        return new ClassPathResource[]{new ClassPathResource("be.gerard.core.service.test.properties")};
-    }
-
-    @Bean
-    public PasswordEncryptor passwordEncryptor() {
-        return new StrongPasswordEncryptor();
+        return new ClassPathResource[]{new ClassPathResource("be.gerard.ubrew.core.service.test.properties")};
     }
 
 }

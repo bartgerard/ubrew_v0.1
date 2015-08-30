@@ -2,7 +2,7 @@ package be.gerard.ubrew.core.service.decoder;
 
 import be.gerard.common.decoder.Decoder;
 import be.gerard.ubrew.core.interface_v1.model.product.BeerType;
-import be.gerard.ubrew.core.service.dao.BeerTypeDAO;
+import be.gerard.ubrew.core.service.dao.BeerTypeDao;
 import be.gerard.ubrew.core.service.model.product.BeerTypeRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,11 +16,11 @@ import org.springframework.stereotype.Component;
 public class BeerTypeDecoder implements Decoder<BeerTypeRecord, BeerType> {
 
     @Autowired
-    private BeerTypeDAO beerTypeDAO;
+    private BeerTypeDao beerTypeDao;
 
     @Override
     public BeerTypeRecord decode(BeerType beerType) {
-        BeerTypeRecord beerTypeRecord = beerType.getId() != null ? beerTypeDAO.find(beerType.getId()) : null;
+        BeerTypeRecord beerTypeRecord = beerType.getId() != null ? beerTypeDao.findOne(beerType.getId()) : null;
         
         if (beerTypeRecord == null) {
             beerTypeRecord = new BeerTypeRecord();
