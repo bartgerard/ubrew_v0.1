@@ -1,6 +1,6 @@
 package be.gerard.core.service.config;
 
-import be.gerard.common.db.config.JndiDatabaseConfig;
+import be.gerard.common.db.config.JndiDatabase2Config;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * @version v0.0.1
  */
 @EnableJpaRepositories("be.gerard.core.service.dao")
-public class CoreJndiDatabaseConfig extends JndiDatabaseConfig {
+public class CoreJndiDatabase2Config extends JndiDatabase2Config {
 
     @Override
     protected String dataSourceName() {

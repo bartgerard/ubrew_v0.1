@@ -20,31 +20,33 @@ import java.util.Properties;
  */
 @Configuration
 @EnableTransactionManagement
-public abstract class AbstractDataBaseConfig {
+public abstract class AbstractDatabase2Config {
 
     @Bean
     protected abstract DataSource dataSource();
 
     @Bean
     public EntityManagerFactory entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean factory = localContainerEntityManagerFactoryBean();
-
-        factory.afterPropertiesSet();
-
-        return factory.getObject();
+        return localContainerEntityManagerFactoryBean().getObject();
     }
 
-    protected LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean() {
+    @Bean
+    public LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean() {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setGenerateDdl(true);
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
         factory.setDataSource(dataSource());
+        factory.setPackagesToScan(packagesToScan());
         factory.setJpaProperties(jpaProperties());
+
+        factory.afterPropertiesSet();
 
         return factory;
     }
+
+    protected abstract String[] packagesToScan();
 
     protected Properties jpaProperties() {
         Properties properties = new Properties();

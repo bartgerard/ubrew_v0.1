@@ -11,7 +11,7 @@ import javax.sql.DataSource;
  * @author bartgerard
  * @version v0.0.1
  */
-public abstract class JndiDatabaseConfig extends AbstractDatabaseConfig {
+public abstract class JndiDatabase2Config extends AbstractDatabase2Config {
 
     @Bean
     public DataSource dataSource() {

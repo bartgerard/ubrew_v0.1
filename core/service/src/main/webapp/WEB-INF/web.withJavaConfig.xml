@@ -24,7 +24,7 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>
             be.gerard.core.service.config.CoreServiceConfig,
-            be.gerard.core.service.config.CoreJndiDatabaseConfig
+            be.gerard.core.service.config.CoreJndiDatabase2Config
         </param-value>
     </context-param>
 
