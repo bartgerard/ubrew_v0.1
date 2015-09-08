@@ -10,7 +10,7 @@
     
     <!-- HttpInvoker -->
     <bean name="/beerService_v1" class="be.gerard.common.invoker.CustomHttpInvokerServiceExporter">
-        <property name="serviceInterface" value="be.gerard.ubrew.core.interface_v1.BeerService" />
+        <property name="serviceInterface" value="be.gerard.ubrew.interface_v1.BeerService" />
         <property name="service" ref="beerServiceImpl"/>
     </bean>
     

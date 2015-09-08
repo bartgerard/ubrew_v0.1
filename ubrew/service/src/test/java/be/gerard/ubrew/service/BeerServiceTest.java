@@ -1,6 +1,6 @@
 package be.gerard.ubrew.service;
 
-import be.gerard.ubrew.core.interface_v1.model.product.Beer;
+import be.gerard.ubrew.interface_v1.model.product.Beer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

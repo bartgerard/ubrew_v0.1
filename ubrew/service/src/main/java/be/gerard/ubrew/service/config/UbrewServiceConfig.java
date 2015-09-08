@@ -8,6 +8,7 @@ import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -22,10 +23,14 @@ import org.springframework.core.io.Resource;
 @Import({
         ConverterConfig.class,
         ValidationConfig.class,
+        UbrewDatabaseConfig.class,
         UbrewDataSourceConfig.class,
         AopConfig.class
 })
-@ComponentScan("be.gerard.ubrew.service")
+@ComponentScan(
+        value = "be.gerard.ubrew.service",
+        excludeFilters = @ComponentScan.Filter(value = Configuration.class, type = FilterType.ANNOTATION)
+)
 public class UbrewServiceConfig {
 
     @Bean

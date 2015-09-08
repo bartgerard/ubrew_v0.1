@@ -48,7 +48,7 @@
     </bean>
     
     <bean id="beerService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-        <property name="serviceInterface" value="be.gerard.ubrew.core.interface_v1.BeerService" />
+        <property name="serviceInterface" value="be.gerard.ubrew.interface_v1.BeerService" />
         <property name="serviceUrl">
             <value>${be.gerard.ubrew.core.beerservice.url}</value>
         </property>

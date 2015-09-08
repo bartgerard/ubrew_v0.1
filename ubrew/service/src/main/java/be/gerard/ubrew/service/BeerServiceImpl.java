@@ -1,8 +1,8 @@
 package be.gerard.ubrew.service;
 
-import be.gerard.ubrew.core.interface_v1.BeerService;
-import be.gerard.ubrew.core.interface_v1.model.product.Beer;
-import be.gerard.ubrew.core.interface_v1.model.product.BeerType;
+import be.gerard.ubrew.interface_v1.BeerService;
+import be.gerard.ubrew.interface_v1.model.product.Beer;
+import be.gerard.ubrew.interface_v1.model.product.BeerType;
 import be.gerard.ubrew.service.dao.BeerTypeDao;
 import be.gerard.ubrew.service.decoder.BeerTypeDecoder;
 import org.springframework.beans.factory.annotation.Autowired;

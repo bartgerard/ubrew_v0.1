@@ -130,7 +130,7 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>ubrew-core-interface</artifactId>
+                <artifactId>ubrew-interface</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -145,7 +145,7 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>ubrew-core-service</artifactId>
+                <artifactId>ubrew-service</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

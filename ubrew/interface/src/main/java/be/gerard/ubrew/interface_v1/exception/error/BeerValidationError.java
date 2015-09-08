@@ -1,4 +1,4 @@
-package be.gerard.ubrew.core.interface_v1.exception.error;
+package be.gerard.ubrew.interface_v1.exception.error;
 
 import be.gerard.common.exception_v1.BusinessException;
 

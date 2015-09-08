@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>be.gerard</groupId>
-        <artifactId>ubrew-core</artifactId>
+        <artifactId>ubrew</artifactId>
         <version>0.0.1</version>
     </parent>
 

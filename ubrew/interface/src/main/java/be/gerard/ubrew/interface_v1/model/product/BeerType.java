@@ -1,4 +1,4 @@
-package be.gerard.ubrew.core.interface_v1.model.product;
+package be.gerard.ubrew.interface_v1.model.product;
 
 import java.io.Serializable;
 import java.util.Objects;

@@ -1,4 +1,4 @@
-package be.gerard.ubrew.core.interface_v1.exception;
+package be.gerard.ubrew.interface_v1.exception;
 
 import be.gerard.common.exception_v1.BusinessException;
 import java.io.Serializable;

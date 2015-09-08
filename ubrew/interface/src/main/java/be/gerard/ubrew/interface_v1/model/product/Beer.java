@@ -1,6 +1,6 @@
-package be.gerard.ubrew.core.interface_v1.model.product;
+package be.gerard.ubrew.interface_v1.model.product;
 
-import be.gerard.ubrew.core.interface_v1.model.Product;
+import be.gerard.ubrew.interface_v1.model.Product;
 import java.io.Serializable;
 
 /**

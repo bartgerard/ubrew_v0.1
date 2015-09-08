@@ -2,8 +2,8 @@ package be.gerard.ubrew.service.validation;
 
 import be.gerard.common.exception_v1.BusinessException;
 import be.gerard.common.validation.Validation;
-import be.gerard.ubrew.core.interface_v1.exception.error.BeerValidationError;
-import be.gerard.ubrew.core.interface_v1.model.product.Beer;
+import be.gerard.ubrew.interface_v1.exception.error.BeerValidationError;
+import be.gerard.ubrew.interface_v1.model.product.Beer;
 import be.gerard.ubrew.service.dao.BeerTypeDao;
 import be.gerard.ubrew.service.model.product.BeerTypeRecord;
 import org.springframework.beans.factory.annotation.Autowired;

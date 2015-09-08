@@ -1,11 +1,12 @@
 package be.gerard.ubrew.core.webservice.impl;
 
-import be.gerard.ubrew.core.interface_v1.BeerService;
-import be.gerard.ubrew.core.interface_v1.model.product.BeerType;
 import be.gerard.ubrew.core.webservice.BeerWebService;
-import java.util.List;
+import be.gerard.ubrew.interface_v1.BeerService;
+import be.gerard.ubrew.interface_v1.model.product.BeerType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * BeerWebServiceImpl
