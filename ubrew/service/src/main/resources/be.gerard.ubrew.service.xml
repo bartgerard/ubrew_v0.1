@@ -21,7 +21,7 @@
     -->
 
     <!-- Resource(s) -->
-    <import resource="be.gerard.ubrew.core.validations.xml" />
+    <import resource="be.gerard.ubrew.validations.xml" />
 
     <!--
     <bean id="strongPasswordEncryptor" class="org.jasypt.util.password.StrongPasswordEncryptor"/>

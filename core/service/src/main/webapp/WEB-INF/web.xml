@@ -10,19 +10,21 @@
 
     <!-- The Base, The Beat, The Melody... -->
 
-    <!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
-    <!-- default is applicationContext.xml -->
+    <!-- Configure ContextLoaderListener to use JavaConfigWebApplicationContext
+         instead of the default XmlWebApplicationContext -->
+    <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+    </context-param>
+    <!-- Configuration locations must consist of one or more comma- or space-delimited
+         fully-qualified @Configuration classes -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            /WEB-INF/applicationContext.xml
+            be.gerard.core.service.config.CoreServiceConfig,
+            be.gerard.core.service.config.CoreDatabaseConfig,
+            be.gerard.core.service.config.CoreJndiDataSourceConfig
         </param-value>
-        <!--
-        <param-value>
-            /WEB-INF/applicationContext.xml,
-            classpath*:be.gerard.common.security.xml
-        </param-value>
-        -->
     </context-param>
 
     <!-- Spring Profile -->

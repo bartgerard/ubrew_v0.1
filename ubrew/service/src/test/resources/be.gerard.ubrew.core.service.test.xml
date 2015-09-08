@@ -14,7 +14,7 @@
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
     
     <!-- Main Config -->
-    <import resource="classpath:be.gerard.ubrew.core.service.xml"/>
+    <import resource="classpath:be.gerard.ubrew.service.xml"/>
 
     <!-- Properties  -->
     <bean id="be.gerard.ubrew.core.service.properties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">

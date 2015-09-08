@@ -37,7 +37,7 @@ public class CoreServiceConfig {
     }
 
     protected Resource[] locations() {
-        return new ClassPathResource[]{new ClassPathResource("be.gerard.core.service.test.properties")};
+        return new ClassPathResource[]{new ClassPathResource("be.gerard.core.service.properties")};
     }
 
     @Bean

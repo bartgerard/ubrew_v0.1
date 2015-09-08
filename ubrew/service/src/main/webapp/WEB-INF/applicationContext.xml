@@ -34,7 +34,7 @@
         <property name="ignoreResourceNotFound" value="true" />
         <property name="locations">
             <list>
-                <value>classpath:be.gerard.ubrew.core.service.properties</value>
+                <value>classpath:be.gerard.ubrew.service.properties</value>
                 <!--<value>file:///Users/bartgerard/ubrew/_config/ubrew.properties</value> TODO -->
             </list>
         </property>
@@ -48,6 +48,6 @@
     </bean>
 
     <!-- Main Config -->
-    <import resource="classpath:be.gerard.ubrew.core.service.xml" />
+    <import resource="classpath:be.gerard.ubrew.service.xml" />
 
 </beans>

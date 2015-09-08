@@ -6,9 +6,26 @@
     
     <!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
     <!-- default is applicationContext.xml -->
+    <!--
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/applicationContext.xml</param-value>
+    </context-param>
+    -->
+
+    <!-- Configure ContextLoaderListener to use JavaConfigWebApplicationContext
+     instead of the default XmlWebApplicationContext -->
+    <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+    </context-param>
+    <!-- Configuration locations must consist of one or more comma- or space-delimited
+         fully-qualified @Configuration classes -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            be.gerard.ubrew.service.config.UbrewServiceConfig
+        </param-value>
     </context-param>
     
     <!-- Spring Profile -->
@@ -35,11 +52,5 @@
         <servlet-name>remoting</servlet-name>
         <url-pattern>/remoting/*</url-pattern>
     </servlet-mapping>
-    
-    <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-    </session-config>
     
 </web-app>

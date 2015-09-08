@@ -37,7 +37,7 @@ public class UbrewServiceConfig {
     }
 
     protected Resource[] locations() {
-        return new ClassPathResource[]{new ClassPathResource("be.gerard.ubrew.core.service.test.properties")};
+        return new ClassPathResource[]{new ClassPathResource("be.gerard.ubrew.service.properties")};
     }
 
 }

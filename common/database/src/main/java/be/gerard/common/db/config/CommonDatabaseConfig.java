@@ -55,6 +55,7 @@ public abstract class CommonDatabaseConfig {
         properties.put(Environment.HBM2DDL_AUTO, "update");
         properties.put(Environment.GENERATE_STATISTICS, false);
         properties.put(Environment.SHOW_SQL, false);
+        properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
 
         return properties;
     }
