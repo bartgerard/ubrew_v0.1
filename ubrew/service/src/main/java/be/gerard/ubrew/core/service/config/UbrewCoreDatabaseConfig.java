@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * @version v0.0.1
  */
 @EnableJpaRepositories("be.gerard.ubrew.core.service.dao")
-public class UbrewCoreDatabaseConfig2 extends CommonDatabaseConfig {
+public class UbrewCoreDatabaseConfig extends CommonDatabaseConfig {
 
     @Override
     protected String[] packagesToScan() {
