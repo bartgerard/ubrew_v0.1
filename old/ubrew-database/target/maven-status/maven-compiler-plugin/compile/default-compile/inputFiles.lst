@@ -1,8 +1,0 @@
-/Users/bartgerard/ubrew/old/ubrew-database/src/main/java/be/gerard/ubrew/database/entities/Address.java
-/Users/bartgerard/ubrew/old/ubrew-database/src/main/java/be/gerard/ubrew/database/dao/DAO.java
-/Users/bartgerard/ubrew/old/ubrew-database/src/main/java/be/gerard/ubrew/database/util/HibernateUtil.java
-/Users/bartgerard/ubrew/old/ubrew-database/src/main/java/be/gerard/ubrew/database/dao/hibernate/UserDAOHib.java
-/Users/bartgerard/ubrew/old/ubrew-database/src/main/java/be/gerard/ubrew/database/dao/hibernate/DAOHib.java
-/Users/bartgerard/ubrew/old/ubrew-database/src/main/java/be/gerard/ubrew/database/dao/UserDAO.java
-/Users/bartgerard/ubrew/old/ubrew-database/src/main/java/be/gerard/ubrew/database/entities/User.java
-/Users/bartgerard/ubrew/old/ubrew-database/src/main/java/be/gerard/ubrew/database/dao/TestDAO.java

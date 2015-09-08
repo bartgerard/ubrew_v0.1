@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:body>
+
+        <h1>#{i18n.Register}</h1>
+
+        <h:form id="registrationFrom" >
+
+            <p:messages id="registrationErrors" showDetail="false" autoUpdate="true" />
+
+            <h2 style="gray-darker">Account Information</h2>
+
+            <p:panelGrid>
+
+                <p:row>
+                    <p:column colspan="2"><h:outputLabel for="firstname" value="Name" /></p:column>
+                </p:row>
+                <p:row>
+                    <p:column><p:inputText id="firstname" value="#{registerBean.firstname}" placeholder="Firstname" style="width: 100%" /></p:column>
+                    <p:column><p:inputText id="lastname" value="#{registerBean.lastname}" placeholder="Lastname" style="width: 100%" /></p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column colspan="2"><h:outputLabel for="username" value="Email" /></p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="2"><p:inputText id="username" value="#{registerBean.username}" placeholder="someone@example.com" style="width: 100%" /></p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column colspan="2"><h:outputLabel for="password" value="Password" /></p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="2"><p:password id="password" value="#{registerBean.password}" placeholder="Password" style="width: 100%" /></p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="2"><p:password value="#{registerBean.passwordVerification}" placeholder="Password (Verification)" style="width: 100%" /></p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column colspan="1"><h:outputLabel for="birthDate" value="Geboortedatum" /></p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="1">
+                        <p:calendar id="birthdate" pattern="dd/MM/yyyy" value="#{registerBean.birthDate}" showOn="button" placeholder="dd/mm/yyyy" />
+                    </p:column>
+                </p:row>
+            </p:panelGrid>
+
+            <hr/>
+
+            <h2 style="gray-darker">Primary Address</h2>
+
+            <c:set var="addressLegend" value="#{i18n.Address}" />
+            <ui:include src="/components/address.xhtml"/>
+            
+            <p:panelGrid>
+                <p:row>
+                    <p:column><h:commandLink value="Register" action="#{registerBean.register()}" class="btn btn-lg btn-success" /></p:column>
+                </p:row>
+            </p:panelGrid>
+            
+        </h:form>
+
+    </h:body>
+
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AddressEditDlg" widgetVar="AddressEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditAddressTitle}">
+            <h:form id="AddressEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{addressController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditAddressLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{addressController.selected.id}" title="#{bundle.EditAddressTitle_id}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditAddressLabel_address1}" for="address1" />
+                        <p:inputText id="address1" value="#{addressController.selected.address1}" title="#{bundle.EditAddressTitle_address1}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_address1}"/>
+                        <p:outputLabel value="#{bundle.EditAddressLabel_address2}" for="address2" />
+                        <p:inputText id="address2" value="#{addressController.selected.address2}" title="#{bundle.EditAddressTitle_address2}" />
+                        <p:outputLabel value="#{bundle.EditAddressLabel_city}" for="city" />
+                        <p:inputText id="city" value="#{addressController.selected.city}" title="#{bundle.EditAddressTitle_city}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_city}"/>
+                        <p:outputLabel value="#{bundle.EditAddressLabel_country}" for="country" />
+                        <p:inputText id="country" value="#{addressController.selected.country}" title="#{bundle.EditAddressTitle_country}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_country}"/>
+                        <p:outputLabel value="#{bundle.EditAddressLabel_homeaddress}" for="homeaddress" />
+                        <p:selectBooleanCheckbox id="homeaddress" value="#{addressController.selected.homeaddress}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_homeaddress}"/>
+                        <p:outputLabel value="#{bundle.EditAddressLabel_preferred}" for="preferred" />
+                        <p:selectBooleanCheckbox id="preferred" value="#{addressController.selected.preferred}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_preferred}"/>
+                        <p:outputLabel value="#{bundle.EditAddressLabel_stateorprovince}" for="stateorprovince" />
+                        <p:inputText id="stateorprovince" value="#{addressController.selected.stateorprovince}" title="#{bundle.EditAddressTitle_stateorprovince}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_stateorprovince}"/>
+                        <p:outputLabel value="#{bundle.EditAddressLabel_ziporpostalcode}" for="ziporpostalcode" />
+                        <p:inputText id="ziporpostalcode" value="#{addressController.selected.ziporpostalcode}" title="#{bundle.EditAddressTitle_ziporpostalcode}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_ziporpostalcode}"/>
+                        <p:outputLabel value="#{bundle.EditAddressLabel_addressesId}" for="addressesId" />
+                        <p:selectOneMenu id="addressesId" value="#{addressController.selected.addressesId}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_addressesId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{generalUserController.itemsAvailableSelectOne}"
+                                           var="addressesIdItem"
+                                           itemValue="#{addressesIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{addressController.update}" value="#{bundle.Save}" update="display,:AddressListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AddressEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AddressEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

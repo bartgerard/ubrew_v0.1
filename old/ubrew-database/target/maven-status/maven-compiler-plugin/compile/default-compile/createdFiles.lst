@@ -1,8 +1,0 @@
-be/gerard/ubrew/database/entities/User.class
-be/gerard/ubrew/database/dao/DAO.class
-be/gerard/ubrew/database/dao/hibernate/DAOHib.class
-be/gerard/ubrew/database/dao/hibernate/UserDAOHib.class
-be/gerard/ubrew/database/dao/TestDAO.class
-be/gerard/ubrew/database/util/HibernateUtil.class
-be/gerard/ubrew/database/entities/Address.class
-be/gerard/ubrew/database/dao/UserDAO.class

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:body>
+
+        <h1>#{i18n.Profile}</h1>
+
+        <h:form id="registrationFrom" >
+
+            <p:messages id="registrationErrors" showDetail="false" autoUpdate="true" />
+            
+            <h2 style="gray-darker">Account Information</h2>
+
+            <p:panelGrid>
+
+                <p:row>
+                    <p:column colspan="2"><h:outputText value="Name" /></p:column>
+                </p:row>
+                <p:row>
+                    <p:column><p:inputText value="#{profileBean.firstname}" placeholder="Firstname" style="width: 100%" /></p:column>
+                    <p:column><p:inputText value="#{profileBean.lastname}" placeholder="Lastname" style="width: 100%" /></p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column colspan="2"><h:outputText value="Email" /></p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="2"><p:inputText value="#{profileBean.username}" placeholder="someone@example.com" style="width: 100%" /></p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column colspan="2"><h:outputText value="Password" /></p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="2"><p:password value="#{profileBean.password}" placeholder="Password" style="width: 100%" /></p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="2"><p:password value="#{profileBean.passwordVerification}" placeholder="Password (Verification)" style="width: 100%" /></p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column colspan="1"><h:outputText value="Geboortedatum" /></p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="1">
+                        <p:calendar pattern="dd/MM/yyyy" value="#{profileBean.birthDate}" showOn="button" placeholder="dd/mm/yyyy" />
+                    </p:column>
+                </p:row>
+            </p:panelGrid>
+            
+            <hr/>
+            
+            <h2 style="gray-darker">Primary Address</h2>
+            
+            <p:panelGrid>
+
+                <p:row>
+                    <p:column colspan="2"><h:outputText value="Address Line 1" /></p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="2"><p:inputText value="#{profileBean.address1}" placeholder="Address Line 1" style="width: 100%" /></p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column colspan="2"><h:outputText value="Address Line 2 (optional)" /></p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="2"><p:inputText value="#{profileBean.address2}" placeholder="Address Line 2" style="width: 100%" /></p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="1"><h:outputText value="City" /></p:column>
+                    <p:column colspan="1"><h:outputText value="Zip or Postal Code" /></p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="1"><p:inputText value="#{profileBean.city}" placeholder="City" style="width: 100%" /></p:column>
+                    <p:column colspan="1"><p:inputText value="#{profileBean.zipOrPostalCode}" placeholder="Zip or Postal Code" style="width: 100%" converterMessage="Not a number" /></p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column colspan="2"><h:outputText value="State or Province" /></p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="2"><p:inputText value="#{profileBean.stateOrProvince}" placeholder="State or Province" style="width: 100%" /></p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column colspan="2"><h:outputText value="Country" /></p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="2"><p:inputText value="#{profileBean.country}" placeholder="Country" style="width: 100%" /></p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column colspan="2"></p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column colspan="2"><h:commandLink value="Update" action="#{profileBean.update()}" class="btn btn-lg btn-success" /></p:column>
+                </p:row>
+            </p:panelGrid>
+            
+            
+            
+        </h:form>
+
+    </h:body>
+
+</html>
