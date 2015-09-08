@@ -15,30 +15,21 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+    <!--
     <context:annotation-config />
-    <context:component-scan base-package="be.gerard.ubrew.core.service" />
-    
+    <context:component-scan base-package="be.gerard.ubrew.service" />
+    -->
+
     <!-- Resource(s) -->
     <import resource="be.gerard.ubrew.core.validations.xml" />
 
+    <!--
     <bean id="strongPasswordEncryptor" class="org.jasypt.util.password.StrongPasswordEncryptor"/>
+    -->
 
-    <!-- Aspect Oriented Programming -->
-    
-    <bean id="loggingAdvice" class="be.gerard.common.aop.LoggingAdvice" />
-    <bean id="serviceExceptionAdvice" class="be.gerard.common.aop.ServiceExceptionAdvice" />
-    
-    <aop:config>
-        <aop:aspect ref="loggingAdvice">
-            <aop:around pointcut="be.gerard.common.aop.PointCutLibrary.springServiceOperation()" method="log"/>
-        </aop:aspect>
-        <aop:aspect ref="serviceExceptionAdvice">
-            <aop:after-throwing throwing="exception" pointcut="be.gerard.common.aop.PointCutLibrary.springServiceOperation()" method="handleException"/>
-        </aop:aspect>
-    </aop:config>
-    
     <!-- DATABASE -->
-    
+
+    <!--
     <beans profile="hib" >
 
         <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -62,7 +53,8 @@
         </bean>
     
     </beans>
-    
+    -->
+    <!--
     <beans profile="jpa">
         
         <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" >
@@ -89,11 +81,12 @@
         <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" >
             <property name="entityManagerFactory" ref="entityManagerFactory" />
         </bean>
-        
-        <!-- enables interpretation of the @PersistenceUnit/@PersistenceContext annotations providing convenient
-        access to EntityManagerFactory/EntityManager -->
+
         <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
         
     </beans>
-    
+-->
+
+    <!-- enables interpretation of the @PersistenceUnit/@PersistenceContext annotations providing convenient
+    access to EntityManagerFactory/EntityManager -->
 </beans>

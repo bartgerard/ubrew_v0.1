@@ -49,6 +49,10 @@
         </dependency>
         <dependency>
             <groupId>be.gerard</groupId>
+            <artifactId>common-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>be.gerard</groupId>
             <artifactId>ubrew-core-interface</artifactId>
         </dependency>
         

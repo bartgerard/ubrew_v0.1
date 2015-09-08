@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- Aspect Oriented Programming -->
+
+    <bean id="loggingAdvice" class="be.gerard.common.aop.advice.LoggingAdvice"/>
+    <bean id="serviceExceptionAdvice" class="be.gerard.common.aop.advice.ServiceExceptionAdvice"/>
+
+    <aop:config>
+        <aop:aspect ref="loggingAdvice">
+            <aop:around pointcut="be.gerard.common.aop.PointCutLibrary.springServiceOperation()" method="log"/>
+        </aop:aspect>
+        <aop:aspect ref="serviceExceptionAdvice">
+            <aop:after-throwing throwing="exception"
+                                pointcut="be.gerard.common.aop.PointCutLibrary.springServiceOperation()"
+                                method="handleException"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>

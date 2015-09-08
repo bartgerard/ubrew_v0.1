@@ -1,7 +1,7 @@
 package be.gerard.common.validation.aop;
 
 import be.gerard.common.annotation.validation.Validate;
-import be.gerard.common.aop.utils.AnnotationUtils;
+import be.gerard.common.aop.util.AnnotationUtils;
 import be.gerard.common.validation.ErrorContext;
 import be.gerard.common.validation.ValidationService;
 import org.aspectj.lang.ProceedingJoinPoint;

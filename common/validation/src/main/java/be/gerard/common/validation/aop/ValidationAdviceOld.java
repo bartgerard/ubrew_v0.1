@@ -1,7 +1,7 @@
 package be.gerard.common.validation.aop;
 
 import be.gerard.common.annotation.validation.Validation;
-import be.gerard.common.aop.utils.AnnotationUtils;
+import be.gerard.common.aop.util.AnnotationUtils;
 import be.gerard.common.exception_v1.BusinessException;
 import be.gerard.common.validation.Validations;
 import org.aspectj.lang.ProceedingJoinPoint;
