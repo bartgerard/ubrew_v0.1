@@ -5,7 +5,6 @@ import be.gerard.common.web.GeneralBean;
 import be.gerard.core.interface_v1.model.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 
 import javax.faces.application.FacesMessage;
@@ -59,8 +58,8 @@ public class RegisterBean extends GeneralBean<User> implements Serializable {
 //    @Autowired
 //    private UserService userService;
 
-    @Value("${be.gerard.general.application.name}")
-    private String applicationName;
+//    @Value("${be.gerard.general.application.name}")
+//    private String applicationName;
 
     @Override
     public User getSelected() {
