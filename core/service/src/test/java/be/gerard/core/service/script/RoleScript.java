@@ -22,6 +22,9 @@ public class RoleScript extends CommonScript {
                 .addPrivilege("CRUD_TRANSLATION")
                 .build();
 
+        builderContext.buildRole("TEST")
+                .build();
+
         builderContext.buildUser(username)
                 .firstname(firstname)
                 .lastname(lastname)

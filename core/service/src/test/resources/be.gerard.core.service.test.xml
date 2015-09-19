@@ -11,7 +11,7 @@
     <!-- Properties  -->
     <bean id="be.gerard.core.service.properties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="localOverride" value="true"/>
-        <property name="location" value="classpath:be.gerard.core.service.test.properties"/>
+        <property name="location" value="classpath:be.gerard.core.service.properties"/>
     </bean>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

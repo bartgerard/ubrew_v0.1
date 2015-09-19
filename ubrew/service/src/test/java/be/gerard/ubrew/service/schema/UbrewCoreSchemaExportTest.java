@@ -31,7 +31,7 @@ public class UbrewCoreSchemaExportTest extends SchemaExporter {
 
     @Test
     public void export() throws ClassNotFoundException {
-        export(MySQLDialect.class, "ubrew-core", localContainerEntityManagerFactoryBean.getPersistenceUnitInfo().getManagedClassNames());
+        export(MySQLDialect.class, "ubrew", localContainerEntityManagerFactoryBean.getPersistenceUnitInfo().getManagedClassNames());
     }
 
 }

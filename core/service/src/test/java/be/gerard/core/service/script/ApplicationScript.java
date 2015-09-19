@@ -33,11 +33,23 @@ public class ApplicationScript extends CommonScript {
                 .property("be.gerard.core.service.url", "urls", "http://localhost:8080/core-service")
                 .build();
 
+        builderContext.buildApplication("ubrew.web")
+                .property("be.gerard.core.service.url", "urls", "http://localhost:8080/core-service")
+                .build();
+
         builderContext.saveAll();
 
         applicationService.instantiate(
                 "core.web",
                 "core.web.1",
+                "password",
+                Collections.singletonList("127.0.0.1"),
+                Collections.emptyList()
+        );
+
+        applicationService.instantiate(
+                "ubrew.web",
+                "ubrew.web.1",
                 "password",
                 Collections.singletonList("127.0.0.1"),
                 Collections.emptyList()

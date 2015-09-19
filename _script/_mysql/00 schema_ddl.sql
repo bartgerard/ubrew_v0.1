@@ -1,0 +1,3 @@
+CREATE SCHEMA `core`;
+
+CREATE SCHEMA `ubrew`;

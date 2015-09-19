@@ -52,5 +52,13 @@
         <servlet-name>remoting</servlet-name>
         <url-pattern>/remoting/*</url-pattern>
     </servlet-mapping>
+
+    <!-- JNDI DataSource -->
+    <resource-ref>
+        <description>Ubrew Service DataSource</description>
+        <res-ref-name>jdbc/db.datasource.ubrew</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Application</res-auth>
+    </resource-ref>
     
 </web-app>

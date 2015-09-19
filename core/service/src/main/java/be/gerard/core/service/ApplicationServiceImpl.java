@@ -76,7 +76,7 @@ public class ApplicationServiceImpl implements ApplicationService {
             applicationInstanceRecord.addMac(mac);
         }
 
-        applicationInstanceDao.saveAndFlush(applicationInstanceRecord);
+        applicationInstanceDao.save(applicationInstanceRecord);
 
         //return conversionService.convert(applicationInstanceRecord.getApplication(), Application.class);
     }

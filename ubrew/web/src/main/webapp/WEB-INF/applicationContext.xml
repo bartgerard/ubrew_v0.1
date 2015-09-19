@@ -13,7 +13,7 @@
        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.1.xsd">
     
     <!-- JNDI -->
-    <jee:jndi-lookup id="db.ubrew.core.datasource" jndi-name="jdbc/db.ubrew.core.datasource" expected-type="javax.sql.DataSource" />
+    <!--<jee:jndi-lookup id="db.ubrew.core.datasource" jndi-name="jdbc/db.ubrew.core.datasource" expected-type="javax.sql.DataSource" />-->
 
     <!-- Properties  -->
     <bean id="be.gerard.ubrew.properties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
@@ -36,8 +36,5 @@
 
     <!-- Scan -->
     <context:component-scan base-package="be.gerard.ubrew.web" />
-    
-    <!-- Import(s) -->
-    <import resource="classpath:be.gerard.util.remote.xml"/>
 
 </beans>

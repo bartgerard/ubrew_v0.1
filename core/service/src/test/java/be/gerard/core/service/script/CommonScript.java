@@ -10,7 +10,6 @@ import be.gerard.core.service.config.CoreServiceConfig;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,7 +29,6 @@ import java.time.Month;
         PropertyDataSourceConfig.class,
         CoreDatabaseConfig.class
 })
-@PropertySource("classpath:be.gerard.core.service.test.properties")
 @Transactional
 public class CommonScript {
 
