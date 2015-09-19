@@ -1,4 +1,4 @@
-package be.gerard.ubrew.core.web.controller;
+package be.gerard.ubrew.web.controller;
 
 import java.io.Serializable;
 import javax.annotation.PostConstruct;

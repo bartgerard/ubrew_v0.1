@@ -1,4 +1,4 @@
-package be.gerard.ubrew.core.web.controller;
+package be.gerard.ubrew.web.controller;
 
 import be.gerard.core.interface_v1.AuthenticationService;
 import be.gerard.core.interface_v1.session.UserSession;
@@ -6,12 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.Arrays;
 
 @Scope("session")
 @Named("loginBean")

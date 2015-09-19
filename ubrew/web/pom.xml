@@ -31,6 +31,18 @@
             <groupId>be.gerard</groupId>
             <artifactId>common-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>be.gerard</groupId>
+            <artifactId>common-bootstrap</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>be.gerard</groupId>
+            <artifactId>common-logging</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>be.gerard</groupId>
+            <artifactId>common-security</artifactId>
+        </dependency>
  
         <!-- PrimeFaces -->
         <dependency>
