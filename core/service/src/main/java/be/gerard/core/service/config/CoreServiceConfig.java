@@ -22,7 +22,6 @@ import org.springframework.core.io.Resource;
 @Configuration
 @Import({ConverterConfig.class, ValidationConfig.class})
 @ComponentScan({
-        "be.gerard.common.logging",
         "be.gerard.core.service",
         "be.gerard.common.validation.config",
         "be.gerard.common.converter.config"

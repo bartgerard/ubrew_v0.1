@@ -1,11 +1,12 @@
 package be.gerard.core.service.script;
 
 import be.gerard.core.interface_v1.ApplicationService;
+import be.gerard.core.interface_v1.enums.PropertyType;
+import be.gerard.core.service.builder.ApplicationBuilder;
 import be.gerard.core.service.dao.ApplicationDao;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
-import org.springframework.util.Assert;
 
 import java.util.Collections;
 
@@ -34,17 +35,19 @@ public class ApplicationScript extends CommonScript {
     @Test
     @Rollback(false)
     public void initApplications() {
-        builderContext.buildApplication("core.web")
-                .property("be.gerard.core.service.url", "urls", "http://localhost:8080/core-service")
+        ApplicationBuilder applicationBuilder = builderContext.buildApplication("core.web");
+
+        applicationBuilder.propertyGroup("core")
+                .property("be.gerard.core.service.url", PropertyType.URL, "http://localhost:8080/core-service")
                 .build();
 
+        applicationBuilder.build();
+
         builderContext.buildApplication("ubrew.web")
-                .property("be.gerard.core.service.url", "urls", "http://localhost:8080/core-service")
+                .propertyGroup("core")
                 .build();
 
         builderContext.saveAll();
-
-        Assert.notNull(applicationDao.findByKey("ubrew.web"));
 
         applicationService.instantiate(
                 "core.web",

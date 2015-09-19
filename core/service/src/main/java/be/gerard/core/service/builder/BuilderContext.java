@@ -2,10 +2,12 @@ package be.gerard.core.service.builder;
 
 import be.gerard.core.service.dao.ApplicationDao;
 import be.gerard.core.service.dao.PrivilegeDao;
+import be.gerard.core.service.dao.PropertyGroupDao;
 import be.gerard.core.service.dao.RoleDao;
 import be.gerard.core.service.dao.UserDao;
 import be.gerard.core.service.model.ApplicationRecord;
 import be.gerard.core.service.model.PrivilegeRecord;
+import be.gerard.core.service.model.PropertyGroupRecord;
 import be.gerard.core.service.model.RoleRecord;
 import be.gerard.core.service.model.UserRecord;
 import org.jasypt.util.password.PasswordEncryptor;
@@ -30,6 +32,8 @@ public class BuilderContext {
 
     private final Map<String, ApplicationRecord> applications = new HashMap<>();
 
+    private final Map<String, PropertyGroupRecord> propertyGroups = new HashMap<>();
+
     private final Map<String, UserRecord> users = new HashMap<>();
 
     private final Map<String, RoleRecord> roles = new HashMap<>();
@@ -41,6 +45,9 @@ public class BuilderContext {
 
     @Autowired
     private ApplicationDao applicationDao;
+
+    @Autowired
+    private PropertyGroupDao propertyGroupDao;
 
     @Autowired
     private UserDao userDao;
@@ -58,6 +65,13 @@ public class BuilderContext {
 
         for (ApplicationRecord applicationRecord : applicationDao.findAll()) {
             applications.put(applicationRecord.getKey(), applicationRecord);
+        }
+
+        // PropertyGroups
+        propertyGroups.clear();
+
+        for (PropertyGroupRecord propertyGroupRecord : propertyGroupDao.findAll()) {
+            propertyGroups.put(propertyGroupRecord.getKey(), propertyGroupRecord);
         }
 
         // Users
@@ -100,6 +114,19 @@ public class BuilderContext {
         }
 
         return applicationRecord;
+    }
+
+    public PropertyGroupRecord getOrProperyGroup(String key) {
+        Assert.hasText(key, "key is invalid [null]");
+
+        PropertyGroupRecord propertyGroupRecord = propertyGroups.get(key);
+
+        if (propertyGroupRecord == null) {
+            propertyGroupRecord = new PropertyGroupRecord(key);
+            propertyGroups.put(key, propertyGroupRecord);
+        }
+
+        return propertyGroupRecord;
     }
 
     public UserRecord getOrCreateUser(String username) {

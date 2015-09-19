@@ -1,6 +1,7 @@
 package be.gerard.core.interface_v1.model;
 
 import be.gerard.common.to.BaseTo;
+import be.gerard.core.interface_v1.enums.PropertyType;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -22,7 +23,7 @@ public class Property extends BaseTo {
     private String key;
 
     @XmlElement(required = true)
-    private String group;
+    private PropertyType type;
 
     @XmlElement(required = true)
     private String value;
@@ -30,9 +31,9 @@ public class Property extends BaseTo {
     public Property() {
     }
 
-    public Property(String key, String group, String value) {
+    public Property(String key, PropertyType type, String value) {
         this.key = key;
-        this.group = group;
+        this.type = type;
         this.value = value;
     }
 
@@ -44,12 +45,12 @@ public class Property extends BaseTo {
         this.key = key;
     }
 
-    public String getGroup() {
-        return group;
+    public PropertyType getType() {
+        return type;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
+    public void setType(PropertyType type) {
+        this.type = type;
     }
 
     public String getValue() {

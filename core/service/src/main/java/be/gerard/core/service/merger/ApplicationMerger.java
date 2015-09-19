@@ -25,7 +25,7 @@ public class ApplicationMerger implements Merger<ApplicationRecord, Application,
 
     @Override
     public void merge(ApplicationRecord applicationRecord, Application application, MergeContext context) {
-        propertyMerger.mergeCollection(applicationRecord.getProperties(), application.getProperties(), context);
+        //propertyMerger.mergeCollection(applicationRecord.getProperties(), application.getProperties(), context);
     }
 
 }

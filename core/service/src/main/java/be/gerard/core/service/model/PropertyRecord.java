@@ -2,6 +2,7 @@ package be.gerard.core.service.model;
 
 import be.gerard.common.converter.annotation.Convertible;
 import be.gerard.common.db.model.BaseRecord;
+import be.gerard.core.interface_v1.enums.PropertyType;
 import be.gerard.core.interface_v1.model.Property;
 
 import javax.persistence.*;
@@ -16,45 +17,47 @@ import javax.persistence.*;
 @Convertible(defaultTargetType = Property.class)
 @Entity
 @SequenceGenerator(name = BaseRecord.SEQUENCE_GENERATOR, sequenceName = "s_property", allocationSize = BaseRecord.SEQUENCE_ALLOCATION_SIZE)
-@Table(name = "core_property", uniqueConstraints = @UniqueConstraint(name = "uk_property_propKey", columnNames = {"prop_key"}))
-public class PropertyRecord extends BaseRecord {
+@Table(name = "core_property", uniqueConstraints = @UniqueConstraint(name = "uk_property_key", columnNames = {"ukey"}))
+public class PropertyRecord extends BaseRecord implements Keyable {
 
-    @Column(name = "prop_key", nullable = false, updatable = false)
+    @Column(name = "ukey", nullable = false, updatable = false)
     private String key;
 
-    @Column(name = "prop_group", nullable = false, updatable = false)
-    private String group;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type", nullable = false)
+    private PropertyType type;
 
-    @Column(name = "prop_value", nullable = false)
+    @Column(name = "value", nullable = false)
     private String value;
 
-    private PropertyRecord() {
+    public PropertyRecord() {
     }
 
     public PropertyRecord(String key) {
         this.key = key;
     }
 
-    public PropertyRecord(String key, String group, String value) {
+    public PropertyRecord(String key, PropertyType type, String value) {
         this.key = key;
-        this.group = group;
+        this.type = type;
         this.value = value;
     }
 
+    @Override
     public String getKey() {
         return key;
     }
 
-    public String getGroup() {
-        return group;
+    public PropertyType getType() {
+        return type;
+    }
+
+    public void setType(PropertyType type) {
+        this.type = type;
     }
 
     public String getValue() {
         return value;
-    }
-
-    public void setGroup(String group) {
-        this.group = group;
     }
 
     public void setValue(String value) {

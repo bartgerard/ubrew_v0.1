@@ -14,10 +14,6 @@
         <!-- Core -->
         <dependency>
             <groupId>be.gerard</groupId>
-            <artifactId>common-logging</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>be.gerard</groupId>
             <artifactId>core-interface</artifactId>
         </dependency>
         <dependency>

@@ -3,19 +3,20 @@ package be.gerard.core.service.model;
 import be.gerard.common.converter.annotation.Convertible;
 import be.gerard.common.db.model.BaseRecord;
 import be.gerard.core.interface_v1.model.Application;
-import org.springframework.util.Assert;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -29,57 +30,60 @@ import java.util.Set;
 @Entity
 @SequenceGenerator(name = BaseRecord.SEQUENCE_GENERATOR, sequenceName = "s_application", allocationSize = BaseRecord.SEQUENCE_ALLOCATION_SIZE)
 @Table(name = "core_application", uniqueConstraints = @UniqueConstraint(name = "uk_application_app_key", columnNames = {"app_key"}))
-public class ApplicationRecord extends BaseRecord {
+public class ApplicationRecord extends BaseRecord implements Keyable {
 
     @Column(name = "app_key", nullable = false, updatable = false)
     private String key;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "rel_application2property",
+            name = "rel_application2propertygroup",
             joinColumns = @JoinColumn(name = "application_id"),
-            inverseJoinColumns = @JoinColumn(name = "property_id")
+            inverseJoinColumns = @JoinColumn(name = "property_group_id")
     )
-        @org.hibernate.annotations.ForeignKey(name = "fk_a2p_property", inverseName = "fk_a2p_application")
-    private Set<PropertyRecord> properties = new HashSet<>();
+    @org.hibernate.annotations.ForeignKey(name = "fk_a2pg_propertygroup", inverseName = "fk_a2pg_application")
+    @OrderBy("priority")
+    private final Set<PropertyGroupRecord> propertyGroups = new HashSet<>();
 
-    private ApplicationRecord() {
+    public ApplicationRecord() {
     }
 
     public ApplicationRecord(String key) {
         this.key = key;
     }
 
+    @Override
     public String getKey() {
         return key;
     }
 
-    public Set<PropertyRecord> getProperties() {
-        return properties;
+    public Set<PropertyGroupRecord> getPropertyGroups() {
+        return propertyGroups;
     }
 
-    public PropertyRecord findProperty(String key) {
-        for (PropertyRecord property : properties) {
-            if (Objects.equals(property.getKey(), key)) {
-                return property;
+    public PropertyGroupRecord findPropertyGroup(final String key) {
+        for (PropertyGroupRecord propertyGroupRecord : propertyGroups) {
+            if (Objects.equals(propertyGroupRecord.getKey(), key)) {
+                return propertyGroupRecord;
             }
         }
 
         return null;
     }
 
-    public void addProperty(PropertyRecord property) {
-        Assert.notNull(property, "property is invalid [null]");
-        Assert.isTrue(this.properties.add(property), String.format("property can not be added to application.properties [key=%s]", property.getKey()));
-    }
+    /**
+     * This method assumes that all property groups are propery ordered.
+     *
+     * @return
+     */
+    public Map<String, String> findProperties() {
+        final Map<String, String> properties = new HashMap<>();
 
-    public void removeProperty(PropertyRecord property) {
-        Assert.notNull(property, "property is invalid [null]");
-        Assert.isTrue(this.properties.remove(property), String.format("property can not be removed from application.properties [key=%s]", property.getKey()));
-    }
+        for (PropertyGroupRecord propertyGroup : propertyGroups) {
+            propertyGroup.getProperties().stream().filter(property -> !properties.containsKey(property.getKey())).forEach(property -> properties.put(property.getKey(), property.getValue()));
+        }
 
-    public void clearProperties() {
-        this.properties.clear();
+        return properties;
     }
 
 }

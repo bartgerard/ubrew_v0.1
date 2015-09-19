@@ -9,11 +9,11 @@ import be.gerard.core.interface_v1.session.AppSession;
 import be.gerard.core.interface_v1.session.UserSession;
 import be.gerard.core.service.dao.ApplicationInstanceDao;
 import be.gerard.core.service.model.ApplicationInstanceRecord;
-import be.gerard.core.service.model.PropertyRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -25,6 +25,7 @@ import java.util.UUID;
  * @version 0.0.1
  */
 @Service
+@Transactional
 public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final Map<UUID, AppSession> appSessions = new HashMap<>();
@@ -68,9 +69,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         AppSession appSession = new AppSession();
 
-        for (PropertyRecord propertyRecord : applicationInstanceRecord.getApplication().getProperties()) {
-            appSession.getProperties().put(propertyRecord.getKey(), propertyRecord.getValue());
-        }
+        appSession.getProperties().putAll(applicationInstanceRecord.getApplication().findProperties());
 
         //appSession.setApplication(conversionService.convert(applicationInstanceRecord.getApplication(), Application.class));
         appSessions.put(appSession.getToken(), appSession);

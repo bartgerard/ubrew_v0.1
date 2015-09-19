@@ -1,7 +1,7 @@
 package be.gerard.core.service.builder;
 
 import be.gerard.core.service.model.ApplicationRecord;
-import be.gerard.core.service.model.PropertyRecord;
+import be.gerard.core.service.model.PropertyGroupRecord;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,34 +14,31 @@ import java.util.Set;
  */
 public class ApplicationBuilder extends Builder<ApplicationRecord> {
 
-    private final Set<PropertyRecord> properties = new HashSet<>();
+    private final Set<PropertyGroupRecord> propertyGroups = new HashSet<>();
 
     ApplicationBuilder(ApplicationRecord applicationRecord, BuilderContext builderContext) {
         super(applicationRecord, builderContext);
     }
 
-    public ApplicationBuilder property(String key, String group, String value) {
-        PropertyRecord property = getRecord().findProperty(key);
+    public PropertyGroupBuilder propertyGroup(String key) {
+        PropertyGroupRecord propertyGroup = getRecord().findPropertyGroup(key);
 
-        if (property == null) {
-            property = new PropertyRecord(key);
+        if (propertyGroup == null) {
+            propertyGroup = getBuilderContext().getOrProperyGroup(key);
         }
 
-        if (!properties.contains(property)) {
-            properties.add(property);
+        if (!propertyGroups.contains(propertyGroup)) {
+            propertyGroups.add(propertyGroup);
         }
 
-        property.setGroup(group);
-        property.setValue(value);
-
-        return this;
+        return new PropertyGroupBuilder(propertyGroup, getBuilderContext());
     }
 
     public ApplicationBuilder build() {
-        getRecord().clearProperties();
+        getRecord().getPropertyGroups().clear();
 
-        for (PropertyRecord property : properties) {
-            getRecord().addProperty(property);
+        for (PropertyGroupRecord propertyGroup : propertyGroups) {
+            getRecord().getPropertyGroups().add(propertyGroup);
         }
 
         return this;
