@@ -26,11 +26,11 @@ import java.time.Month;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {
         CoreServiceConfig.class,
-        PropertyDataSourceConfig.class,
-        CoreDatabaseConfig.class
+        CoreDatabaseConfig.class,
+        PropertyDataSourceConfig.class
 })
 @Transactional
-public class CommonScript {
+public abstract class CommonScript {
 
     protected final String username = "bgerard";
     protected final String firstname = "firstname";

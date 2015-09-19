@@ -1,9 +1,11 @@
 package be.gerard.core.service.script;
 
 import be.gerard.core.interface_v1.ApplicationService;
+import be.gerard.core.service.dao.ApplicationDao;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.util.Assert;
 
 import java.util.Collections;
 
@@ -26,6 +28,9 @@ public class ApplicationScript extends CommonScript {
     @Autowired
     private ApplicationService applicationService;
 
+    @Autowired
+    private ApplicationDao applicationDao;
+
     @Test
     @Rollback(false)
     public void initApplications() {
@@ -38,6 +43,8 @@ public class ApplicationScript extends CommonScript {
                 .build();
 
         builderContext.saveAll();
+
+        Assert.notNull(applicationDao.findByKey("ubrew.web"));
 
         applicationService.instantiate(
                 "core.web",
