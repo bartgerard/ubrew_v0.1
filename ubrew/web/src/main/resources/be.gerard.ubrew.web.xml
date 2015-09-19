@@ -10,10 +10,10 @@
 
     <!-- JNDI -->
     <jee:jndi-lookup id="coreServiceUrl" jndi-name="be.gerard.core.service.url" expected-type="java.lang.String"/>
-    <jee:jndi-lookup id="applicationKey" jndi-name="be.gerard.core.application.key" expected-type="java.lang.String"/>
-    <jee:jndi-lookup id="applicationReference" jndi-name="be.gerard.core.application.reference"
+    <jee:jndi-lookup id="applicationKey" jndi-name="be.gerard.ubrew.application.key" expected-type="java.lang.String"/>
+    <jee:jndi-lookup id="applicationReference" jndi-name="be.gerard.ubrew.application.reference"
                      expected-type="java.lang.String"/>
-    <jee:jndi-lookup id="applicationPassword" jndi-name="be.gerard.core.application.password"
+    <jee:jndi-lookup id="applicationPassword" jndi-name="be.gerard.ubrew.application.password"
                      expected-type="java.lang.String"/>
 
     <!-- Initial Properties -->
