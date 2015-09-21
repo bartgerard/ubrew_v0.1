@@ -58,9 +58,9 @@ public class UserRecord extends BaseRecord {
 
     @ElementCollection
     @CollectionTable(
-            name = "rel_user_email",
+            name = "rel_user2email",
             joinColumns = @JoinColumn(name = "user_id"),
-            foreignKey = @ForeignKey(name = "fk_user_email")
+            foreignKey = @ForeignKey(name = "fk_usr2e_email")
     )
     private final List<String> emails = new ArrayList<>();
 
@@ -69,8 +69,8 @@ public class UserRecord extends BaseRecord {
             name = "rel_user2role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"),
-            foreignKey = @ForeignKey(name = "fk_u2r_user"),
-            inverseForeignKey = @ForeignKey(name = "fk_u2r_role")
+            foreignKey = @ForeignKey(name = "fk_usr2r_user"),
+            inverseForeignKey = @ForeignKey(name = "fk_usr2r_role")
     )
     private final Set<RoleRecord> roles = new HashSet<>();
 

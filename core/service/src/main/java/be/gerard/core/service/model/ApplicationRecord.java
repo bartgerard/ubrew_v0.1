@@ -41,8 +41,8 @@ public class ApplicationRecord extends BaseRecord implements Keyable {
             name = "rel_application2propertygroup",
             joinColumns = @JoinColumn(name = "application_id"),
             inverseJoinColumns = @JoinColumn(name = "property_group_id"),
-            foreignKey = @ForeignKey(name = "fk_a2pg_propertygroup"),
-            inverseForeignKey = @ForeignKey(name = "fk_a2pg_application")
+            foreignKey = @ForeignKey(name = "fk_app2pg_application"),
+            inverseForeignKey = @ForeignKey(name = "fk_app2pg_propertygroup")
     )
     @OrderColumn(name = "priority")
     private final List<PropertyGroupRecord> propertyGroups = new ArrayList<>();
@@ -52,8 +52,8 @@ public class ApplicationRecord extends BaseRecord implements Keyable {
             name = "rel_application2translationgroup",
             joinColumns = @JoinColumn(name = "application_id"),
             inverseJoinColumns = @JoinColumn(name = "translation_group_id"),
-            foreignKey = @ForeignKey(name = "fk_a2tg_translationgroup"),
-            inverseForeignKey = @ForeignKey(name = "fk_a2tg_application")
+            foreignKey = @ForeignKey(name = "fk_app2tg_application"),
+            inverseForeignKey = @ForeignKey(name = "fk_app2tg_translationgroup")
     )
     @OrderColumn(name = "priority")
     private final List<TranslationGroupRecord> translationGroups = new ArrayList<>();

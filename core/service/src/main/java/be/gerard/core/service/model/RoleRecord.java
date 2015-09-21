@@ -37,8 +37,8 @@ public class RoleRecord extends BaseRecord {
             name = "rel_role2privilege",
             joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "privilege_id"),
-            foreignKey = @ForeignKey(name = "fk_r2p_role"),
-            inverseForeignKey = @ForeignKey(name = "fk_r2p_privilege")
+            foreignKey = @ForeignKey(name = "fk_rol2p_role"),
+            inverseForeignKey = @ForeignKey(name = "fk_rol2p_privilege")
     )
     private final Set<PrivilegeRecord> privileges = new HashSet<>();
 

@@ -21,7 +21,10 @@ import java.util.Set;
 public class ApplicationInstanceRecord extends BaseRecord {
 
     @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinColumn(name = "application_id", foreignKey = @ForeignKey(name = "fk_appInstance_application"))
+    @JoinColumn(
+            name = "application_id",
+            foreignKey = @ForeignKey(name = "fk_appins2app_application")
+    )
     private ApplicationRecord application;
 
     @Column(name = "app_ref", nullable = false)
@@ -32,20 +35,20 @@ public class ApplicationInstanceRecord extends BaseRecord {
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
-            name = "rel_application_ip",
+            name = "rel_application2ip",
             joinColumns = @JoinColumn(name = "application_id"),
-            foreignKey = @ForeignKey(name = "fk_ip_application"),
-            uniqueConstraints = @UniqueConstraint(name = "uk_application_ip", columnNames = {"application_id", "ip"})
+            uniqueConstraints = @UniqueConstraint(name = "uk_application_ip", columnNames = {"application_id", "ip"}),
+            foreignKey = @ForeignKey(name = "fk_app2ip_application")
     )
     @Column(name = "ip")
     private final Set<String> allowedIps = new HashSet<>();
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
-            name = "rel_application_mac",
+            name = "rel_application2mac",
             joinColumns = @JoinColumn(name = "application_id"),
-            foreignKey = @ForeignKey(name = "fk_mac_application"),
-            uniqueConstraints = @UniqueConstraint(name = "uk_application_mac", columnNames = {"application_id", "mac"})
+            uniqueConstraints = @UniqueConstraint(name = "uk_application_mac", columnNames = {"application_id", "mac"}),
+            foreignKey = @ForeignKey(name = "fk_app2mac_application")
     )
     @Column(name = "mac")
     private final Set<String> allowedMacs = new HashSet<>();
