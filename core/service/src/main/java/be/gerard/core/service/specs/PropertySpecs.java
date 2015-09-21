@@ -5,6 +5,7 @@ import be.gerard.core.service.model.ApplicationRecord_;
 import be.gerard.core.service.model.PropertyGroupRecord;
 import be.gerard.core.service.model.PropertyGroupRecord_;
 import be.gerard.core.service.model.PropertyRecord;
+import be.gerard.core.service.model.PropertyRecord_;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -27,7 +28,7 @@ public class PropertySpecs {
     }
 
     public static Specification<PropertyRecord> findByApplication(
-            final String key
+            final String appKey
     ) {
         return new Specification<PropertyRecord>() {
 
@@ -38,9 +39,11 @@ public class PropertySpecs {
                 Join<ApplicationRecord, PropertyGroupRecord> propertyGroup = application.join(ApplicationRecord_.propertyGroups, JoinType.INNER);
                 Join<PropertyGroupRecord, PropertyRecord> property = propertyGroup.join(PropertyGroupRecord_.properties, JoinType.INNER);
 
-                //sq.groupBy(property.get(PropertyRecord_.key));
+                sq.select(property).where(
+                        cb.and(cb.equal(application.get(ApplicationRecord_.key), appKey))
+                );
 
-                sq.select(property);
+                sq.groupBy(property.get(PropertyRecord_.key));
 
                 //cq.groupBy(joinProperty.get(PropertyRecord_.key));
 

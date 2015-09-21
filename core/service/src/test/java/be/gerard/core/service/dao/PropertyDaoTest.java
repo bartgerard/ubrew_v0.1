@@ -35,13 +35,13 @@ public class PropertyDaoTest extends BaseTest {
 
         ApplicationRecord applicationRecord = new ApplicationRecord("app1");
         applicationRecord.getPropertyGroups().add(pg1);
-        applicationRecord.getPropertyGroups().add(pg2);
+        //applicationRecord.getPropertyGroups().add(pg2);
 
         ApplicationRecord a = applicationDao.saveAndFlush(applicationRecord);
 
         a.findProperties();
 
-        System.out.println(Objects.toString(propertyDao.findAll(PropertySpecs.findByApplication("a"))));
+        System.out.println(Objects.toString(propertyDao.findAll(PropertySpecs.findByApplication("app1"))));
     }
 
 }
