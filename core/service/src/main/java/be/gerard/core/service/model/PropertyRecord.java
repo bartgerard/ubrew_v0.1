@@ -17,10 +17,10 @@ import javax.persistence.*;
 @Convertible(defaultTargetType = Property.class)
 @Entity
 @SequenceGenerator(name = BaseRecord.SEQUENCE_GENERATOR, sequenceName = "s_property", allocationSize = BaseRecord.SEQUENCE_ALLOCATION_SIZE)
-@Table(name = "core_property", uniqueConstraints = @UniqueConstraint(name = "uk_property_key", columnNames = {"ukey"}))
+@Table(name = "core_property", uniqueConstraints = @UniqueConstraint(name = "uk_property_key", columnNames = {"property_key"}))
 public class PropertyRecord extends BaseRecord implements Keyable {
 
-    @Column(name = "ukey", nullable = false, updatable = false)
+    @Column(name = "property_key", nullable = false, updatable = false)
     private String key;
 
     @Enumerated(EnumType.STRING)

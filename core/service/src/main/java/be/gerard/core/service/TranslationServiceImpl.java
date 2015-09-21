@@ -4,6 +4,8 @@ import be.gerard.core.interface_v1.TranslationService;
 import be.gerard.core.interface_v1.enums.Language;
 import be.gerard.core.interface_v1.model.Translation;
 import be.gerard.core.service.dao.TranslationDao;
+import be.gerard.core.service.dao.TranslationGroupDao;
+import be.gerard.core.service.model.TranslationGroupRecord;
 import be.gerard.core.service.model.TranslationRecord;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,6 +30,9 @@ public class TranslationServiceImpl implements TranslationService {
     private TranslationDao translationDao;
 
     @Autowired
+    private TranslationGroupDao translationGroupDao;
+
+    @Autowired
     private ConversionService conversionService;
 
     @Override
@@ -48,7 +53,8 @@ public class TranslationServiceImpl implements TranslationService {
             final Language language,
             final String key
     ) {
-        return conversionService.convert(translationDao.findByApplicationAndPrefixAndLanguageAndKey(application, prefix, language.getCode(), key), Translation.class);
+        return null; // TODO
+        //return conversionService.convert(translationDao.findByApplicationAndPrefixAndLanguageAndKey(application, prefix, language.getCode(), key), Translation.class);
     }
 
     @Transactional(readOnly = false)
@@ -70,22 +76,31 @@ public class TranslationServiceImpl implements TranslationService {
     public Translation save(final Translation translation) {
         LOG.entry(translation);
 
-        TranslationRecord translationRecord = translationDao.findByApplicationAndPrefixAndLanguageAndKey(
-                translation.getApplication(), translation.getPrefix(), translation.getLanguage(), translation.getKey()
-        );
+        TranslationGroupRecord translationGroupRecord = translationGroupDao.findByKey(translation.getGroup());
+
+        if (translationGroupRecord == null) {
+            return null;
+        }
+
+        TranslationRecord translationRecord = translationGroupRecord.findByKey(translation.getKey());
+
+//        TranslationRecord translationRecord = translationDao.findByApplicationAndPrefixAndLanguageAndKey(
+//                translation.getGroup(), translation.getPrefix(), translation.getLanguage(), translation.getKey()
+//        );
 
         if (translationRecord == null) {
             translationRecord = new TranslationRecord();
-            translationRecord.setApplication(translation.getApplication());
             translationRecord.setPrefix(translation.getPrefix());
             translationRecord.setType(translation.getType());
             translationRecord.setLanguage(translation.getLanguage());
             translationRecord.setKey(translation.getKey());
             translationRecord.setValue(translation.getValue());
+
+            translationGroupRecord.getTranslations().add(translationRecord);
         }
 
         translationRecord.setValue(translation.getValue());
-        translationDao.save(translationRecord);
+        translationGroupDao.save(translationGroupRecord);
 
         return LOG.exit(conversionService.convert(translationRecord, Translation.class));
     }
@@ -116,9 +131,9 @@ public class TranslationServiceImpl implements TranslationService {
     public List<Translation> findAll(final String application) {
         List<Translation> results = new ArrayList<>();
 
-        for (TranslationRecord translationRecord : translationDao.findByApplication(application)) {
-            results.add(conversionService.convert(translationRecord, Translation.class));
-        }
+//        for (TranslationRecord translationRecord : translationDao.findByApplication(application)) {
+//            results.add(conversionService.convert(translationRecord, Translation.class));
+//        }
 
         return results;
     }

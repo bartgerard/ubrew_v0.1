@@ -23,6 +23,7 @@
         <hibernate.version>4.3.7.Final</hibernate.version>
         <hibernate.version.new>5.0.0.Final</hibernate.version.new>
         <aspectj.version>1.8.6</aspectj.version>
+        <querydsl.version>3.6.7</querydsl.version>
     </properties>
 
     <modules>
@@ -160,6 +161,7 @@
                 <scope>import</scope>
             </dependency>
 
+            <!-- Spring Data -->
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-jpa</artifactId>
@@ -170,7 +172,7 @@
                 <!-- Import dependency management from Spring Boot -->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>1.2.0.RELEASE</version>
+                <version>1.2.6.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -178,7 +180,7 @@
             <dependency>
                 <groupId>org.springframework.ws</groupId>
                 <artifactId>spring-ws-core</artifactId>
-                <version>2.2.0.RELEASE</version>
+                <version>2.2.2.RELEASE</version>
             </dependency>
 
             <!-- Spring Security -->
@@ -295,6 +297,28 @@
                 <version>${hibernate.version}</version>
             </dependency>
 
+            <!-- Querydsl -->
+            <dependency>
+                <groupId>com.mysema.querydsl</groupId>
+                <artifactId>querydsl-core</artifactId>
+                <version>${querydsl.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mysema.querydsl</groupId>
+                <artifactId>querydsl-apt</artifactId>
+                <version>${querydsl.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mysema.querydsl</groupId>
+                <artifactId>querydsl-jpa</artifactId>
+                <version>${querydsl.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mysema.querydsl</groupId>
+                <artifactId>querydsl-jdoql</artifactId>
+                <version>${querydsl.version}</version>
+            </dependency>
+
             <!-- Excel manipulation framework-->
             <dependency>
                 <groupId>org.apache.poi</groupId>
@@ -390,6 +414,7 @@
                     </systemProperties>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 

@@ -18,7 +18,7 @@ public class TranslationValidator extends BaseValidator<Translation> {
 
     @Override
     public void validate(Translation translation, ErrorContext errorContext) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errorContext, "application", "error.required");
+//        ValidationUtils.rejectIfEmptyOrWhitespace(errorContext, "application", "error.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errorContext, "language", "error.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errorContext, "key", "error.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errorContext, "value", "error.required");

@@ -10,15 +10,15 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OrderBy;
+import javax.persistence.OrderColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 
 /**
  * ApplicationRecord
@@ -42,8 +42,18 @@ public class ApplicationRecord extends BaseRecord implements Keyable {
             inverseJoinColumns = @JoinColumn(name = "property_group_id")
     )
     @org.hibernate.annotations.ForeignKey(name = "fk_a2pg_propertygroup", inverseName = "fk_a2pg_application")
-    @OrderBy("priority")
-    private final Set<PropertyGroupRecord> propertyGroups = new HashSet<>();
+    @OrderColumn(name = "priority")
+    private final List<PropertyGroupRecord> propertyGroups = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "rel_application2translationgroup",
+            joinColumns = @JoinColumn(name = "application_id"),
+            inverseJoinColumns = @JoinColumn(name = "translation_group_id")
+    )
+    @org.hibernate.annotations.ForeignKey(name = "fk_a2tg_translationgroup", inverseName = "fk_a2tg_application")
+    @OrderColumn(name = "priority")
+    private final List<TranslationGroupRecord> translationGroups = new ArrayList<>();
 
     public ApplicationRecord() {
     }
@@ -57,7 +67,7 @@ public class ApplicationRecord extends BaseRecord implements Keyable {
         return key;
     }
 
-    public Set<PropertyGroupRecord> getPropertyGroups() {
+    public List<PropertyGroupRecord> getPropertyGroups() {
         return propertyGroups;
     }
 

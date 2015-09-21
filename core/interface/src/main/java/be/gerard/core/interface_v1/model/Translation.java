@@ -12,18 +12,18 @@ public class Translation extends BaseTo {
     }
 
     public Translation(
-            String application,
+            String group,
             String language,
             String prefix,
             TranslationType type,
             String key,
             String value
     ) {
-        this(application, language, prefix, type, key, value, null);
+        this(group, language, prefix, type, key, value, null);
     }
 
     public Translation(
-            String application,
+            String group,
             String language,
             String prefix,
             TranslationType type,
@@ -31,12 +31,12 @@ public class Translation extends BaseTo {
             String value,
             String changedBy
     ) {
-        this(null, application, language, prefix, type, key, value, changedBy);
+        this(null, group, language, prefix, type, key, value, changedBy);
     }
 
     public Translation(
             Long id,
-            String application,
+            String group,
             String language,
             String prefix,
             TranslationType type,
@@ -45,7 +45,7 @@ public class Translation extends BaseTo {
             String changedBy
     ) {
         super(id);
-        this.application = application;
+        this.group = group;
         this.language = language;
         this.prefix = prefix;
         this.type = type;
@@ -54,7 +54,7 @@ public class Translation extends BaseTo {
         this.changedBy = changedBy;
     }
 
-    private String application;
+    private String group;
 
     private String language;
 
@@ -76,12 +76,12 @@ public class Translation extends BaseTo {
         this.value = value;
     }
 
-    public String getApplication() {
-        return application;
+    public String getGroup() {
+        return group;
     }
 
-    public void setApplication(String application) {
-        this.application = application;
+    public void setGroup(String group) {
+        this.group = group;
     }
 
     public String getLanguage() {

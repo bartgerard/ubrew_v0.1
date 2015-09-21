@@ -3,8 +3,6 @@ package be.gerard.core.service.dao;
 import be.gerard.core.service.model.TranslationRecord;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
 /**
  * TranslationDao
  *
@@ -12,10 +10,10 @@ import java.util.List;
  * @version 0.0.1
  * @since 2015-02-03 20:13
  */
-public interface TranslationDao extends JpaRepository<TranslationRecord, Long> {
+public interface TranslationDao extends JpaRepository<TranslationRecord, Long>/*, QueryDslPredicateExecutor<TranslationRecord>*/ {
 
-    TranslationRecord findByApplicationAndPrefixAndLanguageAndKey(String application, String prefix, String language, String key);
+    //TranslationRecord findByApplicationAndPrefixAndLanguageAndKey(String application, String prefix, String language, String key);
 
-    List<TranslationRecord> findByApplication(String application);
+    //List<TranslationRecord> findByApplication(String application);
 
 }

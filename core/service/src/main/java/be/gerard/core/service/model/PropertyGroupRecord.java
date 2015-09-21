@@ -22,17 +22,14 @@ import java.util.Set;
  */
 @Entity
 @SequenceGenerator(name = BaseRecord.SEQUENCE_GENERATOR, sequenceName = "s_property_group", allocationSize = BaseRecord.SEQUENCE_ALLOCATION_SIZE)
-@Table(name = "core_property_group", uniqueConstraints = @UniqueConstraint(name = "uk_propertygroup_key", columnNames = {"ukey"}))
+@Table(name = "core_property_group", uniqueConstraints = @UniqueConstraint(name = "uk_propertygroup_key", columnNames = {"property_group_key"}))
 public class PropertyGroupRecord extends BaseRecord implements Keyable {
 
-    @Column(name = "ukey", nullable = false, updatable = false)
+    @Column(name = "property_group_key", nullable = false, updatable = false)
     private String key;
 
-    @Column(name = "priority")
-    private Integer priority;
-
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "property_group_id")
+    @JoinColumn(name = "property_group_id", nullable = false)
     @org.hibernate.annotations.ForeignKey(name = "fk_pg2p_propertygroup")
     private final Set<PropertyRecord> properties = new HashSet<>();
 
@@ -50,14 +47,6 @@ public class PropertyGroupRecord extends BaseRecord implements Keyable {
 
     public void setKey(String key) {
         this.key = key;
-    }
-
-    public Integer getPriority() {
-        return priority;
-    }
-
-    public void setPriority(Integer priority) {
-        this.priority = priority;
     }
 
     public Set<PropertyRecord> getProperties() {
