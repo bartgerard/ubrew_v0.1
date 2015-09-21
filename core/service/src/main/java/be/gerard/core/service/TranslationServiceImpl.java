@@ -22,6 +22,7 @@ import java.util.List;
  * @author bartgerard
  */
 @Service
+@javax.transaction.Transactional
 public class TranslationServiceImpl implements TranslationService {
 
     private static final Logger LOG = LogManager.getLogger(TranslationServiceImpl.class);

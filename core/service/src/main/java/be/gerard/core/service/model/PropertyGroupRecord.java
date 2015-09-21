@@ -5,6 +5,7 @@ import be.gerard.common.db.model.BaseRecord;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -29,7 +30,7 @@ public class PropertyGroupRecord extends BaseRecord implements Keyable {
     @Column(name = "property_group_key", nullable = false, updatable = false)
     private String key;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(
             name = "property_group_id",
             nullable = false,

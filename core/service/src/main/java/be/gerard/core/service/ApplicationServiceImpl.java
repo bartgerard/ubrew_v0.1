@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import org.springframework.validation.annotation.Validated;
 
+import javax.transaction.Transactional;
 import java.util.Collection;
 
 /**
@@ -23,6 +24,7 @@ import java.util.Collection;
  * @since 2015-01-10 16:56
  */
 @Service
+@Transactional
 public class ApplicationServiceImpl implements ApplicationService {
 
     @Autowired

@@ -1,14 +1,15 @@
 package be.gerard.common.db.model;
 
 import be.gerard.core.interface_v1.util.UserSessionUtils;
-import java.util.Date;
+import org.springframework.util.Assert;
+
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import org.springframework.util.Assert;
+import java.util.Date;
 
 /**
  * BaseRecord
@@ -19,10 +20,12 @@ import org.springframework.util.Assert;
 @MappedSuperclass
 public abstract class BaseRecord extends SimpleBaseRecord {
 
+    //@CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_ts", nullable = false, updatable = false)
     private Date createTimestamp;
 
+    //@CreatedBy
     @Column(name = "create_user", nullable = false, updatable = false)
     private String createUser;
 

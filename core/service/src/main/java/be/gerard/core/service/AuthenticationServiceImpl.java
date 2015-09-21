@@ -8,6 +8,7 @@ import be.gerard.core.interface_v1.model.User;
 import be.gerard.core.interface_v1.session.AppSession;
 import be.gerard.core.interface_v1.session.UserSession;
 import be.gerard.core.service.dao.ApplicationInstanceDao;
+import be.gerard.core.service.dao.PropertyDao;
 import be.gerard.core.service.model.ApplicationInstanceRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
@@ -43,6 +44,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Autowired
     private ConversionService conversionService;
+
+    @Autowired
+    private PropertyDao propertyDao;
 
     @Override
     public UserSession login(String username, String password) {

@@ -5,6 +5,7 @@ import be.gerard.common.db.model.BaseRecord;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -38,7 +39,7 @@ public class TranslationGroupRecord extends BaseRecord implements Keyable {
     @Column(name = "translation_group_key", nullable = false, updatable = false)
     private String key;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(
             name = "translation_group_id",
             nullable = false,

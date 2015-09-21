@@ -7,6 +7,7 @@ import be.gerard.core.interface_v1.model.Application;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -36,7 +37,7 @@ public class ApplicationRecord extends BaseRecord implements Keyable {
     @Column(name = "app_key", nullable = false, updatable = false)
     private String key;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "rel_application2propertygroup",
             joinColumns = @JoinColumn(name = "application_id"),
