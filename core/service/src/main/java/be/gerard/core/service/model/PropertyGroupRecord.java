@@ -65,7 +65,7 @@ public class PropertyGroupRecord extends BaseRecord implements Keyable {
         return properties;
     }
 
-    public PropertyRecord findProperty(final String key) {
+    public PropertyRecord findByKey(final String key) {
         for (PropertyRecord propertyRecord : properties) {
             if (Objects.equals(propertyRecord.getKey(), key)) {
                 return propertyRecord;

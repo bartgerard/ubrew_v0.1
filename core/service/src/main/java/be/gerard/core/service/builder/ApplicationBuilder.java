@@ -2,9 +2,10 @@ package be.gerard.core.service.builder;
 
 import be.gerard.core.service.model.ApplicationRecord;
 import be.gerard.core.service.model.PropertyGroupRecord;
+import be.gerard.core.service.model.TranslationGroupRecord;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * ApplicationBuilder
@@ -14,7 +15,9 @@ import java.util.Set;
  */
 public class ApplicationBuilder extends Builder<ApplicationRecord> {
 
-    private final Set<PropertyGroupRecord> propertyGroups = new HashSet<>();
+    private final List<PropertyGroupRecord> propertyGroups = new ArrayList<>();
+
+    private final List<TranslationGroupRecord> translationGroups = new ArrayList<>();
 
     ApplicationBuilder(ApplicationRecord applicationRecord, BuilderContext builderContext) {
         super(applicationRecord, builderContext);
@@ -32,6 +35,20 @@ public class ApplicationBuilder extends Builder<ApplicationRecord> {
         }
 
         return new PropertyGroupBuilder(propertyGroup, getBuilderContext());
+    }
+
+    public TranslationGroupBuilder translationGroup(String key) {
+        TranslationGroupRecord translationGroup = getRecord().findTranslationGroup(key);
+
+        if (translationGroup == null) {
+            translationGroup = getBuilderContext().getOrTranslationGroup(key);
+        }
+
+        if (!translationGroups.contains(translationGroup)) {
+            translationGroups.add(translationGroup);
+        }
+
+        return new TranslationGroupBuilder(translationGroup, getBuilderContext());
     }
 
     public ApplicationBuilder build() {

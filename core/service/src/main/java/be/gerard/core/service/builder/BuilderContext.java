@@ -9,6 +9,7 @@ import be.gerard.core.service.model.ApplicationRecord;
 import be.gerard.core.service.model.PrivilegeRecord;
 import be.gerard.core.service.model.PropertyGroupRecord;
 import be.gerard.core.service.model.RoleRecord;
+import be.gerard.core.service.model.TranslationGroupRecord;
 import be.gerard.core.service.model.UserRecord;
 import org.jasypt.util.password.PasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,8 @@ public class BuilderContext {
     private final Map<String, ApplicationRecord> applications = new HashMap<>();
 
     private final Map<String, PropertyGroupRecord> propertyGroups = new HashMap<>();
+
+    private final Map<String, TranslationGroupRecord> translationGroups = new HashMap<>();
 
     private final Map<String, UserRecord> users = new HashMap<>();
 
@@ -127,6 +130,19 @@ public class BuilderContext {
         }
 
         return propertyGroupRecord;
+    }
+
+    public TranslationGroupRecord getOrTranslationGroup(String key) {
+        Assert.hasText(key, "key is invalid [null]");
+
+        TranslationGroupRecord translationGroupRecord = translationGroups.get(key);
+
+        if (translationGroupRecord == null) {
+            translationGroupRecord = new TranslationGroupRecord(key);
+            translationGroups.put(key, translationGroupRecord);
+        }
+
+        return translationGroupRecord;
     }
 
     public UserRecord getOrCreateUser(String username) {

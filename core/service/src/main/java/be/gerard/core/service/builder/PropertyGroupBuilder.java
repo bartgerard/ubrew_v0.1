@@ -22,7 +22,7 @@ public class PropertyGroupBuilder extends Builder<PropertyGroupRecord> {
     }
 
     public PropertyGroupBuilder property(String key, PropertyType type, String value) {
-        PropertyRecord property = getRecord().findProperty(key);
+        PropertyRecord property = getRecord().findByKey(key);
 
         if (property == null) {
             property = new PropertyRecord(key);

@@ -1,5 +1,7 @@
 package be.gerard.core.service.script;
 
+import be.gerard.core.interface_v1.enums.TranslationType;
+import be.gerard.core.service.builder.ApplicationBuilder;
 import org.junit.Test;
 import org.springframework.test.annotation.Rollback;
 
@@ -14,7 +16,15 @@ public class TranslationScript extends CommonScript {
     @Test
     @Rollback(false)
     public void initTranslations() {
-        //builderContext.b
+        ApplicationBuilder applicationBuilder = builderContext.buildApplication("core.web");
+
+        applicationBuilder.translationGroup("common")
+                .translation("ApplicationName", TranslationType.TITLE, "nl", "uBrew")
+                .build();
+
+        applicationBuilder.build();
+
+        builderContext.saveAll();
     }
 
 }

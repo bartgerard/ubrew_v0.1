@@ -8,11 +8,8 @@ import be.gerard.core.service.model.PropertyRecord;
 import be.gerard.core.service.model.PropertyRecord_;
 import org.springframework.data.jpa.domain.Specification;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
-import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Subquery;
 
@@ -30,26 +27,23 @@ public class PropertySpecs {
     public static Specification<PropertyRecord> findByApplication(
             final String appKey
     ) {
-        return new Specification<PropertyRecord>() {
+        return (root, cq, cb) -> {
+            Subquery<PropertyRecord> sq = cq.subquery(PropertyRecord.class);
+            Root<ApplicationRecord> application = sq.from(ApplicationRecord.class);
+            Join<ApplicationRecord, PropertyGroupRecord> propertyGroup = application.join(ApplicationRecord_.propertyGroups, JoinType.INNER);
+            Join<PropertyGroupRecord, PropertyRecord> property = propertyGroup.join(PropertyGroupRecord_.properties, JoinType.INNER);
 
-            @Override
-            public Predicate toPredicate(Root<PropertyRecord> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
-                Subquery<PropertyRecord> sq = cq.subquery(PropertyRecord.class);
-                Root<ApplicationRecord> application = sq.from(ApplicationRecord.class);
-                Join<ApplicationRecord, PropertyGroupRecord> propertyGroup = application.join(ApplicationRecord_.propertyGroups, JoinType.INNER);
-                Join<PropertyGroupRecord, PropertyRecord> property = propertyGroup.join(PropertyGroupRecord_.properties, JoinType.INNER);
+            sq.select(property).where(
+                    cb.and(
+                            cb.equal(application.get(ApplicationRecord_.key), appKey)
+                    )
+            );
 
-                sq.select(property).where(
-                        cb.and(cb.equal(application.get(ApplicationRecord_.key), appKey))
-                );
+            // TODO
 
-                sq.groupBy(property.get(PropertyRecord_.key));
+            sq.groupBy(property.get(PropertyRecord_.key));
 
-                //cq.groupBy(joinProperty.get(PropertyRecord_.key));
-
-                return cb.in(root).value(sq);
-            }
-
+            return cb.in(root).value(sq);
         };
     }
 

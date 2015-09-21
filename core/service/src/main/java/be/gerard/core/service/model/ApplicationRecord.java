@@ -48,7 +48,7 @@ public class ApplicationRecord extends BaseRecord implements Keyable {
     @OrderColumn(name = "priority")
     private final List<PropertyGroupRecord> propertyGroups = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "rel_application2translationgroup",
             joinColumns = @JoinColumn(name = "application_id"),
@@ -79,6 +79,16 @@ public class ApplicationRecord extends BaseRecord implements Keyable {
         for (PropertyGroupRecord propertyGroupRecord : propertyGroups) {
             if (Objects.equals(propertyGroupRecord.getKey(), key)) {
                 return propertyGroupRecord;
+            }
+        }
+
+        return null;
+    }
+
+    public TranslationGroupRecord findTranslationGroup(final String key) {
+        for (TranslationGroupRecord translationGroupRecord : translationGroups) {
+            if (Objects.equals(translationGroupRecord.getKey(), key)) {
+                return translationGroupRecord;
             }
         }
 
