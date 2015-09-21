@@ -19,6 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <runSuite>**/*TestSuite*.class</runSuite>
         <spring.version>4.2.0.RELEASE</spring.version>
+        <spring.data.version>1.7.1.RELEASEE</spring.data.version>
         <spring.security.version>4.0.2.RELEASE</spring.security.version>
         <hibernate.version>4.3.7.Final</hibernate.version>
         <hibernate.version.new>5.0.0.Final</hibernate.version.new>
@@ -165,7 +166,7 @@
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-jpa</artifactId>
-                <version>1.7.1.RELEASE</version>
+                <version>${spring.data.version}</version>
             </dependency>
 
             <dependency>
