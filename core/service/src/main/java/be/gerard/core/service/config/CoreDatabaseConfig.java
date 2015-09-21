@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * @version v0.0.1
  */
 @Configuration
-@EnableJpaRepositories("be.gerard.core.service.dao")
+@EnableJpaRepositories(basePackages = "be.gerard.core.service.dao")
 public class CoreDatabaseConfig extends CommonDatabaseConfig {
 
     @Override

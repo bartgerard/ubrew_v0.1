@@ -18,8 +18,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <runSuite>**/*TestSuite*.class</runSuite>
-        <spring.version>4.2.0.RELEASE</spring.version>
-        <spring.data.version>1.7.1.RELEASEE</spring.data.version>
+        <spring.version>4.2.1.RELEASE</spring.version>
+        <spring.data.version>1.7.3.RELEASE</spring.data.version>
         <spring.security.version>4.0.2.RELEASE</spring.security.version>
         <hibernate.version>4.3.7.Final</hibernate.version>
         <hibernate.version.new>5.0.0.Final</hibernate.version.new>
@@ -318,6 +318,13 @@
                 <groupId>com.mysema.querydsl</groupId>
                 <artifactId>querydsl-jdoql</artifactId>
                 <version>${querydsl.version}</version>
+            </dependency>
+            
+            <!-- Jpa -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-jpamodelgen</artifactId>
+                <version>${hibernate.version}}</version>
             </dependency>
 
             <!-- Excel manipulation framework-->
