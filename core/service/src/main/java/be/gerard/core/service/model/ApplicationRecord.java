@@ -7,6 +7,7 @@ import be.gerard.core.interface_v1.model.Application;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -39,9 +40,10 @@ public class ApplicationRecord extends BaseRecord implements Keyable {
     @JoinTable(
             name = "rel_application2propertygroup",
             joinColumns = @JoinColumn(name = "application_id"),
-            inverseJoinColumns = @JoinColumn(name = "property_group_id")
+            inverseJoinColumns = @JoinColumn(name = "property_group_id"),
+            foreignKey = @ForeignKey(name = "fk_a2pg_propertygroup"),
+            inverseForeignKey = @ForeignKey(name = "fk_a2pg_application")
     )
-    //@org.hibernate.annotations.ForeignKey(name = "fk_a2pg_propertygroup", inverseName = "fk_a2pg_application")
     @OrderColumn(name = "priority")
     private final List<PropertyGroupRecord> propertyGroups = new ArrayList<>();
 
@@ -49,9 +51,10 @@ public class ApplicationRecord extends BaseRecord implements Keyable {
     @JoinTable(
             name = "rel_application2translationgroup",
             joinColumns = @JoinColumn(name = "application_id"),
-            inverseJoinColumns = @JoinColumn(name = "translation_group_id")
+            inverseJoinColumns = @JoinColumn(name = "translation_group_id"),
+            foreignKey = @ForeignKey(name = "fk_a2tg_translationgroup"),
+            inverseForeignKey = @ForeignKey(name = "fk_a2tg_application")
     )
-    //@org.hibernate.annotations.ForeignKey(name = "fk_a2tg_translationgroup", inverseName = "fk_a2tg_application")
     @OrderColumn(name = "priority")
     private final List<TranslationGroupRecord> translationGroups = new ArrayList<>();
 

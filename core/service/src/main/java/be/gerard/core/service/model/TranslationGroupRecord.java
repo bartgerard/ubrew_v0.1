@@ -5,6 +5,7 @@ import be.gerard.common.db.model.BaseRecord;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -38,8 +39,11 @@ public class TranslationGroupRecord extends BaseRecord implements Keyable {
     private String key;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "translation_group_id", nullable = false)
-    //@org.hibernate.annotations.ForeignKey(name = "fk_tg2t_translationgroup")
+    @JoinColumn(
+            name = "translation_group_id",
+            nullable = false,
+            foreignKey = @ForeignKey(name = "fk_tg2t_translationgroup")
+    )
     private final Set<TranslationRecord> translations = new HashSet<>();
 
     public TranslationGroupRecord() {

@@ -11,6 +11,7 @@ import javax.persistence.Convert;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -55,18 +56,22 @@ public class UserRecord extends BaseRecord {
     @Column(name = "birthDate", nullable = false)
     private LocalDate birthDate;
 
-    //@ForeignKey(name = "fk_user_email")
     @ElementCollection
-    @CollectionTable(name = "rel_user_email", joinColumns = @JoinColumn(name = "user_id"))
+    @CollectionTable(
+            name = "rel_user_email",
+            joinColumns = @JoinColumn(name = "user_id"),
+            foreignKey = @ForeignKey(name = "fk_user_email")
+    )
     private final List<String> emails = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "rel_user2role",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
+            inverseJoinColumns = @JoinColumn(name = "role_id"),
+            foreignKey = @ForeignKey(name = "fk_u2r_user"),
+            inverseForeignKey = @ForeignKey(name = "fk_u2r_role")
     )
-    //@ForeignKey(name = "fk_u2r_user", inverseName = "fk_u2r_role")
     private final Set<RoleRecord> roles = new HashSet<>();
 
     public UserRecord() {

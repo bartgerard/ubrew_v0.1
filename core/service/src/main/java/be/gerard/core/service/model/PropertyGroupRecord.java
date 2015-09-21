@@ -5,6 +5,7 @@ import be.gerard.common.db.model.BaseRecord;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -29,8 +30,11 @@ public class PropertyGroupRecord extends BaseRecord implements Keyable {
     private String key;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "property_group_id", nullable = false)
-    //@org.hibernate.annotations.ForeignKey(name = "fk_pg2p_propertygroup")
+    @JoinColumn(
+            name = "property_group_id",
+            nullable = false,
+            foreignKey = @ForeignKey(name = "fk_pg2p_propertygroup")
+    )
     private final Set<PropertyRecord> properties = new HashSet<>();
 
     public PropertyGroupRecord() {

@@ -7,6 +7,7 @@ import be.gerard.core.interface_v1.model.Role;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -35,9 +36,10 @@ public class RoleRecord extends BaseRecord {
     @JoinTable(
             name = "rel_role2privilege",
             joinColumns = @JoinColumn(name = "role_id"),
-            inverseJoinColumns = @JoinColumn(name = "privilege_id")
+            inverseJoinColumns = @JoinColumn(name = "privilege_id"),
+            foreignKey = @ForeignKey(name = "fk_r2p_role"),
+            inverseForeignKey = @ForeignKey(name = "fk_r2p_privilege")
     )
-    //@ForeignKey(name = "fk_r2p_role", inverseName = "fk_r2p_privilege")
     private final Set<PrivilegeRecord> privileges = new HashSet<>();
 
     public String getName() {
