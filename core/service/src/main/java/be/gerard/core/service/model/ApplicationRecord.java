@@ -41,7 +41,7 @@ public class ApplicationRecord extends BaseRecord implements Keyable {
             joinColumns = @JoinColumn(name = "application_id"),
             inverseJoinColumns = @JoinColumn(name = "property_group_id")
     )
-    @org.hibernate.annotations.ForeignKey(name = "fk_a2pg_propertygroup", inverseName = "fk_a2pg_application")
+    //@org.hibernate.annotations.ForeignKey(name = "fk_a2pg_propertygroup", inverseName = "fk_a2pg_application")
     @OrderColumn(name = "priority")
     private final List<PropertyGroupRecord> propertyGroups = new ArrayList<>();
 
@@ -51,7 +51,7 @@ public class ApplicationRecord extends BaseRecord implements Keyable {
             joinColumns = @JoinColumn(name = "application_id"),
             inverseJoinColumns = @JoinColumn(name = "translation_group_id")
     )
-    @org.hibernate.annotations.ForeignKey(name = "fk_a2tg_translationgroup", inverseName = "fk_a2tg_application")
+    //@org.hibernate.annotations.ForeignKey(name = "fk_a2tg_translationgroup", inverseName = "fk_a2tg_application")
     @OrderColumn(name = "priority")
     private final List<TranslationGroupRecord> translationGroups = new ArrayList<>();
 

@@ -4,7 +4,6 @@ import be.gerard.common.converter.annotation.Convertible;
 import be.gerard.common.db.converter.LocalDatePersistenceConverter;
 import be.gerard.common.db.model.BaseRecord;
 import be.gerard.core.interface_v1.model.User;
-import org.hibernate.annotations.ForeignKey;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -56,7 +55,7 @@ public class UserRecord extends BaseRecord {
     @Column(name = "birthDate", nullable = false)
     private LocalDate birthDate;
 
-    @ForeignKey(name = "fk_user_email")
+    //@ForeignKey(name = "fk_user_email")
     @ElementCollection
     @CollectionTable(name = "rel_user_email", joinColumns = @JoinColumn(name = "user_id"))
     private final List<String> emails = new ArrayList<>();
@@ -67,7 +66,7 @@ public class UserRecord extends BaseRecord {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    @ForeignKey(name = "fk_u2r_user", inverseName = "fk_u2r_role")
+    //@ForeignKey(name = "fk_u2r_user", inverseName = "fk_u2r_role")
     private final Set<RoleRecord> roles = new HashSet<>();
 
     public UserRecord() {

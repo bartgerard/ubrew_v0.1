@@ -53,10 +53,10 @@
             <artifactId>spring-data-jpa</artifactId>
         </dependency>
 
-        <!-- Query Dsl -->
         <dependency>
             <groupId>com.mysema.querydsl</groupId>
             <artifactId>querydsl-jpa</artifactId>
+            <version>${querydsl.version}</version>
         </dependency>
 
     </dependencies>

@@ -3,7 +3,6 @@ package be.gerard.core.service.model;
 import be.gerard.common.converter.annotation.Convertible;
 import be.gerard.common.db.model.BaseRecord;
 import be.gerard.core.interface_v1.model.Role;
-import org.hibernate.annotations.ForeignKey;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,7 +37,7 @@ public class RoleRecord extends BaseRecord {
             joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "privilege_id")
     )
-    @ForeignKey(name = "fk_r2p_role", inverseName = "fk_r2p_privilege")
+    //@ForeignKey(name = "fk_r2p_role", inverseName = "fk_r2p_privilege")
     private final Set<PrivilegeRecord> privileges = new HashSet<>();
 
     public String getName() {

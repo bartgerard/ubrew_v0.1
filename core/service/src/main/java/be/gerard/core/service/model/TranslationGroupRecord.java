@@ -39,7 +39,7 @@ public class TranslationGroupRecord extends BaseRecord implements Keyable {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "translation_group_id", nullable = false)
-    @org.hibernate.annotations.ForeignKey(name = "fk_tg2t_translationgroup")
+    //@org.hibernate.annotations.ForeignKey(name = "fk_tg2t_translationgroup")
     private final Set<TranslationRecord> translations = new HashSet<>();
 
     public TranslationGroupRecord() {

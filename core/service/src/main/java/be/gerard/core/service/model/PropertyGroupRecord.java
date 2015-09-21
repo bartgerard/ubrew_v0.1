@@ -30,7 +30,7 @@ public class PropertyGroupRecord extends BaseRecord implements Keyable {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "property_group_id", nullable = false)
-    @org.hibernate.annotations.ForeignKey(name = "fk_pg2p_propertygroup")
+    //@org.hibernate.annotations.ForeignKey(name = "fk_pg2p_propertygroup")
     private final Set<PropertyRecord> properties = new HashSet<>();
 
     public PropertyGroupRecord() {

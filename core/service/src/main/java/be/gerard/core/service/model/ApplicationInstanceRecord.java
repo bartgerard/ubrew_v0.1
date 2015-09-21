@@ -38,7 +38,7 @@ public class ApplicationInstanceRecord extends BaseRecord {
             uniqueConstraints = @UniqueConstraint(name = "uk_application_ip", columnNames = {"application_id", "ip"})
     )
     @Column(name = "ip")
-    @org.hibernate.annotations.ForeignKey(name = "fk_ip_application")
+    //@org.hibernate.annotations.ForeignKey(name = "fk_ip_application")
     private final Set<String> allowedIps = new HashSet<>();
 
     @ElementCollection(fetch = FetchType.EAGER)
@@ -48,7 +48,7 @@ public class ApplicationInstanceRecord extends BaseRecord {
             foreignKey = @ForeignKey(name = "fk_mac_application"),
             uniqueConstraints = @UniqueConstraint(name = "uk_application_mac", columnNames = {"application_id", "mac"})
     )
-    @org.hibernate.annotations.ForeignKey(name = "fk_mac_application")
+    //@org.hibernate.annotations.ForeignKey(name = "fk_mac_application")
     @Column(name = "mac")
     private final Set<String> allowedMacs = new HashSet<>();
 
