@@ -1,0 +1,114 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red26\green26\blue26;\red255\green255\blue255;\red37\green127\blue159;
+\red234\green234\blue234;\red0\green0\blue0;\red0\green0\blue120;\red107\green0\blue1;\red109\green109\blue109;
+\red43\green39\blue19;\red26\green26\blue26;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25400\viewh15260\viewkind0
+\deftab720
+\pard\pardeftab720\sl440\sa340
+
+\f0\b\fs34 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Hibernate 5
+\b0 \
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 MetadataSources\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6  metadata = \cf7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec7 new\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6  \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 MetadataSources\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 (\
+    \cf7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec7 new\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6  \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 StandardServiceRegistryBuilder\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 ()\
+        .applySetting(\cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 "hibernate.dialect"\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 , \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 "org.hibernate.dialect.H2Dialect"\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 )\
+        .build());\
+\
+\pard\pardeftab720
+\cf9 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec9 // [...] adding annotated classes to metadata here...\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 \
+metadata.addAnnotatedClass(...);\
+\
+\pard\pardeftab720
+\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 SchemaExport\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6  export = \cf7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec7 new\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6  \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 SchemaExport\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 (\
+    (\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 MetadataImplementor\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 ) metadata.buildMetadata(),\
+    connection \cf9 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec9 // pre-configured Connection here\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 \
+);\
+export.create(\cf7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec7 true\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 , \cf7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec7 true\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 );\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 \
+\pard\pardeftab720\sl440\sa340
+
+\f0\fs34 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \
+
+\b Hibernate 4
+\b0\fs30 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Configuration\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6  configuration = \cf7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec7 new\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6  \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Configuration\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 ()\
+    .setProperty(\cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 "hibernate.dialect"\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 , \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 "org.hibernate.dialect.H2Dialect"\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 );\
+\
+\pard\pardeftab720
+\cf9 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec9 // [...] adding annotated classes to metadata here...\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 \
+configuration.addAnnotatedClass(...);\
+\
+configuration.generateSchemaCreationScript(\
+    \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Dialect\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 .getDialect(configuration.getProperties()));\
+\pard\pardeftab720
+\cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 SchemaExport\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6  export = \cf7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec7 new\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6  \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 SchemaExport\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 (configuration, connection);\
+export.create(\cf7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec7 true\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 , \cf7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec7 true\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 );\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 \
+\pard\pardeftab720\sl440\sa340
+
+\f0\fs34 \cf11 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+{\field{\*\fldinst{HYPERLINK "http://stackoverflow.com/questions/32178041/where-did-configuration-generateschemacreationscript-go-in-hibernate-5"}}{\fldrslt http://stackoverflow.com/questions/32178041/where-did-configuration-generateschemacreationscript-go-in-hibernate-5}}\
+\
+}
