@@ -37,6 +37,7 @@ public class PropertyDaoJpa implements PropertyDao {
     public List<PropertyRecord> findByApp(final String app) {
         QPropertyRecord property = QPropertyRecord.propertyRecord;
         //return query().from(property).where(property.id.eq(id)).fetchOne();
+        return null;
     }
 
 }
