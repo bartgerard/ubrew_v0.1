@@ -91,10 +91,6 @@
                 </dependencies>
             </plugin>
 
-            <!-- http://www.petrikainulainen.net/programming/spring-framework/spring-data-jpa-tutorial-using-querydsl-in-a-multi-module-maven-project/ -->
-            <!-- http://spring.io/blog/2011/04/26/advanced-spring-data-jpa-specifications-and-querydsl/ -->
-            <!-- http://www.petrikainulainen.net/programming/spring-framework/spring-data-jpa-tutorial-part-five-querydsl/ -->
-
             <plugin>
                 <groupId>com.mysema.maven</groupId>
                 <artifactId>apt-maven-plugin</artifactId>

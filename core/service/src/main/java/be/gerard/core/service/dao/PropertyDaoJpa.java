@@ -1,7 +1,10 @@
 package be.gerard.core.service.dao;
 
 import be.gerard.core.service.model.PropertyRecord;
+import be.gerard.core.service.model.QApplicationRecord;
+import be.gerard.core.service.model.QPropertyGroupRecord;
 import be.gerard.core.service.model.QPropertyRecord;
+import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,10 +37,20 @@ public class PropertyDaoJpa implements PropertyDao {
         return query().from(property).where(property.id.eq(id)).fetchOne();
     }
 
-    public List<PropertyRecord> findByApp(final String app) {
+    public List<PropertyRecord> findAllForApp(final String app) {
+
         QPropertyRecord property = QPropertyRecord.propertyRecord;
-        //return query().from(property).where(property.id.eq(id)).fetchOne();
-        return null;
+        QPropertyRecord p = new QPropertyRecord("p");
+        QPropertyGroupRecord pg = new QPropertyGroupRecord("pg");
+        QApplicationRecord a = new QApplicationRecord("a");
+
+        return query().from(property).where(property.id.in(
+                JPAExpressions.select(p.id)
+                        .from(p)
+                        .groupBy(p.id)
+                //.join(pg.properties, p)
+                //.where(a.key.eq(app))
+        )).fetch();
     }
 
 }

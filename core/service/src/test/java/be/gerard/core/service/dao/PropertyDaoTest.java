@@ -33,7 +33,7 @@ public class PropertyDaoTest extends BaseTest {
 
         ApplicationRecord applicationRecord = new ApplicationRecord("app1");
         applicationRecord.getPropertyGroups().add(pg1);
-        //applicationRecord.getPropertyGroups().add(pg2);
+        applicationRecord.getPropertyGroups().add(pg2);
 
         ApplicationRecord a = applicationDao.saveAndFlush(applicationRecord);
 
@@ -46,6 +46,9 @@ public class PropertyDaoTest extends BaseTest {
         QPropertyRecord propertyRecord = QPropertyRecord.propertyRecord;
         QPropertyRecord p = new QPropertyRecord("p");
         //propertyDao.findAll(propertyRecord.eq(JPAExpressions.select(p.id).from(p)));
+
+        System.out.println(propertyDao.findAllForApp("random"));
+        System.out.println(propertyDao.findAllForApp("app1"));
     }
 
 }
