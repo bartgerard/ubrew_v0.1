@@ -5,7 +5,7 @@ import be.gerard.core.service.BaseTest;
 import be.gerard.core.service.model.ApplicationRecord;
 import be.gerard.core.service.model.PropertyGroupRecord;
 import be.gerard.core.service.model.PropertyRecord;
-import be.gerard.core.service.specs.PropertySpecs;
+import be.gerard.core.service.model.QPropertyRecord;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -33,13 +33,19 @@ public class PropertyDaoTest extends BaseTest {
 
         ApplicationRecord applicationRecord = new ApplicationRecord("app1");
         applicationRecord.getPropertyGroups().add(pg1);
-        applicationRecord.getPropertyGroups().add(pg2);
+        //applicationRecord.getPropertyGroups().add(pg2);
 
         ApplicationRecord a = applicationDao.saveAndFlush(applicationRecord);
 
         a.findProperties();
 
-        System.out.println(propertyDao.findAll(PropertySpecs.findByApplication("app1")));
+        System.out.println(propertyDao.findOne(1L));
+
+        //System.out.println(propertyDao.findAll(PropertySpecs.findByApplication("app1")));
+
+        QPropertyRecord propertyRecord = QPropertyRecord.propertyRecord;
+        QPropertyRecord p = new QPropertyRecord("p");
+        //propertyDao.findAll(propertyRecord.eq(JPAExpressions.select(p.id).from(p)));
     }
 
 }
