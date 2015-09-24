@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.util.Objects;
 
 /**
  * TranslationMetaGroupRecord
@@ -46,6 +47,21 @@ public class TranslationGroupMetaRecord extends BaseRecord {
 
     public void setGroup(TranslationGroupRecord group) {
         this.group = group;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        TranslationGroupMetaRecord that = (TranslationGroupMetaRecord) o;
+        return Objects.equals(priority, that.priority) &&
+                Objects.equals(group, that.group);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), priority, group);
     }
 
 }

@@ -53,4 +53,8 @@ public class TranslationGroupBuilder extends Builder<TranslationGroupRecord> {
         return this;
     }
 
+    @Override
+    public void save() {
+    }
+
 }

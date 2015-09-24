@@ -58,4 +58,9 @@ public class UserBuilder extends Builder<UserRecord> {
         return this;
     }
 
+    @Override
+    public void save() {
+        getBuilderContext().save(getRecord());
+    }
+
 }

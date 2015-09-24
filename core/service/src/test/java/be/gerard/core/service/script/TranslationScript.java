@@ -16,15 +16,18 @@ public class TranslationScript extends CommonScript {
     @Test
     @Rollback(false)
     public void initTranslations() {
-        ApplicationBuilder applicationBuilder = builderContext.buildApplication("core.web");
+        ApplicationBuilder core = builderContext.buildApplication("core.web");
+        core.translationGroup("common");
+        core.build().save();
 
-        applicationBuilder.translationGroup("common")
+        ApplicationBuilder ubrew = builderContext.buildApplication("ubrew.web");
+        ubrew.translationGroup("common");
+        ubrew.translationGroup("ubrew")
                 .translation("ApplicationName", "uBrew", "nl", null, TranslationType.TITLE)
+                .translation("Home", "Thuis", "nl", null, TranslationType.TITLE)
+                .translation("About", "Over", "nl", null, TranslationType.TITLE)
                 .build();
-
-        applicationBuilder.build();
-
-        builderContext.saveAll();
+        ubrew.build().save();
     }
 
 }

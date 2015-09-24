@@ -48,4 +48,8 @@ public class PropertyGroupBuilder extends Builder<PropertyGroupRecord> {
         return this;
     }
 
+    @Override
+    public void save() {
+    }
+
 }

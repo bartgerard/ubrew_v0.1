@@ -3,7 +3,6 @@ package be.gerard.core.service.builder;
 import be.gerard.core.service.model.ApplicationRecord;
 import be.gerard.core.service.model.PropertyGroupRecord;
 import be.gerard.core.service.model.TranslationGroupMetaRecord;
-import be.gerard.core.service.model.TranslationGroupRecord;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +17,7 @@ public class ApplicationBuilder extends Builder<ApplicationRecord> {
 
     private final List<PropertyGroupRecord> propertyGroups = new ArrayList<>();
 
-    private final List<TranslationGroupRecord> translationGroups = new ArrayList<>();
+    private final List<TranslationGroupMetaRecord> translationGroups = new ArrayList<>();
 
     ApplicationBuilder(ApplicationRecord applicationRecord, BuilderContext builderContext) {
         super(applicationRecord, builderContext);
@@ -39,17 +38,17 @@ public class ApplicationBuilder extends Builder<ApplicationRecord> {
     }
 
     public TranslationGroupBuilder translationGroup(String key) {
-        TranslationGroupRecord translationGroup = getRecord().findTranslationGroup(key);
+        TranslationGroupMetaRecord translationGroupMeta = getRecord().findTranslationGroupMeta(key);
 
-        if (translationGroup == null) {
-            translationGroup = getBuilderContext().getOrTranslationGroup(key);
+        if (translationGroupMeta == null) {
+            translationGroupMeta = new TranslationGroupMetaRecord(getBuilderContext().getOrCreateTranslationGroup(key));
         }
 
-        if (!translationGroups.contains(translationGroup)) {
-            translationGroups.add(translationGroup);
+        if (!translationGroups.contains(translationGroupMeta)) {
+            translationGroups.add(translationGroupMeta);
         }
 
-        return new TranslationGroupBuilder(translationGroup, getBuilderContext());
+        return new TranslationGroupBuilder(translationGroupMeta.getGroup(), getBuilderContext());
     }
 
     public ApplicationBuilder build() {
@@ -61,11 +60,16 @@ public class ApplicationBuilder extends Builder<ApplicationRecord> {
 
         getRecord().getTranslationGroups().clear();
 
-        for (TranslationGroupRecord translationGroup : translationGroups) {
-            getRecord().getTranslationGroups().add(new TranslationGroupMetaRecord(translationGroup));
+        for (TranslationGroupMetaRecord translationGroup : translationGroups) {
+            getRecord().getTranslationGroups().add(translationGroup);
         }
 
         return this;
+    }
+
+    @Override
+    public void save() {
+        getBuilderContext().save(getRecord());
     }
 
 }

@@ -27,4 +27,6 @@ public abstract class Builder<T extends BaseRecord> {
         return builderContext;
     }
 
+    public abstract void save();
+
 }

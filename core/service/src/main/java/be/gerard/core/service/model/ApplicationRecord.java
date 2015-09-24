@@ -84,10 +84,10 @@ public class ApplicationRecord extends BaseRecord implements Keyable {
         return null;
     }
 
-    public TranslationGroupRecord findTranslationGroup(final String key) {
+    public TranslationGroupMetaRecord findTranslationGroupMeta(final String key) {
         for (TranslationGroupMetaRecord translationGroupRecord : translationGroups) {
             if (Objects.equals(translationGroupRecord.getGroup().getKey(), key)) {
-                return translationGroupRecord.getGroup();
+                return translationGroupRecord;
             }
         }
 

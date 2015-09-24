@@ -4,6 +4,7 @@ import be.gerard.core.service.dao.ApplicationDao;
 import be.gerard.core.service.dao.PrivilegeDao;
 import be.gerard.core.service.dao.PropertyGroupDao;
 import be.gerard.core.service.dao.RoleDao;
+import be.gerard.core.service.dao.TranslationGroupDao;
 import be.gerard.core.service.dao.UserDao;
 import be.gerard.core.service.model.ApplicationRecord;
 import be.gerard.core.service.model.PrivilegeRecord;
@@ -53,6 +54,9 @@ public class BuilderContext {
     private PropertyGroupDao propertyGroupDao;
 
     @Autowired
+    private TranslationGroupDao translationGroupDao;
+
+    @Autowired
     private UserDao userDao;
 
     @Autowired
@@ -75,6 +79,13 @@ public class BuilderContext {
 
         for (PropertyGroupRecord propertyGroupRecord : propertyGroupDao.findAll()) {
             propertyGroups.put(propertyGroupRecord.getKey(), propertyGroupRecord);
+        }
+
+        // TranslationGroups
+        translationGroups.clear();
+
+        for (TranslationGroupRecord translationGroupRecord : translationGroupDao.findAll()) {
+            translationGroups.put(translationGroupRecord.getKey(), translationGroupRecord);
         }
 
         // Users
@@ -132,7 +143,7 @@ public class BuilderContext {
         return propertyGroupRecord;
     }
 
-    public TranslationGroupRecord getOrTranslationGroup(String key) {
+    public TranslationGroupRecord getOrCreateTranslationGroup(String key) {
         Assert.hasText(key, "key is invalid [null]");
 
         TranslationGroupRecord translationGroupRecord = translationGroups.get(key);

@@ -77,4 +77,19 @@ public class TranslationGroupRecord extends BaseRecord implements Keyable {
         return null;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        TranslationGroupRecord that = (TranslationGroupRecord) o;
+        return Objects.equals(key, that.key) &&
+                Objects.equals(translations, that.translations);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), key, translations);
+    }
+    
 }
