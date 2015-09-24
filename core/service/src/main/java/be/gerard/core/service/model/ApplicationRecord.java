@@ -49,7 +49,7 @@ public class ApplicationRecord extends BaseRecord implements Keyable {
     @OrderColumn(name = "priority")
     private final List<PropertyGroupRecord> propertyGroups = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "application_id", foreignKey = @ForeignKey(name = "fk_app2tg_application"))
     @OrderColumn(name = "priority")
     private final List<TranslationGroupMetaRecord> translationGroups = new ArrayList<>();

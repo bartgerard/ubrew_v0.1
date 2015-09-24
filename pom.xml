@@ -378,6 +378,11 @@
             </dependency>
 
             <!-- Logging -->
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>1.2</version>
+            </dependency>
 
             <!-- Log4j -->
             <dependency>
@@ -389,12 +394,6 @@
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-api</artifactId>
                 <version>${log4j.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>log4j</groupId>
-                <artifactId>log4j</artifactId>
-                <version>1.2.12</version>
             </dependency>
 
         </dependencies>
