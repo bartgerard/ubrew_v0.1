@@ -10,10 +10,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @version 0.0.1
  * @since 2015-02-03 20:13
  */
-public interface TranslationDao extends JpaRepository<TranslationRecord, Long>/*, QueryDslPredicateExecutor<TranslationRecord>*/ {
-
-    //TranslationRecord findByApplicationAndPrefixAndLanguageAndKey(String application, String prefix, String language, String key);
-
-    //List<TranslationRecord> findByApplication(String application);
+public interface TranslationDao extends JpaRepository<TranslationRecord, Long> {
 
 }

@@ -3,7 +3,6 @@ package be.gerard.core.service.script;
 import be.gerard.core.interface_v1.ApplicationService;
 import be.gerard.core.interface_v1.enums.PropertyType;
 import be.gerard.core.service.builder.ApplicationBuilder;
-import be.gerard.core.service.dao.ApplicationDao;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
@@ -28,9 +27,6 @@ public class ApplicationScript extends CommonScript {
 
     @Autowired
     private ApplicationService applicationService;
-
-    @Autowired
-    private ApplicationDao applicationDao;
 
     @Test
     @Rollback(false)

@@ -26,12 +26,7 @@ public abstract class CommonDatabaseConfig {
     private DataSource dataSource;
 
     @Bean
-    public EntityManagerFactory entityManagerFactory() {
-        return localContainerEntityManagerFactoryBean().getObject();
-    }
-
-    @Bean
-    public LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean() {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setGenerateDdl(true);
 

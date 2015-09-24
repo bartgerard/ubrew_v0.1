@@ -2,6 +2,7 @@ package be.gerard.core.service.builder;
 
 import be.gerard.core.service.model.ApplicationRecord;
 import be.gerard.core.service.model.PropertyGroupRecord;
+import be.gerard.core.service.model.TranslationGroupMetaRecord;
 import be.gerard.core.service.model.TranslationGroupRecord;
 
 import java.util.ArrayList;
@@ -56,6 +57,12 @@ public class ApplicationBuilder extends Builder<ApplicationRecord> {
 
         for (PropertyGroupRecord propertyGroup : propertyGroups) {
             getRecord().getPropertyGroups().add(propertyGroup);
+        }
+
+        getRecord().getTranslationGroups().clear();
+
+        for (TranslationGroupRecord translationGroup : translationGroups) {
+            getRecord().getTranslationGroups().add(new TranslationGroupMetaRecord(translationGroup));
         }
 
         return this;

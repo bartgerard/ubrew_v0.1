@@ -64,7 +64,7 @@
     <jpa:repositories base-package="be.gerard.core.service.dao"/>
 
     <!-- TODO afwachto till SpringData uses new QueryDsl -->
-    <!--<bean id="customPropertyDao" class="be.gerard.core.service.dao.CustomPropertyDaoJpa" />-->
+    <bean id="customTranslationDao" class="be.gerard.core.service.dao.CustomTranslationDaoJpa" />
 
     <!-- Encryptor -->
     <bean id="strongPasswordEncryptor" class="org.jasypt.util.password.StrongPasswordEncryptor"/>

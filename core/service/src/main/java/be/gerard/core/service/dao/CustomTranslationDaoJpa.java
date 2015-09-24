@@ -9,7 +9,6 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQuery;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,10 +21,9 @@ import java.util.Optional;
  * @version v0.0.1
  */
 @Repository
-@Transactional
 public class CustomTranslationDaoJpa implements CustomTranslationDao {
 
-    @PersistenceContext
+    @PersistenceContext(name = "entityManagerFactory")
     private EntityManager entityManager;
 
     protected JPAQuery<TranslationRecord> query() {

@@ -21,7 +21,9 @@ public class TranslationGroupBuilder extends Builder<TranslationGroupRecord> {
         super(record, builderContext);
     }
 
-    public TranslationGroupBuilder translation(String key, TranslationType type, String language, String value) {
+    public TranslationGroupBuilder translation(
+            String key, String value, String language, String prefix, TranslationType type
+    ) {
         TranslationRecord translation = getRecord().findByKey(key);
 
         if (translation == null) {
@@ -33,9 +35,10 @@ public class TranslationGroupBuilder extends Builder<TranslationGroupRecord> {
             translations.add(translation);
         }
 
-        translation.setType(type);
         translation.setValue(value);
         translation.setLanguage(language);
+        translation.setPrefix(prefix);
+        translation.setType(type);
 
         return this;
     }

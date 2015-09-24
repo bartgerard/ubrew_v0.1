@@ -19,7 +19,7 @@ public class TranslationScript extends CommonScript {
         ApplicationBuilder applicationBuilder = builderContext.buildApplication("core.web");
 
         applicationBuilder.translationGroup("common")
-                .translation("ApplicationName", TranslationType.TITLE, "nl", "uBrew")
+                .translation("ApplicationName", "uBrew", "nl", null, TranslationType.TITLE)
                 .build();
 
         applicationBuilder.build();

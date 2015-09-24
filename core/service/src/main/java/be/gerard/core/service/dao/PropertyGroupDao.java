@@ -12,6 +12,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface PropertyGroupDao extends JpaRepository<PropertyGroupRecord, Long> {
 
-    PropertyGroupRecord findByKey(String key);
-
 }

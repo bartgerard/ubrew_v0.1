@@ -83,6 +83,11 @@
             <artifactId>spring-webmvc</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+
         <!-- JavaEE -->
         <dependency>
             <groupId>javax</groupId>
@@ -99,8 +104,7 @@
             <artifactId>querydsl-jpa</artifactId>
         </dependency>
 
-        <!-- Query Dsl Old -->
-        <!--
+        <!-- Query Dsl Old needed for current version of spring data -->
         <dependency>
             <groupId>com.mysema.querydsl</groupId>
             <artifactId>querydsl-core</artifactId>
@@ -109,7 +113,6 @@
             <groupId>com.mysema.querydsl</groupId>
             <artifactId>querydsl-jpa</artifactId>
         </dependency>
-        -->
 
     </dependencies>
 
