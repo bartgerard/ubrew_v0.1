@@ -30,9 +30,6 @@ public class PropertyGroupRecord extends BaseRecord implements Keyable {
     @Column(name = "property_group_key", nullable = false, updatable = false)
     private String key;
 
-    @Column(name = "priority")
-    private Integer priority;
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(
             name = "property_group_id",
@@ -55,10 +52,6 @@ public class PropertyGroupRecord extends BaseRecord implements Keyable {
 
     public void setKey(String key) {
         this.key = key;
-    }
-
-    public Integer getPriority() {
-        return priority;
     }
 
     public Set<PropertyRecord> getProperties() {

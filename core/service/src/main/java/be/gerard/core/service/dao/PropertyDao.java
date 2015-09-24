@@ -1,8 +1,8 @@
 package be.gerard.core.service.dao;
 
 import be.gerard.core.service.model.PropertyRecord;
-
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.repository.Repository;
 
 /**
  * ApplicationDao
@@ -10,10 +10,6 @@ import java.util.List;
  * @author bartgerard
  * @version 0.0.1
  */
-public interface PropertyDao /*extends Repository<PropertyRecord, Long>/*, JpaSpecificationExecutor<PropertyRecord>*/ {
-
-    PropertyRecord findOne(Long id);
-
-    List<PropertyRecord> findAllForApp(final String app);
+public interface PropertyDao extends Repository<PropertyRecord, Long>, JpaSpecificationExecutor<PropertyRecord> {
 
 }

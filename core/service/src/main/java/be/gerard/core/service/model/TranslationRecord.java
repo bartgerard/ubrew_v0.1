@@ -5,7 +5,14 @@ import be.gerard.common.db.model.BaseRecord;
 import be.gerard.core.interface_v1.enums.TranslationType;
 import be.gerard.core.interface_v1.model.Translation;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import java.util.Objects;
 
 /**
  * @author bartgerard
@@ -28,32 +35,56 @@ import javax.persistence.*;
 )
 public class TranslationRecord extends BaseRecord {
 
-//    @Column(name = "app_key", nullable = false)
-//    private String application;
-
-    @Column(name = "translation_language", nullable = false)
-    private String language;
-
-    @Column(name = "prefix", nullable = false)
-    private String prefix;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type", nullable = false, length = 20)
-    private TranslationType type;
-
     @Column(name = "translation_key", nullable = false)
     private String key;
 
     @Column(name = "value", nullable = false)
     private String value;
 
-//    public String getApplication() {
-//        return application;
-//    }
-//
-//    public void setApplication(String application) {
-//        this.application = application;
-//    }
+    @Column(name = "translation_language", nullable = false, length = 2)
+    private String language;
+
+    @Column(name = "prefix", nullable = true)
+    private String prefix;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type", nullable = false, length = 20)
+    private TranslationType type;
+
+    public TranslationRecord() {
+    }
+
+    public TranslationRecord(String key, String value, String language, String prefix, TranslationType type) {
+        this.key = key;
+        this.value = value;
+        this.language = language;
+        this.prefix = prefix;
+        this.type = type;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
 
     public String getPrefix() {
         return prefix;
@@ -71,28 +102,33 @@ public class TranslationRecord extends BaseRecord {
         this.type = type;
     }
 
-    public String getKey() {
-        return key;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        TranslationRecord that = (TranslationRecord) o;
+        return Objects.equals(key, that.key) &&
+                Objects.equals(value, that.value) &&
+                Objects.equals(language, that.language) &&
+                Objects.equals(prefix, that.prefix) &&
+                Objects.equals(type, that.type);
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), key, value, language, prefix, type);
     }
 
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
+    @Override
+    public String toString() {
+        return "TranslationRecord{" +
+                "key='" + key + '\'' +
+                ", value='" + value + '\'' +
+                ", language='" + language + '\'' +
+                ", prefix='" + prefix + '\'' +
+                ", type=" + type +
+                '}';
     }
 
 }

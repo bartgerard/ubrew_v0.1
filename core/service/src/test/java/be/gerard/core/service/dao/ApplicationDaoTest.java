@@ -23,7 +23,7 @@ public class ApplicationDaoTest extends BaseTest {
     @Test
     public void test() {
         PropertyGroupRecord propertyGroupRecord = new PropertyGroupRecord("PG-13");
-        propertyGroupRecord.getProperties().add(new PropertyRecord(PROP1_KEY, PropertyType.URL, PROP1_VALUE));
+        propertyGroupRecord.getProperties().add(new PropertyRecord(PROP1_KEY, PROP1_VALUE, PropertyType.URL));
 
         ApplicationRecord applicationRecord = new ApplicationRecord(APP_KEY);
         applicationRecord.getPropertyGroups().add(propertyGroupRecord);

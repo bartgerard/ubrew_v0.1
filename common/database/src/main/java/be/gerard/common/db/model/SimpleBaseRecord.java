@@ -1,11 +1,11 @@
 package be.gerard.common.db.model;
 
-import java.io.Serializable;
-import java.util.Objects;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * BaseRecord
@@ -40,14 +40,7 @@ public abstract class SimpleBaseRecord implements Serializable {
     }
 
     @Override
-    public final int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
-
-    @Override
-    public final boolean equals(Object obj) {
+    public boolean equals(Object obj) {
         if (obj == null) {
             return false;
         }
@@ -56,6 +49,13 @@ public abstract class SimpleBaseRecord implements Serializable {
         }
         final SimpleBaseRecord other = (SimpleBaseRecord) obj;
         return Objects.equals(this.id, other.id);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.id);
+        return hash;
     }
 
     @Override

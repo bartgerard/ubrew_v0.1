@@ -24,7 +24,7 @@ public class PropertyMerger extends DefaultCollectionMerger<PropertyRecord, Prop
     @Override
     protected PropertyRecord handleNew(Property property, MergeContext context) {
         // TODO Improve by reusing common properties
-        return new PropertyRecord(property.getKey(), property.getType(), property.getValue());
+        return new PropertyRecord(property.getKey(), property.getValue(), property.getType());
     }
 
     @Override

@@ -12,6 +12,7 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OrderColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -48,16 +49,10 @@ public class ApplicationRecord extends BaseRecord implements Keyable {
     @OrderColumn(name = "priority")
     private final List<PropertyGroupRecord> propertyGroups = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "rel_application2translationgroup",
-            joinColumns = @JoinColumn(name = "application_id"),
-            inverseJoinColumns = @JoinColumn(name = "translation_group_id"),
-            foreignKey = @ForeignKey(name = "fk_app2tg_application"),
-            inverseForeignKey = @ForeignKey(name = "fk_app2tg_translationgroup")
-    )
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "application_id", foreignKey = @ForeignKey(name = "fk_app2tg_application"))
     @OrderColumn(name = "priority")
-    private final List<TranslationGroupRecord> translationGroups = new ArrayList<>();
+    private final List<TranslationGroupMetaRecord> translationGroups = new ArrayList<>();
 
     public ApplicationRecord() {
     }
@@ -75,6 +70,10 @@ public class ApplicationRecord extends BaseRecord implements Keyable {
         return propertyGroups;
     }
 
+    public List<TranslationGroupMetaRecord> getTranslationGroups() {
+        return translationGroups;
+    }
+
     public PropertyGroupRecord findPropertyGroup(final String key) {
         for (PropertyGroupRecord propertyGroupRecord : propertyGroups) {
             if (Objects.equals(propertyGroupRecord.getKey(), key)) {
@@ -86,9 +85,9 @@ public class ApplicationRecord extends BaseRecord implements Keyable {
     }
 
     public TranslationGroupRecord findTranslationGroup(final String key) {
-        for (TranslationGroupRecord translationGroupRecord : translationGroups) {
-            if (Objects.equals(translationGroupRecord.getKey(), key)) {
-                return translationGroupRecord;
+        for (TranslationGroupMetaRecord translationGroupRecord : translationGroups) {
+            if (Objects.equals(translationGroupRecord.getGroup().getKey(), key)) {
+                return translationGroupRecord.getGroup();
             }
         }
 
@@ -96,9 +95,9 @@ public class ApplicationRecord extends BaseRecord implements Keyable {
     }
 
     /**
-     * This method assumes that all property groups are propery ordered.
+     * This method assumes that all property groups are properly ordered.
      *
-     * @return
+     * @return A Map with all applicable properties for this application.
      */
     public Map<String, String> findProperties() {
         final Map<String, String> properties = new HashMap<>();
@@ -109,5 +108,7 @@ public class ApplicationRecord extends BaseRecord implements Keyable {
 
         return properties;
     }
+
+
 
 }

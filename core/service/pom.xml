@@ -99,6 +99,18 @@
             <artifactId>querydsl-jpa</artifactId>
         </dependency>
 
+        <!-- Query Dsl Old -->
+        <!--
+        <dependency>
+            <groupId>com.mysema.querydsl</groupId>
+            <artifactId>querydsl-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.mysema.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+        </dependency>
+        -->
+
     </dependencies>
 
     <build>
