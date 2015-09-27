@@ -32,8 +32,6 @@ public class BuilderContext {
 
     // MAPS
 
-    private final Map<String, ApplicationRecord> applications = new HashMap<>();
-
     private final Map<String, PropertyGroupRecord> propertyGroups = new HashMap<>();
 
     private final Map<String, TranslationGroupRecord> translationGroups = new HashMap<>();
@@ -67,19 +65,6 @@ public class BuilderContext {
 
     @PostConstruct
     public void load() {
-        // Applications
-        applications.clear();
-
-        for (ApplicationRecord applicationRecord : applicationDao.findAll()) {
-            applications.put(applicationRecord.getKey(), applicationRecord);
-        }
-
-        // PropertyGroups
-        propertyGroups.clear();
-
-        for (PropertyGroupRecord propertyGroupRecord : propertyGroupDao.findAll()) {
-            propertyGroups.put(propertyGroupRecord.getKey(), propertyGroupRecord);
-        }
 
         // TranslationGroups
         translationGroups.clear();
@@ -120,23 +105,30 @@ public class BuilderContext {
     public ApplicationRecord getOrCreateApplication(String key) {
         Assert.hasText(key, "key is invalid [null]");
 
-        ApplicationRecord applicationRecord = applications.get(key);
+        ApplicationRecord applicationRecord = applicationDao.findByKey(key);
 
         if (applicationRecord == null) {
             applicationRecord = new ApplicationRecord(key);
-            applications.put(key, applicationRecord);
         }
 
         return applicationRecord;
     }
 
-    public PropertyGroupRecord getOrProperyGroup(String key) {
+    public PropertyGroupRecord getOrCreateProperyGroup(String key) {
         Assert.hasText(key, "key is invalid [null]");
 
         PropertyGroupRecord propertyGroupRecord = propertyGroups.get(key);
 
         if (propertyGroupRecord == null) {
+            propertyGroupRecord = propertyGroupDao.findByKey(key);
+        }
+
+        if (propertyGroupRecord == null) {
             propertyGroupRecord = new PropertyGroupRecord(key);
+            propertyGroupDao.save(propertyGroupRecord);
+        }
+
+        if (!propertyGroups.containsKey(key)) {
             propertyGroups.put(key, propertyGroupRecord);
         }
 
@@ -146,14 +138,22 @@ public class BuilderContext {
     public TranslationGroupRecord getOrCreateTranslationGroup(String key) {
         Assert.hasText(key, "key is invalid [null]");
 
-        TranslationGroupRecord translationGroupRecord = translationGroups.get(key);
+        TranslationGroupRecord translationGroup = translationGroups.get(key);
 
-        if (translationGroupRecord == null) {
-            translationGroupRecord = new TranslationGroupRecord(key);
-            translationGroups.put(key, translationGroupRecord);
+        if (translationGroup == null) {
+            translationGroup = translationGroupDao.findByKey(key);
         }
 
-        return translationGroupRecord;
+        if (translationGroup == null) {
+            translationGroup = new TranslationGroupRecord(key);
+            translationGroupDao.save(translationGroup);
+        }
+
+        if (!translationGroups.containsKey(key)) {
+            translationGroups.put(key, translationGroup);
+        }
+
+        return translationGroup;
     }
 
     public UserRecord getOrCreateUser(String username) {
@@ -228,13 +228,6 @@ public class BuilderContext {
 
     public void save(PrivilegeRecord privilegeRecord) {
         privilegeDao.save(privilegeRecord);
-    }
-
-    public void saveAll() {
-        privilegeDao.save(privileges.values());
-        roleDao.save(roles.values());
-        userDao.save(users.values());
-        applicationDao.save(applications.values());
     }
 
 }

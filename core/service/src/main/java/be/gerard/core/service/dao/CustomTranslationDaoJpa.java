@@ -39,27 +39,29 @@ public class CustomTranslationDaoJpa implements CustomTranslationDao {
 
         QTranslationRecord translation = QTranslationRecord.translationRecord;
         QTranslationGroupRecord translationGroup = QTranslationGroupRecord.translationGroupRecord;
-        QTranslationGroupMetaRecord translationGroupMeta = QTranslationGroupMetaRecord.translationGroupMetaRecord;
+        QTranslationGroupMetaRecord tgm1 = QTranslationGroupMetaRecord.translationGroupMetaRecord;
         QApplicationRecord application = QApplicationRecord.applicationRecord;
 
         BooleanExpression filter = translation.key.like(key)
                 .and(translation.language.like(language))
                 .and(prefix != null ? translation.prefix.like(prefix) : translation.prefix.isNull());
 
+        // greatest-n-per-group
+        // Solution A : Separate SubQuery
         return Optional.ofNullable(
                 query()
                         .select(translation.value)
-                        .from(translationGroupMeta)
-                        .innerJoin(translationGroupMeta.group, translationGroup)
+                        .from(tgm1)
+                        .innerJoin(tgm1.group, translationGroup)
                         .innerJoin(translationGroup.translations, translation)
                         .where(
                                 filter,
-                                translationGroupMeta.priority.in(
+                                tgm1.priority.in(
                                         JPAExpressions
-                                                .select(translationGroupMeta.priority.min())
+                                                .select(tgm1.priority.min())
                                                 .from(application)
-                                                .innerJoin(application.translationGroups, translationGroupMeta)
-                                                .innerJoin(translationGroupMeta.group, translationGroup)
+                                                .innerJoin(application.translationGroups, tgm1)
+                                                .innerJoin(tgm1.group, translationGroup)
                                                 .innerJoin(translationGroup.translations, translation)
                                                 .where(
                                                         application.key.like(app),
@@ -70,6 +72,10 @@ public class CustomTranslationDaoJpa implements CustomTranslationDao {
                         )
                         .fetchOne()
         );
+
+        // Solution B : Join Instead of SubQuery
+
+        // Solution C : Left Joining With Self
     }
 
 }

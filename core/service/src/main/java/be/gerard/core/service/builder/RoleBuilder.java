@@ -25,7 +25,10 @@ public class RoleBuilder extends Builder<RoleRecord> {
         return this;
     }
 
+    @Override
     public RoleBuilder build() {
+        super.build();
+
         getRecord().getPrivileges().clear();
         getRecord().getPrivileges().addAll(privileges);
         return this;

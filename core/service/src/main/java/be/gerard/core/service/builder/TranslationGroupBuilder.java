@@ -13,12 +13,14 @@ import java.util.Set;
  * @author bartgerard
  * @version v0.0.1
  */
-public class TranslationGroupBuilder extends Builder<TranslationGroupRecord> {
+public class TranslationGroupBuilder extends ChildBuilder<TranslationGroupRecord, ApplicationBuilder> {
 
     private final Set<TranslationRecord> translations = new HashSet<>();
 
-    public TranslationGroupBuilder(TranslationGroupRecord record, BuilderContext builderContext) {
-        super(record, builderContext);
+    public TranslationGroupBuilder(
+            TranslationGroupRecord record, BuilderContext builderContext, ApplicationBuilder parent
+    ) {
+        super(record, builderContext, parent);
     }
 
     public TranslationGroupBuilder translation(
@@ -43,7 +45,10 @@ public class TranslationGroupBuilder extends Builder<TranslationGroupRecord> {
         return this;
     }
 
+    @Override
     public TranslationGroupBuilder build() {
+        super.build();
+
         getRecord().getTranslations().clear();
 
         for (TranslationRecord translation : translations) {

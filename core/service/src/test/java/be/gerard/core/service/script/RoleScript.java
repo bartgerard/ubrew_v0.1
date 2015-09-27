@@ -15,12 +15,12 @@ public class RoleScript extends CommonScript {
     @Rollback(false)
     public void initRoles() {
         builderContext.buildRole("USER")
-                .build();
+                .build().save();
 
         builderContext.buildRole("ADMIN")
                 .addPrivilege("CRUD_USER")
                 .addPrivilege("CRUD_TRANSLATION")
-                .build();
+                .build().save();
 
         builderContext.buildUser(username)
                 .firstname(firstname)
@@ -28,9 +28,7 @@ public class RoleScript extends CommonScript {
                 .birthDate(birthdate)
                 .password("password")
                 .assignRole("ADMIN")
-                .build();
-
-        builderContext.saveAll();
+                .build().save();
     }
 
 }

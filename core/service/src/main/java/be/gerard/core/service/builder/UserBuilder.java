@@ -52,9 +52,13 @@ public class UserBuilder extends Builder<UserRecord> {
         return this;
     }
 
+    @Override
     public UserBuilder build() {
+        super.build();
+
         getRecord().getRoles().clear();
         getRecord().getRoles().addAll(roles);
+
         return this;
     }
 

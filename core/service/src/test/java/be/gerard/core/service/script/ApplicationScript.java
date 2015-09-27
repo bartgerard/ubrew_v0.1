@@ -2,7 +2,6 @@ package be.gerard.core.service.script;
 
 import be.gerard.core.interface_v1.ApplicationService;
 import be.gerard.core.interface_v1.enums.PropertyType;
-import be.gerard.core.service.builder.ApplicationBuilder;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
@@ -31,19 +30,16 @@ public class ApplicationScript extends CommonScript {
     @Test
     @Rollback(false)
     public void initApplications() {
-        ApplicationBuilder applicationBuilder = builderContext.buildApplication("core.web");
-
-        applicationBuilder.propertyGroup("core")
+        builderContext.buildApplication("core.web")
+                .propertyGroup("core")
                 .property("be.gerard.core.service.url", PropertyType.URL, "http://localhost:8080/core-service")
-                .build();
-
-        applicationBuilder.build();
+                .and()
+                .build().save();
 
         builderContext.buildApplication("ubrew.web")
                 .propertyGroup("core")
-                .build();
-
-        builderContext.saveAll();
+                .and()
+                .build().save();
 
         applicationService.instantiate(
                 "core.web",

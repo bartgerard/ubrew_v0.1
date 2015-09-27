@@ -13,7 +13,7 @@ import java.util.List;
  * @author bartgerard
  * @version v0.0.1
  */
-public class ApplicationBuilder extends Builder<ApplicationRecord> {
+public class ApplicationBuilder extends RelationalBuilder<ApplicationRecord> {
 
     private final List<PropertyGroupRecord> propertyGroups = new ArrayList<>();
 
@@ -27,14 +27,14 @@ public class ApplicationBuilder extends Builder<ApplicationRecord> {
         PropertyGroupRecord propertyGroup = getRecord().findPropertyGroup(key);
 
         if (propertyGroup == null) {
-            propertyGroup = getBuilderContext().getOrProperyGroup(key);
+            propertyGroup = getBuilderContext().getOrCreateProperyGroup(key);
         }
 
         if (!propertyGroups.contains(propertyGroup)) {
             propertyGroups.add(propertyGroup);
         }
 
-        return new PropertyGroupBuilder(propertyGroup, getBuilderContext());
+        return addChild(new PropertyGroupBuilder(propertyGroup, getBuilderContext(), this));
     }
 
     public TranslationGroupBuilder translationGroup(String key) {
@@ -48,10 +48,13 @@ public class ApplicationBuilder extends Builder<ApplicationRecord> {
             translationGroups.add(translationGroupMeta);
         }
 
-        return new TranslationGroupBuilder(translationGroupMeta.getGroup(), getBuilderContext());
+        return addChild(new TranslationGroupBuilder(translationGroupMeta.getGroup(), getBuilderContext(), this));
     }
 
+    @Override
     public ApplicationBuilder build() {
+        super.build();
+
         getRecord().getPropertyGroups().clear();
 
         for (PropertyGroupRecord propertyGroup : propertyGroups) {

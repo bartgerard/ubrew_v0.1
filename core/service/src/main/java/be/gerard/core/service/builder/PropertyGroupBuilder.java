@@ -13,12 +13,14 @@ import java.util.Set;
  * @author bartgerard
  * @version v0.0.1
  */
-public class PropertyGroupBuilder extends Builder<PropertyGroupRecord> {
+public class PropertyGroupBuilder extends ChildBuilder<PropertyGroupRecord, ApplicationBuilder> {
 
     private final Set<PropertyRecord> properties = new HashSet<>();
 
-    public PropertyGroupBuilder(PropertyGroupRecord record, BuilderContext builderContext) {
-        super(record, builderContext);
+    public PropertyGroupBuilder(
+            PropertyGroupRecord record, BuilderContext builderContext, ApplicationBuilder parent
+    ) {
+        super(record, builderContext, parent);
     }
 
     public PropertyGroupBuilder property(String key, PropertyType type, String value) {
@@ -38,7 +40,10 @@ public class PropertyGroupBuilder extends Builder<PropertyGroupRecord> {
         return this;
     }
 
+    @Override
     public PropertyGroupBuilder build() {
+        super.build();
+
         getRecord().getProperties().clear();
 
         for (PropertyRecord property : properties) {
