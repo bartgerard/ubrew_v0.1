@@ -8,7 +8,7 @@
                   url="jdbc:mysql://localhost:3306/general"/>
     -->
     <Environment name="be.gerard.core.service.url" value="http://localhost:8080/core-service" type="java.lang.String"/>
-    <Environment name="be.gerard.ubrew.application.key" value="core.web" type="java.lang.String"/>
-    <Environment name="be.gerard.ubrew.application.reference" value="core.web.1" type="java.lang.String"/>
+    <Environment name="be.gerard.ubrew.application.key" value="ubrew.web" type="java.lang.String"/>
+    <Environment name="be.gerard.ubrew.application.reference" value="ubrew.web.1" type="java.lang.String"/>
     <Environment name="be.gerard.ubrew.application.password" value="password" type="java.lang.String"/>
 </Context>

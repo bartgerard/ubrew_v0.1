@@ -1,6 +1,5 @@
 package be.gerard.core.service.builder;
 
-import be.gerard.core.interface_v1.enums.TranslationType;
 import be.gerard.core.service.model.TranslationGroupRecord;
 import be.gerard.core.service.model.TranslationRecord;
 
@@ -23,26 +22,25 @@ public class TranslationGroupBuilder extends ChildBuilder<TranslationGroupRecord
         super(record, builderContext, parent);
     }
 
-    public TranslationGroupBuilder translation(
-            String key, String value, String language, String prefix, TranslationType type
+    public TranslationBuilder translation(
+            String key, String language, String prefix
     ) {
-        TranslationRecord translation = getRecord().findByKey(key);
+        TranslationRecord translation = getRecord().findByKeyAndLanguage(key, language);
 
         if (translation == null) {
             translation = new TranslationRecord();
             translation.setKey(key);
+            translation.setLanguage(language);
         }
 
         if (!translations.contains(translation)) {
             translations.add(translation);
         }
 
-        translation.setValue(value);
         translation.setLanguage(language);
         translation.setPrefix(prefix);
-        translation.setType(type);
 
-        return this;
+        return new TranslationBuilder(translation, getBuilderContext(), this);
     }
 
     @Override

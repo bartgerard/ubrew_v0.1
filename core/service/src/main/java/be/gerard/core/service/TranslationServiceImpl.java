@@ -3,6 +3,7 @@ package be.gerard.core.service;
 import be.gerard.core.interface_v1.TranslationService;
 import be.gerard.core.interface_v1.enums.Language;
 import be.gerard.core.interface_v1.model.Translation;
+import be.gerard.core.service.dao.CustomTranslationDao;
 import be.gerard.core.service.dao.TranslationDao;
 import be.gerard.core.service.dao.TranslationGroupDao;
 import be.gerard.core.service.model.TranslationGroupRecord;
@@ -17,6 +18,8 @@ import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @author bartgerard
@@ -31,6 +34,9 @@ public class TranslationServiceImpl implements TranslationService {
     private TranslationDao translationDao;
 
     @Autowired
+    private CustomTranslationDao customTranslationDao;
+
+    @Autowired
     private TranslationGroupDao translationGroupDao;
 
     @Autowired
@@ -38,8 +44,9 @@ public class TranslationServiceImpl implements TranslationService {
 
     @Override
     public String get(String application, String prefix, Language language, String key) {
-        Translation translation = find(application, prefix, language, key);
-        return translation != null ? translation.getValue() : null;
+        Optional<String> translation = customTranslationDao.findByAppAndPrefixAndKeyAndLanguage(application, prefix, key, language.getCode());
+
+        return translation.isPresent() ? translation.get() : null;
     }
 
     @Override
@@ -63,13 +70,7 @@ public class TranslationServiceImpl implements TranslationService {
     public List<Translation> save(final List<Translation> translations) {
         Assert.notEmpty(translations, "translations is invalid [EMPTY]");
 
-        List<Translation> result = new ArrayList<>();
-
-        for (Translation translation : translations) {
-            result.add(save(translation));
-        }
-
-        return result;
+        return translations.stream().map(this::save).collect(Collectors.toList());
     }
 
     @Transactional(readOnly = false)
@@ -83,7 +84,7 @@ public class TranslationServiceImpl implements TranslationService {
             return null;
         }
 
-        TranslationRecord translationRecord = translationGroupRecord.findByKey(translation.getKey());
+        TranslationRecord translationRecord = translationGroupRecord.findByKeyAndLanguage(translation.getKey(), translation.getLanguage());
 
 //        TranslationRecord translationRecord = translationDao.findByApplicationAndPrefixAndLanguageAndKey(
 //                translation.getGroup(), translation.getPrefix(), translation.getLanguage(), translation.getKey()

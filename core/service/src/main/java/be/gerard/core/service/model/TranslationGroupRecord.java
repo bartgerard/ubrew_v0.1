@@ -67,9 +67,9 @@ public class TranslationGroupRecord extends BaseRecord implements Keyable {
         return translations;
     }
 
-    public TranslationRecord findByKey(final String key) {
+    public TranslationRecord findByKeyAndLanguage(final String key, final String language) {
         for (TranslationRecord translationRecord : translations) {
-            if (Objects.equals(translationRecord.getKey(), key)) {
+            if (Objects.equals(translationRecord.getKey(), key) && Objects.equals(translationRecord.getLanguage(), language)) {
                 return translationRecord;
             }
         }
@@ -91,5 +91,5 @@ public class TranslationGroupRecord extends BaseRecord implements Keyable {
     public int hashCode() {
         return Objects.hash(super.hashCode(), key, translations);
     }
-    
+
 }
