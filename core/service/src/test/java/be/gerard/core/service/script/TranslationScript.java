@@ -25,7 +25,7 @@ public class TranslationScript extends CommonScript {
                 .and()
                 .translationGroup("ubrew")
                 .translation("ApplicationName", "nl", "common").value("uBrew").type(TranslationType.TITLE)
-                .and().translation("Home", "nl", "common").value("Thuis").type(TranslationType.TITLE)
+                .and().translation("Home", "nl", "common").value("Home").type(TranslationType.TITLE)
                 .and().translation("About", "nl", "common").value("Over").type(TranslationType.TITLE)
                 .and().translation("ClickAndBrew", "nl", "common").value("Click and Brew").type(TranslationType.TITLE)
                 .and().translation("MyBrew", "nl", "common").value("My Brew").type(TranslationType.TITLE)
