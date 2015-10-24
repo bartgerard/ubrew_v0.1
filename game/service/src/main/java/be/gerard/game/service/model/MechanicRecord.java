@@ -16,6 +16,6 @@ import javax.persistence.Table;
 @Entity
 @SequenceGenerator(name = BaseRecord.SEQUENCE_GENERATOR, sequenceName = "s_mechanic", allocationSize = BaseRecord.SEQUENCE_ALLOCATION_SIZE)
 @Table(name = "bgc_mechanic")
-public class Mechanic extends DefinitionRecord {
+public class MechanicRecord extends DefinitionRecord {
 
 }

@@ -5,13 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Promo
+ * Expansion
  *
  * @author bartgerard
  * @version v0.0.1
  */
 @Entity
-@Table(name = "bgc_game_promo")
-@DiscriminatorValue("promo")
-public class Promo extends Game {
+@Table(name = "bgc_game_expansion")
+@DiscriminatorValue("expansion")
+public class ExpansionRecord extends GameRecord {
 }

@@ -8,5 +8,5 @@ import be.gerard.common.db.model.DefinitionRecord;
  * @author bartgerard
  * @version v0.0.1
  */
-public class Module extends DefinitionRecord {
+public class ModuleRecord extends DefinitionRecord {
 }

@@ -11,5 +11,5 @@ import javax.persistence.MappedSuperclass;
  * @version v0.0.1
  */
 @MappedSuperclass
-public abstract class ProductDefinition extends BaseRecord {
+public abstract class ProductDefinitionRecord extends BaseRecord {
 }

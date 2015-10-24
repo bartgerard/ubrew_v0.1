@@ -15,8 +15,8 @@ import javax.persistence.Table;
 @Entity
 @SequenceGenerator(name = BaseRecord.SEQUENCE_GENERATOR, sequenceName = "s_product", allocationSize = BaseRecord.SEQUENCE_ALLOCATION_SIZE)
 @Table(name = "bgc_product")
-public class Product extends BaseRecord {
+public class ProductRecord extends BaseRecord {
 
-    private ProductDefinition productDefinition;
+    private ProductDefinitionRecord productDefinition;
 
 }

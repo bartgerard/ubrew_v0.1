@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "bgc_game_core")
 @DiscriminatorValue("core")
-public class CoreGame extends Game {
+public class CoreGameRecord extends GameRecord {
 /*
     private final Set<Expansion> expansions = new HashSet<>();
 

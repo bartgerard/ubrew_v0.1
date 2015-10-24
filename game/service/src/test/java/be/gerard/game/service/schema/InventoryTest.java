@@ -1,6 +1,6 @@
 package be.gerard.game.service.schema;
 
-import be.gerard.game.service.model.Bundle;
+import be.gerard.game.service.model.BundleRecord;
 import org.junit.Test;
 
 /**
@@ -13,7 +13,7 @@ public class InventoryTest {
 
     @Test
     public void buildInventory() {
-        Bundle bundle = new Bundle();
+        BundleRecord bundle = new BundleRecord();
     }
 
 }

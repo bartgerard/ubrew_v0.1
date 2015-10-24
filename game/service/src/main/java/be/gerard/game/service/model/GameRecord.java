@@ -21,5 +21,5 @@ import javax.persistence.Table;
 @Table(name = "bgc_game")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING, length = 20)
-public abstract class Game extends ProductDefinition {
+public abstract class GameRecord extends ProductDefinitionRecord {
 }

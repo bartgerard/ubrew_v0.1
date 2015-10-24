@@ -16,6 +16,6 @@ import javax.persistence.Table;
 @Entity
 @SequenceGenerator(name = BaseRecord.SEQUENCE_GENERATOR, sequenceName = "s_color", allocationSize = BaseRecord.SEQUENCE_ALLOCATION_SIZE)
 @Table(name = "bgc_color")
-public class Color extends DefinitionRecord {
+public class ColorRecord extends DefinitionRecord {
 
 }

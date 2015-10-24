@@ -16,6 +16,6 @@ import javax.persistence.Table;
 @Entity
 @SequenceGenerator(name = BaseRecord.SEQUENCE_GENERATOR, sequenceName = "s_family", allocationSize = BaseRecord.SEQUENCE_ALLOCATION_SIZE)
 @Table(name = "bgc_family")
-public class Family extends DefinitionRecord {
+public class FamilyRecord extends DefinitionRecord {
 
 }

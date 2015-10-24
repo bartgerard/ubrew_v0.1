@@ -1,10 +1,10 @@
 package be.gerard.game.service.model;
 
 /**
- * BoardGameDetails
+ * GameDetailRecord
  *
  * @author bartgerard
  * @version v0.0.1
  */
-public class GameDetails {
+public class GameDetailRecord {
 }
