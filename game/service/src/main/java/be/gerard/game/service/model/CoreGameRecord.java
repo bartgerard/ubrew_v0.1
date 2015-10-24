@@ -14,7 +14,15 @@ import javax.persistence.Table;
 @Table(name = "bgc_game_core")
 @DiscriminatorValue("core")
 public class CoreGameRecord extends GameRecord {
-/*
+
+    public CoreGameRecord() {
+    }
+
+    public CoreGameRecord(String key, Integer bggId, String name, PriceRecord msrp) {
+        super(key, bggId, name, msrp);
+    }
+
+    /*
     private final Set<Expansion> expansions = new HashSet<>();
 
     private final Set<Promo> promos = new HashSet<>();

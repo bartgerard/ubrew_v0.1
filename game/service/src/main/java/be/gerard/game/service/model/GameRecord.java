@@ -1,14 +1,6 @@
 package be.gerard.game.service.model;
 
-import be.gerard.common.db.model.BaseRecord;
-
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.Column;
 
 /**
  * BoardGame
@@ -16,10 +8,25 @@ import javax.persistence.Table;
  * @author bartgerard
  * @version v0.0.1
  */
-@Entity
-@SequenceGenerator(name = BaseRecord.SEQUENCE_GENERATOR, sequenceName = "s_game", allocationSize = BaseRecord.SEQUENCE_ALLOCATION_SIZE)
-@Table(name = "bgc_game")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING, length = 20)
 public abstract class GameRecord extends ProductDefinitionRecord {
+
+    public GameRecord() {
+    }
+
+    public GameRecord(String key, Integer bggId, String name, PriceRecord msrp) {
+        super(key, name, msrp);
+        this.bggId = bggId;
+    }
+
+    @Column(name = "bgg_id")
+    private Integer bggId;
+
+    public Integer getBggId() {
+        return bggId;
+    }
+
+    public void setBggId(Integer bggId) {
+        this.bggId = bggId;
+    }
+
 }

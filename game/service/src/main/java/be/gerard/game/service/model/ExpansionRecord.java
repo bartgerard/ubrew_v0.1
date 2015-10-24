@@ -14,4 +14,12 @@ import javax.persistence.Table;
 @Table(name = "bgc_game_expansion")
 @DiscriminatorValue("expansion")
 public class ExpansionRecord extends GameRecord {
+
+    public ExpansionRecord() {
+    }
+
+    public ExpansionRecord(String key, Integer bggId, String name, PriceRecord msrp) {
+        super(key, bggId, name, msrp);
+    }
+
 }

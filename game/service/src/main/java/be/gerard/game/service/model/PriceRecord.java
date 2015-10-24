@@ -23,23 +23,24 @@ import java.math.BigDecimal;
 @Table(name = "bgc_price")
 public class PriceRecord extends BaseRecord {
 
-    @Column(name = "value", precision = 2)
-    private BigDecimal value;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "type", length = 20)
     private PriceType type;
+
+    @Column(name = "value", precision = 2)
+    private BigDecimal value;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "currency", length = 3)
     private CurrencyCode currency;
 
-    public BigDecimal getValue() {
-        return value;
+    public PriceRecord() {
     }
 
-    public void setValue(BigDecimal value) {
+    public PriceRecord(PriceType type, BigDecimal value, CurrencyCode currency) {
+        this.type = type;
         this.value = value;
+        this.currency = currency;
     }
 
     public PriceType getType() {
@@ -48,6 +49,14 @@ public class PriceRecord extends BaseRecord {
 
     public void setType(PriceType type) {
         this.type = type;
+    }
+
+    public BigDecimal getValue() {
+        return value;
+    }
+
+    public void setValue(BigDecimal value) {
+        this.value = value;
     }
 
     public CurrencyCode getCurrency() {
